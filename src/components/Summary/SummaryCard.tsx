@@ -4,7 +4,7 @@ import { ISummaryCard } from "./types";
 export function SummaryCard({ type }: ISummaryCard) {
     return (
         <div className={`
-            bg-zinc-700 rounded-lg p-4
+            rounded-lg p-8
             ${
                 type === "total"
                 ? "bg-emerald-700"
