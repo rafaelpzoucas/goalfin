@@ -3,16 +3,21 @@
 @tailwind utilities;
 
 :focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px rgb(134 239 172);
+    /* outline: 0; */
+    /* box-shadow: 0 0 0 2px rgb(134 239 172); */
 }
 
 body {
-    @apply bg-zinc-800 text-zinc-100;
-
+    @apply bg-zinc-900 text-zinc-100;
+    
     -webkit-font-smoothing: antialiased;
 }
 
 body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
+}
+
+.test {
+    background-color: white;
+    opacity: 0.1;
 }

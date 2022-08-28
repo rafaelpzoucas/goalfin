@@ -1,11 +1,11 @@
 import { Header } from "../../components/Header";
-import { Summary } from "../../components/Summary";
+import { Main } from "../../components/Main";
 
-export function Transactions() {
+export function Dashboard() {
     return (
         <>
             <Header />
-            <Summary />
+            <Main />
         </>
     )
 }
