@@ -8,6 +8,7 @@ interface ISheet {
     onClose: () => void
     mobileOnly?: boolean
     transition?: "topToBottom" | "rightToLeft" | "bottomToTop" | "leftToRight"
+    initialFocus?: ""
 }
 
 export function Sheet({ children, isOpen, onClose, mobileOnly, transition  }: ISheet) {
@@ -50,7 +51,7 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, transition  }: IS
                 >
                     <div className={`
                         flex min-h-screen fixed top-0 sm:right-0 overflow-y-auto sm:border-l shadow-xl z-50
-                        ${mobileOnly ? 'sm:hidden': ''}
+                        ${mobileOnly && 'sm:hidden'}
                     `}>
                         <Dialog.Panel className="flex flex-col w-screen sm:max-w-xl h-screen bg-zinc-900 shadow-xl">
                             {children}

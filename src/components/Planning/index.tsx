@@ -10,7 +10,7 @@ export function Planning() {
         <>
         <section
             onClick={() => setIsSheetOpen(true)} 
-            className="flex flex-col items-start justify-between gap-6 px-4 py-8"
+            className="flex flex-col items-start justify-between gap-6 px-4 py-12"
         >
             <header className="flex flex-row justify-between w-full">
                 <div className="flex flex-row gap-2">

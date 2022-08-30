@@ -1,9 +1,12 @@
 
+import { BankAccountProvider } from "./contexts/BankAccountContext";
 import { Dashboard } from "./pages/Dashboard";
 
 export function App() {
 
   return (
-    <Dashboard />
+    <BankAccountProvider>
+      <Dashboard />
+    </BankAccountProvider>
   )
 }

@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:focus {
-    /* outline: 0; */
-    /* box-shadow: 0 0 0 2px rgb(134 239 172); */
-}
-
 body {
     @apply bg-zinc-900 text-zinc-100;
     

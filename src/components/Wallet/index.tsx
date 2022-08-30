@@ -14,7 +14,7 @@ export function Wallet() {
             onClick={() => setIsSheetOpen(true)}
             className="flex flex-row items-start justify-between px-4 py-8"
         >
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-12">
                 <div className="flex flex-col gap-1">
                     <span className="text-xs text-zinc-400">Disponível para uso</span>
                     <strong className="text-base">R$ 300,00</strong>
