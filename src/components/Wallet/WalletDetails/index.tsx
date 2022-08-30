@@ -1,15 +1,19 @@
-import { Dialog } from "@headlessui/react";
-import { CaretLeft, CaretRight, Coins } from "phosphor-react";
-import { useState } from "react";
-import { BankAccounts } from "../../BankAccounts";
-import { SaveMoney } from "../../SaveMoney";
-import { Sheet } from "../../Sheet";
+import { CaretRight, Coins } from "phosphor-react";
+import { useBankAccount } from "../../../contexts/BankAccountContext/useBankAccount";
+import { useSaveMoney } from "../../../contexts/SaveMoneyContext/useBankAccount";
+import { SaveMoneySheet } from "../../SaveMoney/SaveMoneySheet";
 import { Transactions } from "../../Transactions";
+import { MyBankAccountsSheet } from "./MyBankAccounts";
 
-export function WalletDetails() {
-    const [isBankAccountsSheetOpen, setIsBankAccountsSheetOpen] = useState(false)
-    const [isSaveMoneySheetOpen, setIsSaveMoneySheetOpen] = useState(false)
-    
+export function WalletDetails() { 
+    const {
+        setIsMyBankAccountsSheetOpen
+    } = useBankAccount()
+
+    const {
+        setIsSaveMoneySheetOpen
+    } = useSaveMoney()
+
     return (
         <div className="flex flex-col gap-4 h-full">
             <div className="flex flex-col gap-12 p-4">
@@ -20,7 +24,7 @@ export function WalletDetails() {
 
                 <div 
                     className="flex flex-row items-center justify-between"
-                    onClick={() => setIsBankAccountsSheetOpen(true)}
+                    onClick={() => setIsMyBankAccountsSheetOpen(true)} 
                 >
                     <div className="flex flex-col">
                         <span className="text-xs text-zinc-400">Minhas contas</span>
@@ -40,25 +44,8 @@ export function WalletDetails() {
 
             <Transactions />
 
-            <Sheet isOpen={isBankAccountsSheetOpen} onClose={() => setIsBankAccountsSheetOpen(false)} transition="rightToLeft">
-                <Dialog.Title className="flex flex-row p-4">
-                    <button onClick={() => setIsBankAccountsSheetOpen(false)} className="shadow-none outline-none">
-                        <CaretLeft size={32} />
-                    </button>
-                </Dialog.Title>
-
-                <BankAccounts />
-            </Sheet>
-
-            <Sheet isOpen={isSaveMoneySheetOpen} onClose={() => setIsSaveMoneySheetOpen(false)} transition="rightToLeft">
-                <Dialog.Title className="flex flex-row p-4">
-                    <button onClick={() => setIsSaveMoneySheetOpen(false)} className="shadow-none outline-none">
-                        <CaretLeft size={32} />
-                    </button>
-                </Dialog.Title>
-
-                <SaveMoney />
-            </Sheet>
+            <MyBankAccountsSheet />
+            <SaveMoneySheet />
         </div>
     )
 }

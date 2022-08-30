@@ -1,12 +1,15 @@
 
 import { BankAccountProvider } from "./contexts/BankAccountContext";
+import { SaveMoneyProvider } from "./contexts/SaveMoneyContext";
 import { Dashboard } from "./pages/Dashboard";
 
 export function App() {
 
   return (
     <BankAccountProvider>
-      <Dashboard />
+      <SaveMoneyProvider>
+        <Dashboard />
+      </SaveMoneyProvider>
     </BankAccountProvider>
   )
 }

@@ -1,0 +1,45 @@
+import { Dialog } from "@headlessui/react";
+import { CaretLeft } from "phosphor-react";
+import { useBankAccount } from "../../contexts/BankAccountContext/useBankAccount";
+import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
+import { Goal } from "../Goals/Goal";
+import { Search } from "../Search";
+import { Sheet } from "../Sheet";
+
+export function SaveMoneySheet() {
+    const {
+        isSaveMoneySheetOpen,
+        setIsSaveMoneySheetOpen
+    } = useSaveMoney()
+
+    const {
+        setIsChooseBankSheetOpen
+    } = useBankAccount()
+    
+    return (
+        <Sheet isOpen={isSaveMoneySheetOpen} onClose={() => setIsSaveMoneySheetOpen(false)} transition="rightToLeft">
+            <Dialog.Title className="flex flex-row p-4">
+                <button onClick={() => setIsSaveMoneySheetOpen(false)} className="shadow-none outline-none">
+                    <CaretLeft size={32} />
+                </button>
+            </Dialog.Title>
+
+            <div className="flex flex-col gap-8 p-4">
+                <div className="flex flex-col">
+                    <strong>
+                        Selecione o seu objetivo
+                    </strong>
+                    <span className="text-xs text-zinc-400">
+                        Qual o seu objetivo guardando este dinheiro?
+                    </span>
+                </div>
+                <Search />
+
+                <Goal 
+                    type="select-new-goal"
+                    click={() => setIsChooseBankSheetOpen(true)}
+                />
+            </div>
+        </Sheet>
+    )
+}

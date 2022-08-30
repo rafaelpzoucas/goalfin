@@ -6,32 +6,37 @@ interface BankAccountProviderProps {
 }
 
 interface BankAccountContextProps {
-    isBankAccountSheetOpen: boolean
-    setIsBankAccountSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    isSelectBankSheetOpen: boolean
-    setIsSelectBankSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    handleChooseBankAccount: () => void
+    isMyBankAccountsSheetOpen: boolean
+    setIsMyBankAccountsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+    isInsertBalanceSheetOpen: boolean
+    setIsInsertBalanceSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+    isChooseBankSheetOpen: boolean
+    setIsChooseBankSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+    handleChooseBank: () => void
 }
 
 export const BankAccountContext = createContext({} as BankAccountContextProps)
 
 
 export function BankAccountProvider({ children }: BankAccountProviderProps) {
-    const [isBankAccountSheetOpen, setIsBankAccountSheetOpen] = useState(false)
-    const [isSelectBankSheetOpen, setIsSelectBankSheetOpen] = useState(false)
+    const [isInsertBalanceSheetOpen, setIsInsertBalanceSheetOpen] = useState(false)
+    const [isMyBankAccountsSheetOpen, setIsMyBankAccountsSheetOpen] = useState(false)
+    const [isChooseBankSheetOpen, setIsChooseBankSheetOpen] = useState(false)
 
-    function handleChooseBankAccount() {
-        setIsBankAccountSheetOpen(true),
-        setIsSelectBankSheetOpen(false)
+    function handleChooseBank() {
+        setIsChooseBankSheetOpen(false)
+        setIsInsertBalanceSheetOpen(true) 
     }
 
     return (
         <BankAccountContext.Provider value={{ 
-           isBankAccountSheetOpen,
-           setIsBankAccountSheetOpen,
-           isSelectBankSheetOpen,
-           setIsSelectBankSheetOpen,
-           handleChooseBankAccount,
+           isMyBankAccountsSheetOpen,
+           setIsMyBankAccountsSheetOpen,
+           isInsertBalanceSheetOpen,
+           setIsInsertBalanceSheetOpen,
+           isChooseBankSheetOpen,
+           setIsChooseBankSheetOpen,
+           handleChooseBank,
         }}>
             { children }
         </BankAccountContext.Provider>
