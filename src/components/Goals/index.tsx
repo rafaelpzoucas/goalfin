@@ -1,15 +1,18 @@
 import { CaretRight, Target } from "phosphor-react";
 import { useState } from "react";
+import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { ProgressBar } from "../ProgressBar";
 import { Sheet } from "../Sheet";
+import { GoalsDetailsSheet } from "./GoalsDetailsSheet";
 
 export function Goals() {
-    const [isSheetOpen, setIsSheetOpen] = useState(false)
-
+    const {
+        setIsGoalsDetailsSheetOpen
+    } = useGoals()
     return (
         <>
         <section
-            onClick={() => setIsSheetOpen(true)} 
+            onClick={() => setIsGoalsDetailsSheetOpen(true)} 
             className="flex flex-col items-start justify-between gap-6 px-4 py-12"
         >
             <header className="flex flex-row justify-between w-full">
@@ -28,10 +31,7 @@ export function Goals() {
             <ProgressBar />
         </section>
         
-        <Sheet isOpen={isSheetOpen} onClose={() => setIsSheetOpen(false)} transition="rightToLeft">
-            <button onClick={() => setIsSheetOpen(false)}>X</button>
-            ovjetivos
-        </Sheet>
+        <GoalsDetailsSheet />
         </>
     )
 }

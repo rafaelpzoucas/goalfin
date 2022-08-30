@@ -5,11 +5,14 @@ import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { Goal } from "../Goals/Goal";
 import { Search } from "../Search";
 import { Sheet } from "../Sheet";
+import { ChooseBankSheet } from "../Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";
+import { InsertAmountSheet } from "./InsertAmountSheet";
 
 export function SaveMoneySheet() {
     const {
         isSaveMoneySheetOpen,
-        setIsSaveMoneySheetOpen
+        setIsSaveMoneySheetOpen,
+        setIsInsertAmountSheetOpen
     } = useSaveMoney()
 
     const {
@@ -37,9 +40,10 @@ export function SaveMoneySheet() {
 
                 <Goal 
                     type="select-new-goal"
-                    click={() => setIsChooseBankSheetOpen(true)}
+                    click={() => setIsInsertAmountSheetOpen(true)}
                 />
             </div>
+            <InsertAmountSheet />
         </Sheet>
     )
 }

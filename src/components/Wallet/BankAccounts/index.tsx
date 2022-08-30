@@ -1,5 +1,5 @@
 import { Bank } from "phosphor-react";
-import { H2 } from "../Typography";
+import { H2 } from "../../Typography";
 import { BankAccount } from "./BankAccount";
 
 export function MyBankAccounts() {

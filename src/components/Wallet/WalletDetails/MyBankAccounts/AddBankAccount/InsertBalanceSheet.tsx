@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { Check, X } from "phosphor-react";
 import { useBankAccount } from "../../../../../contexts/BankAccountContext/useBankAccount";
-import { BankAccount } from "../../../../BankAccounts/BankAccount";
+import { BankAccount } from "../../../BankAccounts/BankAccount";
 import { Sheet } from "../../../../Sheet";
 
 export function InsertBalanceSheet() {
@@ -13,7 +13,7 @@ export function InsertBalanceSheet() {
     return (
         <Sheet isOpen={isInsertBalanceSheetOpen} onClose={() => setIsInsertBalanceSheetOpen(false)} transition="rightToLeft">
             <Dialog.Title className="flex flex-row p-4">
-                <button onClick={() => setIsInsertBalanceSheetOpen(false)} className="shadow-none outline-none">
+                <button onClick={() => {setIsInsertBalanceSheetOpen(false), setIsChooseBankSheetOpen(false)}} className="shadow-none outline-none">
                     <X size={32} />
                 </button>
             </Dialog.Title>
