@@ -10,6 +10,12 @@ export function InsertBalanceSheet() {
         setIsInsertBalanceSheetOpen,
         setIsChooseBankSheetOpen
     } = useBankAccount()
+
+    function handleAddBankAccount() {
+        setIsInsertBalanceSheetOpen(false)
+        setIsChooseBankSheetOpen(false)
+    }
+
     return (
         <Sheet isOpen={isInsertBalanceSheetOpen} onClose={() => setIsInsertBalanceSheetOpen(false)} transition="rightToLeft">
             <Dialog.Title className="flex flex-row p-4">
@@ -31,7 +37,7 @@ export function InsertBalanceSheet() {
 
                 <button 
                     className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700"
-                    onClick={() => setIsInsertBalanceSheetOpen(false)}
+                    onClick={handleAddBankAccount}
                 >
                     <Check size={24} />
                 </button>

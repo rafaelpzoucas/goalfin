@@ -8,7 +8,6 @@ import { Sheet } from "../../../../Sheet"
 
 export function ChooseBankSheet() {
     const {
-        handleChooseBank,
         isChooseBankSheetOpen,
         setIsChooseBankSheetOpen,
         setIsInsertBalanceSheetOpen

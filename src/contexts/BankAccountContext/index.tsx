@@ -12,7 +12,6 @@ interface BankAccountContextProps {
     setIsInsertBalanceSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     isChooseBankSheetOpen: boolean
     setIsChooseBankSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    handleChooseBank: () => void
 }
 
 export const BankAccountContext = createContext({} as BankAccountContextProps)
@@ -23,11 +22,6 @@ export function BankAccountProvider({ children }: BankAccountProviderProps) {
     const [isMyBankAccountsSheetOpen, setIsMyBankAccountsSheetOpen] = useState(false)
     const [isChooseBankSheetOpen, setIsChooseBankSheetOpen] = useState(false)
 
-    function handleChooseBank() {
-        setIsChooseBankSheetOpen(false)
-        setIsInsertBalanceSheetOpen(true) 
-    }
-
     return (
         <BankAccountContext.Provider value={{ 
            isMyBankAccountsSheetOpen,
@@ -36,7 +30,6 @@ export function BankAccountProvider({ children }: BankAccountProviderProps) {
            setIsInsertBalanceSheetOpen,
            isChooseBankSheetOpen,
            setIsChooseBankSheetOpen,
-           handleChooseBank,
         }}>
             { children }
         </BankAccountContext.Provider>

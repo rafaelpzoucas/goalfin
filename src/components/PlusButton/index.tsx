@@ -1,5 +1,5 @@
 import { Popover, Transition } from "@headlessui/react";
-import { Plus } from "phosphor-react";
+import { ArrowsDownUp, Coins, Plus } from "phosphor-react";
 import { Fragment } from "react";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
@@ -28,22 +28,24 @@ export function PlusButton() {
                 leaveTo="transform scale-95 opacity-0"
                 as={Fragment}
             >
-                <Popover.Panel className="fixed right-4 bottom-20 z-10 p-4 rounded-lg bg-zinc-800">
-                    <ul className="flex flex-col gap-2 p-2">
+                <Popover.Panel className="fixed right-4 bottom-20 z-10 w-full max-w-xs p-2 rounded-lg bg-zinc-800">
+                    <ul className="flex flex-col gap-4 p-2">
                         <li>
                             <button 
-                                className="p-4"
+                                className="flex flex-row items-center gap-2 w-full p-4"
                                 onClick={() => setIsSaveMoneySheetOpen(true)}
                             >
-                                Guardar dinheiro
+                                <Coins size={24} color="#f4f4f5" />
+                                <span>Guardar dinheiro</span>
                             </button>
                         </li>
                         <li>
                             <button 
-                                className="p-4"
+                                className="flex flex-row items-center gap-2 w-full p-4"
                                 onClick={() => setIsNewTransactionSheetOpen(true)}
                             >
-                                Nova transação
+                                <ArrowsDownUp size={24} color="#f4f4f5" />
+                                <span>Nova transação</span>
                             </button>
                         </li>
                     </ul>
