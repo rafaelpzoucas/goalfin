@@ -10,6 +10,12 @@ export function InsertAmountSheet() {
         setIsInsertAmountSheetOpen,
         setIsSaveMoneySheetOpen
     } = useSaveMoney()
+
+    function handleFinishSaveMoney() {
+        setIsInsertAmountSheetOpen(false)
+        setIsSaveMoneySheetOpen(false)
+    }
+
     return (
         <Sheet isOpen={isInsertAmountSheetOpen} onClose={() => setIsInsertAmountSheetOpen(false)} transition="rightToLeft">
             <Dialog.Title className="flex flex-row p-4">
@@ -31,7 +37,7 @@ export function InsertAmountSheet() {
 
                 <button 
                     className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700"
-                    onClick={() => setIsInsertAmountSheetOpen(false)}
+                    onClick={handleFinishSaveMoney}
                 >
                     <Check size={24} />
                 </button>

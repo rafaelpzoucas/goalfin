@@ -36,6 +36,7 @@ export function SaveMoneySheet() {
                         Qual o seu objetivo guardando este dinheiro?
                     </span>
                 </div>
+                
                 <Search />
 
                 <Goal 

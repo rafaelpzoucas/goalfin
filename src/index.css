@@ -6,8 +6,9 @@ body {
     @apply bg-zinc-900 text-zinc-100;
     
     -webkit-font-smoothing: antialiased;
+    
+    user-select: none;
 }
-
 body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
 }

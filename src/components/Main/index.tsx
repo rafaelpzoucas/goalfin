@@ -1,5 +1,6 @@
 import { CaretRight, ClipboardText, Target } from "phosphor-react";
 import { useState } from "react";
+import { Divider } from "../Atoms/Divider";
 import { Goals } from "../Goals";
 import { Planning } from "../Planning";
 import { ProgressBar } from "../ProgressBar";
@@ -12,7 +13,8 @@ export function Main() {
         <main>
             <Wallet />
 
-            <Planning />
+            {/* <Planning /> */}
+            <Divider />
 
             <Goals />
         </main>
