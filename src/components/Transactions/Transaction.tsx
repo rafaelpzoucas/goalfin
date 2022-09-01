@@ -2,11 +2,11 @@ import { ArrowDown, ArrowUp, CaretRight, Sparkle, Target, TrendDown, TrendUp } f
 
 interface TransactionProps {
     type: "welcome" | "income" | "outcome" | "goal" 
-    title?: string
-    amount?: string
+    description?: string
+    amount?: number
 }
 
-export function Transaction({ type, title, amount }: TransactionProps) {
+export function Transaction({ type, description, amount }: TransactionProps) {
     return (
         <div className="flex items-center justify-center gap-4 ">
             <div className="flex items-center justify-center rounded-full bg-zinc-700 p-2">
@@ -25,8 +25,8 @@ export function Transaction({ type, title, amount }: TransactionProps) {
                 <header className="flex flex-row justify-between">
                     <strong>
                         {
-                            title
-                            ? title
+                            description
+                            ? description
                             : 'Bem vindo' 
                         }
                     </strong>

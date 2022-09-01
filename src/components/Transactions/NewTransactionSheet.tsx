@@ -19,7 +19,7 @@ export function NewTransactionSheet() {
     ]
 
     const [selected, setSelected] = useState(people[0])
-    let [plan, setPlan] = useState('income')
+    let [type, setType] = useState('income')
 
     return (
         <Sheet isOpen={isNewTransactionSheetOpen} onClose={() => setIsNewTransactionSheetOpen(false)} transition="rightToLeft">
@@ -35,7 +35,7 @@ export function NewTransactionSheet() {
                         Nova transação
                     </strong>
 
-                    <form action="" className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4">
                         <Input 
                             id="amount"
                             label="Valor" 
@@ -45,9 +45,9 @@ export function NewTransactionSheet() {
                         />
 
                         <RadioGroup 
-                            value={plan} 
-                            onChange={setPlan}
-                            className="grid grid-cols-3 gap-2"
+                            value={type} 
+                            onChange={setType}
+                            className="grid grid-cols-2 gap-2"
                         >
                             <RadioGroup.Option value="income">
                                 {({ checked }) => (
@@ -69,17 +69,6 @@ export function NewTransactionSheet() {
                                     `}>     
                                         <ArrowUpRight size={24} className="text-red-500" />
                                         <span className="text-sm">Saída</span>
-                                    </div>
-                                )}
-                            </RadioGroup.Option>
-                            <RadioGroup.Option value="goal">
-                                {({ checked }) => (
-                                    <div className={`
-                                        flex flex-col w-full items-center gap-4 p-4 border border-zinc-700 rounded-lg transition-all duration-150
-                                        ${checked && 'outline outline-offset-2 outline-2 font-bold'}
-                                    `}>     
-                                        <Target size={24} className="text-zinc-100" />
-                                        <span className="text-sm">Objetivo</span>
                                     </div>
                                 )}
                             </RadioGroup.Option>
@@ -159,7 +148,7 @@ export function NewTransactionSheet() {
                         >
                             <Check size={24} />
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </Sheet>

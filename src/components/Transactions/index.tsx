@@ -1,9 +1,36 @@
 import { ArrowsDownUp } from "phosphor-react";
+import { useEffect, useState } from "react";
 import { Search } from "../Search";
 import { H2 } from "../Typography";
 import { Transaction } from "./Transaction";
 
+interface TransactionProps {
+    id: number
+    amount: number
+    type: "income" | "outcome"
+    date: string
+    category: string
+    description: string
+    createdAt: string
+}
+
 export function Transactions() {
+    const [transactions, setTransactions] = useState<TransactionProps[]>([])
+    const [date, setDate] = useState()
+
+    async function loadTransactions() {
+        const response = await fetch('http://192.168.0.102:3333/transactions')
+        const data = await response.json()
+
+        setTransactions(data)
+    }
+    
+    useEffect(() => {
+        loadTransactions()
+    }, [])
+
+    console.log(transactions);
+
     return (
         <div className="flex flex-col gap-8 bg-zinc-800 p-4 py-8 pb-36 h-fit">
             <header className="flex flex-row gap-2 items-center">
@@ -15,24 +42,22 @@ export function Transactions() {
 
             <div className="flex flex-col gap-8">
                 <div className="sticky top-0 w-full h-full py-4 bg-zinc-800">
-                    <span className="text-sm">12 Agosto</span>
+                    <span className="text-sm">12 ago</span>
                 </div>
-
-                <Transaction 
-                    type="outcome"
-                    title="Mercado"
-                    amount="R$ 50,00"
-                />
-                <Transaction 
-                    type="income"
-                    title="Mercado"
-                    amount="R$ 50,00"
-                />
-                <Transaction 
-                    type="goal"
-                    title="Mercado"
-                    amount="R$ 50,00"
-                />
+                {
+                    transactions.map(transaction => {
+                        return (
+                            <>
+                            <Transaction 
+                                key={transaction.id}
+                                type={transaction.type}
+                                description={transaction.description}
+                                amount={transaction.amount}
+                            />
+                            </>
+                        )
+                    })
+                }
             </div>
 
             <Transaction type="welcome" />

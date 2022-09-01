@@ -1,19 +1,41 @@
 {
-  "posts": [
+  "transactions": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "amount": 900,
+      "type": "income",
+      "category": "Salário",
+      "date": "2022-08-31T21:14:01.266Z",
+      "description": "WM10",
+      "createdAt": "2022-08-31T21:14:01.266Z"
+    },
     {
+      "id": 2,
+      "amount": 50,
+      "type": "outcome",
+      "category": "Alimentação",
+      "date": "2022-08-31T21:14:01.266Z",
+      "description": "Hot dog",
+      "createdAt": "2022-08-30T21:14:01.266Z"
+    },
+    {
+    
       "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "amount": 1000,
+      "type": "income",
+      "category": "Salário",
+      "date": "2022-08-30T21:14:01.266Z",
+      "description": "Helix",
+      "createdAt": "2022-08-31T21:14:01.266Z"
+    },
+    {
+      "id": 2,
+      "amount": 50,
+      "type": "outcome",
+      "category": "Alimentação",
+      "date": "2022-08-30T21:14:01.266Z",
+      "description": "Hot dog",
+      "createdAt": "2022-08-30T21:14:01.266Z"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
