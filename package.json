@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "server": "npx json-server --host 192.168.0.102 server.json -p 3333 -w -d 1000"
+    "server": "npx json-server --host 192.168.0.102 server.json -p 3333 -w -d 1000",
+    "server2": "npx json-server --host 192.168.6.119 server.json -p 3333 -w -d 1000"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",

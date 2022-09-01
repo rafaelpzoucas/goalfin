@@ -24,9 +24,15 @@ export function Transactions() {
 
         setTransactions(data)
     }
+    async function loadTransactions2() {
+        const response = await fetch('http://192.168.6.119:3333/transactions')
+        const data = await response.json()
+
+        setTransactions(data)
+    }
     
     useEffect(() => {
-        loadTransactions()
+        loadTransactions2()
     }, [])
 
     console.log(transactions);
