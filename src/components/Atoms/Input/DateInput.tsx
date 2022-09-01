@@ -1,13 +1,13 @@
 import { RadioGroup } from "@headlessui/react"
 import { useEffect, useState } from "react"
 
-interface dateProps {
+interface DateInputProps {
     id?: string
     placeholder?: string
     label?: string
 }
 
-export function DateInput({ id, placeholder, label }: dateProps) {
+export function DateInput({ id, placeholder, label }: DateInputProps) {
     const currentDate = new Date()
     const today = currentDate.toLocaleDateString();
     const yesterday = new Date(currentDate.setDate(currentDate.getDate() - 1)).toLocaleDateString();

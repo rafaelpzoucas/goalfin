@@ -1,10 +1,13 @@
-import { Dialog } from "@headlessui/react"
 import { Check, X } from "phosphor-react"
+import { useRef } from "react"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { Goal } from "../Goals/Goal"
-import { Sheet } from "../Sheet"
+import { Sheet } from "../Sheets/Sheet"
+import { SheetHeader } from "../Sheets/SheetHeader"
 
-export function InsertAmountSheet() {
+export function InsertAmountSheet() {   
+    let initialFocus = useRef(null)
+
     const {
         isInsertAmountSheetOpen,
         setIsInsertAmountSheetOpen,
@@ -16,13 +19,22 @@ export function InsertAmountSheet() {
         setIsSaveMoneySheetOpen(false)
     }
 
+    function handleCancel() {
+        setIsInsertAmountSheetOpen(false)
+        setIsSaveMoneySheetOpen(false)
+    }
+
     return (
-        <Sheet isOpen={isInsertAmountSheetOpen} onClose={() => setIsInsertAmountSheetOpen(false)} transition="rightToLeft">
-            <Dialog.Title className="flex flex-row p-4">
-                <button onClick={() => {setIsInsertAmountSheetOpen(false), setIsSaveMoneySheetOpen(false)}} className="shadow-none outline-none">
-                    <X size={32} />
-                </button>
-            </Dialog.Title>
+        <Sheet 
+            isOpen={isInsertAmountSheetOpen} 
+            onClose={() => setIsInsertAmountSheetOpen(false)} 
+            initialFocus={initialFocus}
+            transition="rightToLeft"
+        >
+            <SheetHeader 
+                action={handleCancel} 
+                type="close"
+            />
 
             <div className="flex flex-col gap-8 p-4">
                 <Goal 
@@ -32,7 +44,13 @@ export function InsertAmountSheet() {
 
                 <div>
                     <span className="text-xs text-zinc-400">Saldo atual da conta</span>
-                    <input type="text" inputMode="numeric" placeholder="R$ 0,00" className="bg-transparent text-2xl py-8 shadow-none border-none outline-none" />
+                    <input 
+                        ref={initialFocus} 
+                        type="text" 
+                        inputMode="numeric" 
+                        placeholder="R$ 0,00" 
+                        className="bg-transparent text-2xl py-8 shadow-none border-none outline-none" 
+                    />
                 </div>
 
                 <button 

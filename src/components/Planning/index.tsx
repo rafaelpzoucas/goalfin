@@ -1,7 +1,7 @@
 import { CaretRight, ClipboardText } from "phosphor-react";
 import { useState } from "react";
 import { ProgressBar } from "../ProgressBar";
-import { Sheet } from "../Sheet";
+import { Sheet } from "../Sheets/Sheet";
 
 export function Planning() {
     const [isSheetOpen, setIsSheetOpen] = useState(false)

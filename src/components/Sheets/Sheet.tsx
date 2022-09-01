@@ -1,6 +1,6 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { X } from "phosphor-react";
-import { Fragment, ReactNode, useEffect, useState } from "react";
+import { Fragment, MutableRefObject, ReactNode, useEffect, useState } from "react";
 
 interface ISheet {
     children: ReactNode
@@ -8,14 +8,14 @@ interface ISheet {
     onClose: () => void
     mobileOnly?: boolean
     transition?: "topToBottom" | "rightToLeft" | "bottomToTop" | "leftToRight"
-    initialFocus?: ""
+    initialFocus?: MutableRefObject<HTMLElement | null>
 }
 
-export function Sheet({ children, isOpen, onClose, mobileOnly, transition  }: ISheet) {
+export function Sheet({ children, isOpen, onClose, mobileOnly, initialFocus, transition  }: ISheet) {
     
     return (
         <Transition appear show={isOpen} as={Fragment}>
-            <Dialog as="div" onClose={onClose}>
+            <Dialog as="div" onClose={onClose} initialFocus={initialFocus}>
                 <Transition.Child
                     as={Fragment}
                     enter={`transition duration-300 ease-out`}

@@ -1,36 +1,17 @@
 import { ArrowsDownUp } from "phosphor-react";
 import { useEffect, useState } from "react";
+import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 import { Search } from "../Search";
 import { H2 } from "../Typography";
 import { Transaction } from "./Transaction";
 
-interface TransactionProps {
-    id: number
-    amount: number
-    type: "income" | "outcome"
-    date: string
-    category: string
-    description: string
-    createdAt: string
-}
+export function Transactions() {  
+    const {
+        transactions,
+        loadTransactions,
+        loadTransactions2
+    } = useTransactions()
 
-export function Transactions() {
-    const [transactions, setTransactions] = useState<TransactionProps[]>([])
-    const [date, setDate] = useState()
-
-    async function loadTransactions() {
-        const response = await fetch('http://192.168.0.102:3333/transactions')
-        const data = await response.json()
-
-        setTransactions(data)
-    }
-    async function loadTransactions2() {
-        const response = await fetch('http://192.168.6.119:3333/transactions')
-        const data = await response.json()
-
-        setTransactions(data)
-    }
-    
     useEffect(() => {
         loadTransactions2()
     }, [])

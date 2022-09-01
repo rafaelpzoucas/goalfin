@@ -22,7 +22,7 @@ export function Goal({ click, type }: GoalProps) {
                 </div>
                 <div className="flex flex-col gap-1 w-full">
                     <header className="flex flex-row items-center justify-between">
-                        <strong>iapraia</strong>
+                        <strong>Praia</strong>
                         {
                             type === "select-new-goal"
                             ? <CaretRight size={20} />

@@ -1,10 +1,18 @@
 import { Popover, Transition } from "@headlessui/react";
-import { ArrowsDownUp, Coins, Plus } from "phosphor-react";
+import { ArrowsDownUp, Bank, Coins, Plus, Target } from "phosphor-react";
 import { Fragment } from "react";
+import { useBankAccount } from "../../contexts/BankAccountContext/useBankAccount";
+import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 
 export function PlusButton() {
+    const {
+        setIsChooseBankSheetOpen,
+    } = useBankAccount()
+    const {
+        setIsNewGoalSheetOpen
+    } = useGoals()
     const {
         setIsSaveMoneySheetOpen
     } = useSaveMoney()
@@ -15,8 +23,12 @@ export function PlusButton() {
 
     return (
         <Popover className="relative bottom-0">
-            <Popover.Button className="fixed bottom-4 right-4 p-4 rounded-full bg-emerald-800 sm:focus:outline outline-offset-2 outline-4 outline-emerald-700 transition-all duration-150">
-                <Plus size={24} weight={"bold"} />
+            {({ open }) => (
+            <>
+            <Popover.Button 
+                className="fixed bottom-4 right-4 p-4 rounded-full bg-emerald-800 outline-none sm:focus:outline outline-offset-2 focus:outline-emerald-700 transition-all duration-150"
+            >
+                <Plus size={24} weight={"bold"} className={`transition-all duration-150 ${open && "rotate-45"}`} />
             </Popover.Button>
 
             <Transition
@@ -27,30 +39,50 @@ export function PlusButton() {
                 leaveFrom="transform scale-100 opacity-100"
                 leaveTo="transform scale-95 opacity-0"
                 as={Fragment}
-            >
+                >
                 <Popover.Panel className="fixed right-4 bottom-20 z-10 w-full max-w-xs p-2 rounded-lg bg-zinc-800">
                     <ul className="flex flex-col gap-4 p-2">
                         <li>
                             <button 
-                                className="flex flex-row items-center gap-2 w-full p-4"
+                                className="flex flex-row items-center gap-3 w-full p-4"
+                                onClick={() => setIsChooseBankSheetOpen(true)}
+                            >
+                                <Bank size={24} color="#f4f4f5" />
+                                <span>Nova conta bancária</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className="flex flex-row items-center gap-3 w-full p-4"
+                                onClick={() => setIsNewGoalSheetOpen(true)}
+                                >
+                                <Target size={24} color="#f4f4f5" />
+                                <span>Novo objetivo</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className="flex flex-row items-center gap-3 w-full p-4"
+                                onClick={() => setIsNewTransactionSheetOpen(true)}
+                                >
+                                <ArrowsDownUp size={24} color="#f4f4f5" />
+                                <span>Nova transação</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button 
+                                className="flex flex-row items-center gap-3 w-full p-4"
                                 onClick={() => setIsSaveMoneySheetOpen(true)}
                             >
                                 <Coins size={24} color="#f4f4f5" />
                                 <span>Guardar dinheiro</span>
                             </button>
                         </li>
-                        <li>
-                            <button 
-                                className="flex flex-row items-center gap-2 w-full p-4"
-                                onClick={() => setIsNewTransactionSheetOpen(true)}
-                            >
-                                <ArrowsDownUp size={24} color="#f4f4f5" />
-                                <span>Nova transação</span>
-                            </button>
-                        </li>
                     </ul>
                 </Popover.Panel>
             </Transition>
+            </>
+            )}
         </Popover>
     )
 }

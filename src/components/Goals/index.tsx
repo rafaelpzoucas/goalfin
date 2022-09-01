@@ -2,7 +2,7 @@ import { CaretRight, Target } from "phosphor-react";
 import { useState } from "react";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { ProgressBar } from "../ProgressBar";
-import { Sheet } from "../Sheet";
+import { Sheet } from "../Sheets/Sheet";
 import { GoalsDetailsSheet } from "./GoalsDetailsSheet";
 
 export function Goals() {

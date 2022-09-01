@@ -4,7 +4,7 @@ import { Divider } from "../Atoms/Divider";
 import { Goals } from "../Goals";
 import { Planning } from "../Planning";
 import { ProgressBar } from "../ProgressBar";
-import { Sheet } from "../Sheet";
+import { Sheet } from "../Sheets/Sheet";
 import { Wallet } from "../Wallet";
 
 export function Main() {

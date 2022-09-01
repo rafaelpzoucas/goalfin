@@ -3,7 +3,8 @@ import { CaretLeft, X } from "phosphor-react";
 import { Fragment, useState } from "react";
 import { useGoals } from "../../../contexts/GoalsContext/useGoals";
 import { TabButton } from "../../Atoms/Tab";
-import { Sheet } from "../../Sheet";
+import { Sheet } from "../../Sheets/Sheet";
+import { SheetHeader } from "../../Sheets/SheetHeader";
 import { ActiveGoals } from "./ActiveGoals";
 import { PausedGoals } from "./PausedGoals";
 import { ReachedGoals } from "./ReachedGoals";
@@ -15,11 +16,10 @@ export function GoalsDetailsSheet() {
     } = useGoals()
     return (
         <Sheet isOpen={isGoalsDetailsSheetOpen} onClose={() => setIsGoalsDetailsSheetOpen(false)} transition="rightToLeft">
-            <Dialog.Title className="flex flex-row p-4">
-                <button onClick={() => setIsGoalsDetailsSheetOpen(false)} className="shadow-none outline-none">
-                    <CaretLeft size={32} />
-                </button>
-            </Dialog.Title>
+            <SheetHeader 
+                action={() => setIsGoalsDetailsSheetOpen(false)} 
+                type="back" 
+            />
             <Tab.Group>
                 <Tab.List className="flex border-b border-zinc-700 bg-zinc-900 z-50 sticky top-0">
                     <TabButton>
