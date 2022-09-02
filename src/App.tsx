@@ -5,7 +5,7 @@ import { SaveMoneySheet } from "./components/SaveMoney/SaveMoneySheet";
 import { NewTransactionSheet } from "./components/Transactions/NewTransactionSheet";
 import { ChooseBankSheet } from "./components/Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";
 import { InsertBalanceSheet } from "./components/Wallet/WalletDetails/MyBankAccounts/AddBankAccount/InsertBalanceSheet";
-import { BankAccountProvider } from "./contexts/BankAccountContext";
+import { BankAccountsProvider } from "./contexts/BankAccountsContext";
 import { GoalsProvider } from "./contexts/GoalsContext";
 import { SaveMoneyProvider } from "./contexts/SaveMoneyContext";
 import { TransactionsProvider } from "./contexts/TransactionsContext";
@@ -16,7 +16,7 @@ export function App() {
   return (
     <GoalsProvider>
       <TransactionsProvider>
-        <BankAccountProvider>
+        <BankAccountsProvider>
           <SaveMoneyProvider>
             <Dashboard />
             <PlusButton />
@@ -27,7 +27,7 @@ export function App() {
             <ChooseBankSheet />
             <InsertBalanceSheet />
           </SaveMoneyProvider>
-        </BankAccountProvider>
+        </BankAccountsProvider>
       </TransactionsProvider>
     </GoalsProvider>
   )

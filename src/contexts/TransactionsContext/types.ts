@@ -4,15 +4,6 @@ export interface TransactionsProviderProps {
     children: ReactNode
 }
 
-export interface TransactionsContextProps {
-    isNewTransactionSheetOpen: boolean
-    setIsNewTransactionSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    transactions: Array<TransactionProps>
-    setTransactions: React.Dispatch<React.SetStateAction<Array<TransactionProps>>>
-    loadTransactions: () => void
-    loadTransactions2: () => void
-}
-
 export interface TransactionProps {
     id: number
     amount: number
@@ -21,4 +12,13 @@ export interface TransactionProps {
     category: string
     description: string
     createdAt: string
+}
+
+export interface TransactionsContextProps {
+    isNewTransactionSheetOpen: boolean
+    setIsNewTransactionSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+    transactions: TransactionProps[]
+    setTransactions: React.Dispatch<React.SetStateAction<TransactionProps[]>>
+    loadTransactions: () => void
+    loadTransactions2: () => void
 }

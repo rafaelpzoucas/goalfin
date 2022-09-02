@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { CaretLeft } from "phosphor-react";
-import { useBankAccount } from "../../contexts/BankAccountContext/useBankAccount";
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { Goal } from "../Goals/Goal";
 import { Search } from "../Search";
@@ -18,7 +18,7 @@ export function SaveMoneySheet() {
 
     const {
         setIsChooseBankSheetOpen
-    } = useBankAccount()
+    } = useBankAccounts()
     
     return (
         <Sheet isOpen={isSaveMoneySheetOpen} onClose={() => setIsSaveMoneySheetOpen(false)} transition="rightToLeft">

@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { Check, X } from "phosphor-react";
-import { useBankAccount } from "../../../../../contexts/BankAccountContext/useBankAccount";
+import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts";
 import { BankAccount } from "../../../BankAccounts/BankAccount";
 import { Sheet } from "../../../../Sheets/Sheet";
 import { SheetHeader } from "../../../../Sheets/SheetHeader";
@@ -13,7 +13,7 @@ export function InsertBalanceSheet() {
         isInsertBalanceSheetOpen,
         setIsInsertBalanceSheetOpen,
         setIsChooseBankSheetOpen
-    } = useBankAccount()
+    } = useBankAccounts()
 
     function handleAddBankAccount() {
         setIsInsertBalanceSheetOpen(false)

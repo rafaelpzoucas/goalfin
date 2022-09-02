@@ -1,5 +1,5 @@
 import { Dialog } from "@headlessui/react";
-import { CaretLeft, X } from "phosphor-react";
+import { ArrowLeft, CaretLeft, X } from "phosphor-react";
 import { ReactNode } from "react";
 
 interface SheetHeaderProps {
@@ -14,7 +14,7 @@ export function SheetHeader({ action, type, title }: SheetHeaderProps) {
             <button onClick={action} className="shadow-none outline-none">
                 {
                     type === "back" 
-                    ? <CaretLeft size={32} /> 
+                    ? <ArrowLeft size={32} /> 
                     : <X size={32} />
                 }
             </button>

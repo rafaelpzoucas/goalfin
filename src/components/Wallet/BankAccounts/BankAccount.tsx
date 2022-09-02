@@ -3,9 +3,11 @@ import { Bank, CaretRight, DotsThreeVertical } from "phosphor-react";
 interface BankAccountProps {
     type?: "select-new-bank" | "selected-bank"
     click?: () => void
+    bank: string
+    balance?: number
 }
 
-export function BankAccount({ click, type }: BankAccountProps) {
+export function BankAccount({ click, type, bank, balance }: BankAccountProps) {
 
     return (
         <div 
@@ -18,7 +20,7 @@ export function BankAccount({ click, type }: BankAccountProps) {
                 </div>
                 <div className="flex flex-col gap-1 w-full">
                     <header className="flex flex-row items-center justify-between">
-                        <strong>Nubank</strong>
+                        <strong>{bank}</strong>
                         {
                             type !== "select-new-bank"
                             ? <DotsThreeVertical size={24} />
@@ -30,7 +32,7 @@ export function BankAccount({ click, type }: BankAccountProps) {
                       type !== "select-new-bank" &&
                         <div className="flex flex-col">
                             <span className="text-xs text-zinc-400">Saldo atual</span>
-                            <span className="text-sm">R$ 2.000,00</span>
+                            <span className="text-sm">{balance}</span>
                         </div> 
                     }
                 </div>

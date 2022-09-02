@@ -13,10 +13,8 @@ export function Transactions() {
     } = useTransactions()
 
     useEffect(() => {
-        loadTransactions2()
+        loadTransactions()
     }, [])
-
-    console.log(transactions);
 
     return (
         <div className="flex flex-col gap-8 bg-zinc-800 p-4 py-8 pb-36 h-fit">
@@ -34,14 +32,12 @@ export function Transactions() {
                 {
                     transactions.map(transaction => {
                         return (
-                            <>
                             <Transaction 
                                 key={transaction.id}
                                 type={transaction.type}
                                 description={transaction.description}
                                 amount={transaction.amount}
                             />
-                            </>
                         )
                     })
                 }

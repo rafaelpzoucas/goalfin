@@ -1,7 +1,7 @@
 import { Popover, Transition } from "@headlessui/react";
 import { ArrowsDownUp, Bank, Coins, Plus, Target } from "phosphor-react";
 import { Fragment } from "react";
-import { useBankAccount } from "../../contexts/BankAccountContext/useBankAccount";
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
@@ -9,7 +9,7 @@ import { useTransactions } from "../../contexts/TransactionsContext/useTransacti
 export function PlusButton() {
     const {
         setIsChooseBankSheetOpen,
-    } = useBankAccount()
+    } = useBankAccounts()
     const {
         setIsNewGoalSheetOpen
     } = useGoals()

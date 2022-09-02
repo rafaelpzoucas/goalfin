@@ -1,5 +1,6 @@
 import { CaretRight, Coins } from "phosphor-react";
-import { useBankAccount } from "../../../contexts/BankAccountContext/useBankAccount";
+import { useEffect } from "react";
+import { useBankAccounts } from "../../../contexts/BankAccountsContext/useBankAccounts";
 import { useSaveMoney } from "../../../contexts/SaveMoneyContext/useBankAccount";
 import { SaveMoneySheet } from "../../SaveMoney/SaveMoneySheet";
 import { Transactions } from "../../Transactions";
@@ -7,12 +8,19 @@ import { MyBankAccountsSheet } from "./MyBankAccounts";
 
 export function WalletDetails() { 
     const {
-        setIsMyBankAccountsSheetOpen
-    } = useBankAccount()
+        setIsMyBankAccountsSheetOpen,
+        loadUserBankAccounts,
+        loadUserBankAccounts2,
+        balance
+    } = useBankAccounts()
 
     const {
         setIsSaveMoneySheetOpen
     } = useSaveMoney()
+
+    useEffect(() => {
+        loadUserBankAccounts()
+    }, [])
 
     return (
         <div className="flex flex-col gap-4 h-full">
@@ -28,7 +36,7 @@ export function WalletDetails() {
                 >
                     <div className="flex flex-col">
                         <span className="text-xs text-zinc-400">Minhas contas</span>
-                        <strong className="text-base">R$ 300,00</strong>
+                        <strong className="text-base">{balance.total}</strong>
                     </div>
                     <CaretRight />
                 </div>
