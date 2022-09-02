@@ -12,6 +12,8 @@ interface BankAccountProps {
 }
 
 interface BankAccountsContextProps {
+    selectedBank: string
+    setSelectedBank: React.Dispatch<React.SetStateAction<string>>
     isMyBankAccountsSheetOpen: boolean
     setIsMyBankAccountsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     isInsertBalanceSheetOpen: boolean
@@ -27,8 +29,8 @@ interface BankAccountsContextProps {
 
 export const BankAccountsContext = createContext({} as BankAccountsContextProps)
 
-
 export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
+    const [selectedBank, setSelectedBank] = useState("")
     const [userBankAccounts, setUserBankAccounts] = useState<BankAccountProps[]>([])
 
     const [isInsertBalanceSheetOpen, setIsInsertBalanceSheetOpen] = useState(false)
@@ -41,6 +43,7 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
 
         setUserBankAccounts(data)
     }
+
     async function loadUserBankAccounts2() {
         const response = await fetch('http://192.168.6.119:3333/userBankAccounts')
         const data = await response.json()
@@ -51,7 +54,7 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
     const balance = userBankAccounts.reduce(
         (acc, userBankAccount) => {
             acc.total += userBankAccount.balance
-
+            
             return acc
         },
         {
@@ -71,7 +74,9 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
            setUserBankAccounts,
            loadUserBankAccounts,
            loadUserBankAccounts2,
-           balance
+           balance,
+           selectedBank,
+           setSelectedBank
         }}>
             { children }
         </BankAccountsContext.Provider>

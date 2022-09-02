@@ -21,7 +21,7 @@ export function GoalsDetailsSheet() {
                 type="back" 
             />
             <Tab.Group>
-                <Tab.List className="flex border-b border-zinc-700 bg-zinc-900 z-50 sticky top-0">
+                <Tab.List className="flex border-b border-zinc-700 bg-zinc-900 z-50">
                     <TabButton>
                         Ativos
                     </TabButton>
@@ -32,7 +32,7 @@ export function GoalsDetailsSheet() {
                         Alcançados
                     </TabButton>
                 </Tab.List>
-                <Tab.Panels>
+                <Tab.Panels className="overflow-auto pb-16">
                     <Tab.Panel>
                         <ActiveGoals />
                     </Tab.Panel>

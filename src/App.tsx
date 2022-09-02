@@ -25,7 +25,6 @@ export function App() {
             <NewTransactionSheet />
             <NewGoalSheet />
             <ChooseBankSheet />
-            <InsertBalanceSheet />
           </SaveMoneyProvider>
         </BankAccountsProvider>
       </TransactionsProvider>

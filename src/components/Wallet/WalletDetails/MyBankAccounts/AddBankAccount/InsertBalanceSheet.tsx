@@ -6,7 +6,12 @@ import { Sheet } from "../../../../Sheets/Sheet";
 import { SheetHeader } from "../../../../Sheets/SheetHeader";
 import { useRef } from "react";
 
-export function InsertBalanceSheet() {
+interface SelectedBankProps {
+    id?: string
+    name: string
+}
+
+export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
     let initialFocus = useRef(null)
 
     const {
@@ -25,6 +30,8 @@ export function InsertBalanceSheet() {
         setIsChooseBankSheetOpen(false)
     }
 
+    console.log("renderizou");
+
     return (
         <Sheet 
             isOpen={isInsertBalanceSheetOpen} 
@@ -41,10 +48,12 @@ export function InsertBalanceSheet() {
                 <BankAccount 
                     type="select-new-bank" 
                     click={() => {setIsInsertBalanceSheetOpen(false), setIsChooseBankSheetOpen(true)}} 
+                    bank={name}
                 />
 
                 <div>
                     <span className="text-xs text-zinc-400">Saldo atual da conta</span>
+
                     <input 
                         ref={initialFocus} 
                         type="text" 

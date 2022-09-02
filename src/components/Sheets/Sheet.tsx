@@ -50,7 +50,7 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, initialFocus, tra
                     }
                 >
                     <div className={`
-                        flex min-h-screen fixed top-0 sm:right-0 overflow-y-auto sm:border-l border-zinc-700 shadow-xl z-50
+                        flex min-h-screen fixed top-0 sm:right-0 sm:border-l border-zinc-700 shadow-xl z-50
                         ${mobileOnly && 'sm:hidden'}
                     `}>
                         <Dialog.Panel className="flex flex-col w-screen sm:max-w-xl h-screen bg-zinc-900 shadow-xl">

@@ -23,7 +23,7 @@ export function WalletDetails() {
     }, [])
 
     return (
-        <div className="flex flex-col gap-4 h-full">
+        <div className="flex flex-col gap-4 h-full overflow-auto">
             <div className="flex flex-col gap-12 p-4">
                 <div className="flex flex-col gap-1">
                     <span className="text-xs text-zinc-400">Disponível hoje</span>
