@@ -2,8 +2,8 @@ import { Dialog, Listbox, RadioGroup, Transition } from "@headlessui/react";
 import { ArrowDownRight, ArrowUpRight, Bank, CaretDown, Check, X } from "phosphor-react";
 import { Fragment, useRef, useState } from "react";
 import { useGoals } from "../../../contexts/GoalsContext/useGoals";
-import { DateInput } from "../../Atoms/Input/DateInput";
-import { Input } from "../../Atoms/Input/Input";
+import { DateInput } from "../../Atoms/Form/DateInput";
+import { Input } from "../../Atoms/Form/Input";
 import { Sheet } from "../../Sheets/Sheet";
 import { SheetHeader } from "../../Sheets/SheetHeader";
 

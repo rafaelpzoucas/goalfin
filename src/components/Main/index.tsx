@@ -12,10 +12,7 @@ export function Main() {
     return (
         <main>
             <Wallet />
-
-            {/* <Planning /> */}
             <Divider />
-
             <Goals />
         </main>
     )

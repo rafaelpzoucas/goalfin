@@ -6,7 +6,7 @@ export function ProgressBar() {
                 <span>Faltam R$ 1.800,00</span>
             </div>
             <div>
-                <div className="relative w-full h-1 bg-zinc-600">
+                <div className="relative w-full h-1 bg-zinc-200 dark:bg-zinc-600">
                     <div className="absolute w-1/3 h-1 bg-emerald-500"></div>
                 </div>
             </div>

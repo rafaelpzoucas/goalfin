@@ -26,7 +26,7 @@ export function PlusButton() {
             {({ open }) => (
             <>
             <Popover.Button 
-                className="fixed bottom-4 right-4 p-4 rounded-full bg-emerald-800 outline-none sm:focus:outline outline-offset-2 focus:outline-emerald-700 transition-all duration-150"
+                className="fixed bottom-4 right-4 p-4 rounded-full bg-emerald-800 outline-none sm:focus:outline outline-offset-2 focus:outline-emerald-700 transition-all duration-150 text-zinc-100"
             >
                 <Plus size={24} weight={"bold"} className={`transition-all duration-150 ${open && "rotate-45"}`} />
             </Popover.Button>
@@ -40,14 +40,14 @@ export function PlusButton() {
                 leaveTo="transform scale-95 opacity-0"
                 as={Fragment}
                 >
-                <Popover.Panel className="fixed right-4 bottom-20 z-10 w-full max-w-xs p-2 rounded-lg bg-zinc-800">
+                <Popover.Panel className="fixed right-4 bottom-20 z-10 w-full max-w-xs p-2 rounded-lg bg-white shadow-lg text-zinc-900 dark:bg-zinc-800 dark:text-zinc-100">
                     <ul className="flex flex-col gap-4 p-2">
                         <li>
                             <button 
                                 className="flex flex-row items-center gap-3 w-full p-4"
                                 onClick={() => setIsChooseBankSheetOpen(true)}
                             >
-                                <Bank size={24} color="#f4f4f5" />
+                                <Bank size={24} />
                                 <span>Nova conta bancária</span>
                             </button>
                         </li>
@@ -56,7 +56,7 @@ export function PlusButton() {
                                 className="flex flex-row items-center gap-3 w-full p-4"
                                 onClick={() => setIsNewGoalSheetOpen(true)}
                                 >
-                                <Target size={24} color="#f4f4f5" />
+                                <Target size={24} />
                                 <span>Novo objetivo</span>
                             </button>
                         </li>
@@ -65,7 +65,7 @@ export function PlusButton() {
                                 className="flex flex-row items-center gap-3 w-full p-4"
                                 onClick={() => setIsNewTransactionSheetOpen(true)}
                                 >
-                                <ArrowsDownUp size={24} color="#f4f4f5" />
+                                <ArrowsDownUp size={24} />
                                 <span>Nova transação</span>
                             </button>
                         </li>
@@ -74,7 +74,7 @@ export function PlusButton() {
                                 className="flex flex-row items-center gap-3 w-full p-4"
                                 onClick={() => setIsSaveMoneySheetOpen(true)}
                             >
-                                <Coins size={24} color="#f4f4f5" />
+                                <Coins size={24} />
                                 <span>Guardar dinheiro</span>
                             </button>
                         </li>

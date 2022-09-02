@@ -3,7 +3,7 @@ import { CaretLeft } from "phosphor-react";
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { Goal } from "../Goals/Goal";
-import { Search } from "../Search";
+import { Search } from "../Atoms/Form/Search";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 import { ChooseBankSheet } from "../Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";

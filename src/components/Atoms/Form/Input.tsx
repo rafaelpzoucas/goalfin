@@ -23,7 +23,7 @@ export function Input({ id, placeholder, type, inputMode, label }: InputProps) {
             type={type}
             placeholder={placeholder} 
             inputMode={inputMode}
-            className="w-full p-4 py-4 bg-transparent border border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-4 outline-emerald-700 transition-all duration-150" 
+            className="w-full p-4 py-4 bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-4 outline-emerald-700 transition-all duration-150" 
         />
         </div>
     )

@@ -1,7 +1,7 @@
 import { ArrowDown, ArrowUp, CaretRight, Sparkle, Target, TrendDown, TrendUp } from "phosphor-react";
 
 interface TransactionProps {
-    type: "welcome" | "income" | "outcome" | "goal" 
+    type: "welcome" | "income" | "spending" | "goal" 
     description?: string
     amount?: number
 }
@@ -9,12 +9,12 @@ interface TransactionProps {
 export function Transaction({ type, description, amount }: TransactionProps) {
     return (
         <div className="flex items-center justify-center gap-4 ">
-            <div className="flex items-center justify-center rounded-full bg-zinc-700 p-2">
+            <div className="flex items-center justify-center rounded-full bg-zinc-900 bg-opacity-10 dark:bg-zinc-100 dark:bg-opacity-10 p-2">
                 {
                     type === "income"
-                    ? <ArrowUp size={24} className="text-green-500" />
-                    : type === "outcome"
-                    ? <ArrowDown size={24} className="text-red-500" />
+                    ? <ArrowDown size={24} className="text-emerald-500" />
+                    : type === "spending"
+                    ? <ArrowUp size={24} className="text-red-500" />
                     : type === "goal"
                     ? <Target size={24} />
                     : <Sparkle size={24} />

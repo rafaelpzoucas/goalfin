@@ -7,7 +7,7 @@ export interface TransactionsProviderProps {
 export interface TransactionProps {
     id: number
     amount: number
-    type: "income" | "outcome"
+    type: "income" | "spending"
     date: string
     category: string
     description: string

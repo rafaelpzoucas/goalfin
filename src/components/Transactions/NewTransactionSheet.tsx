@@ -2,8 +2,8 @@ import { Dialog, Listbox, RadioGroup, Transition } from "@headlessui/react";
 import { ArrowDown, ArrowDownRight, ArrowUp, ArrowUpLeft, ArrowUpRight, Bank, CaretDown, Check, Target, X } from "phosphor-react";
 import { Fragment, useRef, useState } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
-import { DateInput } from "../Atoms/Input/DateInput";
-import { Input } from "../Atoms/Input/Input";
+import { DateInput } from "../Atoms/Form/DateInput";
+import { Input } from "../Atoms/Form/Input";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 
@@ -69,7 +69,7 @@ export function NewTransactionSheet() {
                                 )}
                             </RadioGroup.Option>
 
-                            <RadioGroup.Option value="outcome">
+                            <RadioGroup.Option value="spending">
                                 {({ checked }) => (
                                     <div className={`
                                         flex flex-col w-full items-center gap-4 p-4 border border-zinc-700 rounded-lg transition-all duration-150
