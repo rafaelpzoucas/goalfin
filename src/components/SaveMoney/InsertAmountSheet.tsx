@@ -38,7 +38,7 @@ export function InsertAmountSheet() {
 
             <div className="flex flex-col gap-8 p-4">
                 <Goal 
-                    type="select-new-goal"
+                    type="list"
                     click={() => {setIsInsertAmountSheetOpen(false), setIsSaveMoneySheetOpen(true)}} 
                 />
 
@@ -54,7 +54,7 @@ export function InsertAmountSheet() {
                 </div>
 
                 <button 
-                    className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700"
+                    className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 text-zinc-100"
                     onClick={handleFinishSaveMoney}
                 >
                     <Check size={24} />

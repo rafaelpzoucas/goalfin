@@ -52,7 +52,7 @@ export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
                 />
 
                 <div>
-                    <span className="text-xs text-zinc-400">Saldo atual da conta</span>
+                    <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo atual da conta</span>
 
                     <input 
                         ref={initialFocus} 
@@ -64,7 +64,7 @@ export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
                 </div>
 
                 <button 
-                    className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700"
+                    className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 text-zinc-100"
                     onClick={handleAddBankAccount}
                 >
                     <Check size={24} />

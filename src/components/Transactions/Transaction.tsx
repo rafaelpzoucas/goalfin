@@ -1,4 +1,5 @@
 import { ArrowDown, ArrowUp, CaretRight, Sparkle, Target, TrendDown, TrendUp } from "phosphor-react";
+import { currencyFormatter } from "../../utils/formatter";
 
 interface TransactionProps {
     type: "welcome" | "income" | "spending" | "goal" 
@@ -37,11 +38,17 @@ export function Transaction({ type, description, amount }: TransactionProps) {
                 </header>
                 <div className="flex flex-row items-baseline justify-between w-full">
                     {
-                        amount
-                        ? (
+                        amount ? (
                             <>
                             <span className="text-xs">Total</span>
-                            <span className="text-sm">{amount}</span>
+                            <span className={`
+                                text-sm
+                                ${type === 'spending' && 'text-red-600 dark:text-red-500'}
+                                ${type === 'income' && 'text-emerald-600 dark:text-emerald-500'}
+                            `}>
+                                {type === 'spending' && '- '}
+                                {currencyFormatter.format(amount)}
+                            </span>
                             </>
                         ) : (
                             <span className="text-xs">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</span>

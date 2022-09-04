@@ -8,18 +8,26 @@ import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 import { ChooseBankSheet } from "../Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";
 import { InsertAmountSheet } from "./InsertAmountSheet";
+import { useGoals } from "../../contexts/GoalsContext/useGoals";
+import { useEffect } from "react";
 
 export function SaveMoneySheet() {
     const {
         isSaveMoneySheetOpen,
         setIsSaveMoneySheetOpen,
-        setIsInsertAmountSheetOpen
+        setIsInsertAmountSheetOpen,
     } = useSaveMoney()
 
     const {
-        setIsChooseBankSheetOpen
-    } = useBankAccounts()
+        goals,
+        loadGoals,
+        loadGoals2
+    } = useGoals()
     
+    useEffect(() => {
+        loadGoals()
+    }, [])
+
     return (
         <Sheet isOpen={isSaveMoneySheetOpen} onClose={() => setIsSaveMoneySheetOpen(false)} transition="rightToLeft">
             <SheetHeader 
@@ -32,17 +40,26 @@ export function SaveMoneySheet() {
                     <strong>
                         Selecione o seu objetivo
                     </strong>
-                    <span className="text-xs text-zinc-400">
+                    <span className="text-xs text-zinc-600 dark:text-zinc-400">
                         Qual o seu objetivo guardando este dinheiro?
                     </span>
                 </div>
                 
                 <Search />
 
-                <Goal 
-                    type="select-new-goal"
-                    click={() => setIsInsertAmountSheetOpen(true)}
-                />
+                {
+                    goals.map(goal => {
+                        return (
+                            <Goal 
+                                key={goal.id}
+                                type="list"
+                                click={() => setIsInsertAmountSheetOpen(true)}
+                                description={goal.description}
+                            />
+                        )
+                    })
+                }
+
             </div>
             <InsertAmountSheet />
         </Sheet>

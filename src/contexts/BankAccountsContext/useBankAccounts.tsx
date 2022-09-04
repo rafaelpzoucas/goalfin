@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { BankAccountsContext } from "."
 
-export const useBankAccounts = () => {
+export function useBankAccounts() {
     const context = useContext(BankAccountsContext)
 
     return context

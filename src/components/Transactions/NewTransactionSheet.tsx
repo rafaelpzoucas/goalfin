@@ -42,7 +42,7 @@ export function NewTransactionSheet() {
 
                     <div className="flex flex-col gap-4">
                         <div>
-                            <span className="text-xs text-zinc-400">Saldo atual da conta</span>
+                            <span className="text-sm text-zinc-600 dark:text-zinc-400">Saldo atual da conta</span>
                             <input 
                                 ref={initialFocus} 
                                 type="text" 
@@ -60,8 +60,8 @@ export function NewTransactionSheet() {
                             <RadioGroup.Option value="income">
                                 {({ checked }) => (
                                     <div className={`
-                                        flex flex-col w-full items-center gap-4 p-4 border border-zinc-700 rounded-lg transition-all duration-150
-                                        ${checked && 'outline outline-offset-2 outline-2 outline-emerald-500 font-bold'}
+                                        flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
+                                        ${checked && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
                                     `}>
                                         <ArrowDownRight size={24} className="text-emerald-500" />
                                         <span className="text-sm">Entrada</span>
@@ -72,8 +72,8 @@ export function NewTransactionSheet() {
                             <RadioGroup.Option value="spending">
                                 {({ checked }) => (
                                     <div className={`
-                                        flex flex-col w-full items-center gap-4 p-4 border border-zinc-700 rounded-lg transition-all duration-150
-                                        ${checked && 'outline outline-offset-2 outline-2 outline-red-500 font-bold'}
+                                        flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
+                                        ${checked && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
                                     `}>     
                                         <ArrowUpRight size={24} className="text-red-500" />
                                         <span className="text-sm">Saída</span>
@@ -84,7 +84,7 @@ export function NewTransactionSheet() {
 
                         <Listbox value={selected} onChange={setSelected}>
                             <div className="relative mt-1">
-                                <span className="text-sm text-zinc-400">Conta bancária</span>
+                                <span className="text-sm text-zinc-600 dark:text-zinc-400">Conta bancária</span>
                                 <Listbox.Button 
                                     className="relative w-full cursor-default rounded-lg border border-zinc-700 p-4 text-left mt-1"
                                 >
@@ -151,7 +151,7 @@ export function NewTransactionSheet() {
                         />
 
                         <button 
-                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700"
+                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 text-zinc-100"
                             onClick={() => setIsNewTransactionSheetOpen(false)}
                         >
                             <Check size={24} />

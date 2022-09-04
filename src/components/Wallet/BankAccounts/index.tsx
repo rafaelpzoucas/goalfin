@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useBankAccounts } from "../../../contexts/BankAccountsContext/useBankAccounts";
+import { currencyFormatter } from "../../../utils/formatter";
 import { H2 } from "../../Typography";
 import { BankAccount } from "./BankAccount";
 
@@ -11,7 +12,7 @@ export function MyBankAccounts() {
     } = useBankAccounts()
 
     return (
-        <div className="flex flex-col gap-8 bg-zinc-800 p-4 py-8 pb-36 h-fit">
+        <div className="flex flex-col gap-8 border-t dark:border-none bg-zinc-100 dark:bg-zinc-800 p-4 py-8 pb-36 h-fit">
             <header className="flex flex-row gap-2 items-center">
                 <H2>Minhas contas</H2>
             </header>
@@ -23,7 +24,7 @@ export function MyBankAccounts() {
                             key={userBankAccount.id}
                             type="selected-bank" 
                             bank={userBankAccount.bank}
-                            balance={userBankAccount.balance}
+                            balance={currencyFormatter.format(userBankAccount.balance)}
                         />
                     )
                 })

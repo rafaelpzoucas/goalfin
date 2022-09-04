@@ -2,11 +2,11 @@ import { Dialog } from "@headlessui/react"
 import { X } from "phosphor-react"
 import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts"
 import { BankAccount } from "../../../BankAccounts/BankAccount"
-import { Search } from "../../../../Search"
 import { Sheet } from "../../../../Sheets/Sheet"
 import { SheetHeader } from "../../../../Sheets/SheetHeader"
 import { useEffect, useState } from "react"
 import { InsertBalanceSheet } from "./InsertBalanceSheet"
+import { Search } from "../../../../Atoms/Form/Search"
 
 interface BanksProps {
     value: string
@@ -55,7 +55,7 @@ export function ChooseBankSheet() {
             />
 
             <div className="flex flex-col  overflow-auto">
-                <div className="flex flex-col gap-4 sticky top-0 p-4 bg-zinc-900">
+                <div className="flex flex-col gap-4 sticky top-0 p-4 bg-zinc-50 dark:bg-zinc-900">
                     <strong>
                         Selecione o seu banco
                     </strong>

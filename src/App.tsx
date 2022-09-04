@@ -19,10 +19,6 @@ export function App() {
         <BankAccountsProvider>
           <SaveMoneyProvider>
             <Dashboard />
-            <SaveMoneySheet />
-            <NewTransactionSheet />
-            <NewGoalSheet />
-            <ChooseBankSheet />
           </SaveMoneyProvider>
         </BankAccountsProvider>
       </TransactionsProvider>

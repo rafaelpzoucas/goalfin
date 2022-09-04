@@ -3,12 +3,13 @@ import { ReactNode } from "react"
 interface ShortcutProps {
     children: ReactNode
     label: string
+    click?: () => void
 }
 
-export function Shortcut({ children, label }: ShortcutProps) {
+export function Shortcut({ children, label, click }: ShortcutProps) {
     return (
-        <div className="flex flex-col items-center gap-2">
-            <div className="p-5 rounded-lg bg-zinc-200 dark:bg-zinc-800 text-2xl">
+        <div className="flex flex-col items-center gap-2" onClick={click}>
+            <div className="p-5 rounded-lg bg-zinc-100 border dark:border-none dark:bg-zinc-800 text-2xl">
                 {children}
             </div>
             <span className="text-xs">{label}</span>

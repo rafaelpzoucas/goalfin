@@ -13,7 +13,7 @@ export function Input({ id, placeholder, type, inputMode, label }: InputProps) {
         label !== "" && 
         <label 
             htmlFor={id}
-            className="text-sm text-zinc-400"
+            className="text-sm text-zinc-600 dark:text-zinc-400"
         >
             {label}
         </label>

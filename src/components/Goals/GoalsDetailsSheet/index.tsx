@@ -21,7 +21,7 @@ export function GoalsDetailsSheet() {
                 type="back" 
             />
             <Tab.Group>
-                <Tab.List className="flex border-b border-zinc-700 bg-zinc-900 z-50">
+                <Tab.List className="flex border-b border-zinc-200 dark:border-zinc-700 dark:bg-zinc-900 z-50">
                     <TabButton>
                         Ativos
                     </TabButton>

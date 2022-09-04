@@ -57,6 +57,33 @@
     }
   ],
 
+  "goals": [
+    {
+      "id": 1,
+      "description": "Reserva de emergência",
+      "amount": 30000,
+      "saved": 900,
+      "finalDate": "2022-12-01T19:32:02.622Z",
+      "createdAt": "2022-09-02T19:32:02.622Z"
+    },
+    {
+      "id": 2,
+      "description": "God of War Ragnarok",
+      "amount": 350,
+      "saved": 200,
+      "finalDate": "2022-12-01T19:32:02.622Z",
+      "createdAt": "2022-09-02T19:32:02.622Z"
+    },
+    {
+      "id": 3,
+      "description": "Praia",
+      "amount": 2000,
+      "saved": 750,
+      "finalDate": "2022-12-01T19:32:02.622Z",
+      "createdAt": "2022-09-02T19:32:02.622Z"
+    }
+  ],
+
   "banks": [
     {
       "value": "001",

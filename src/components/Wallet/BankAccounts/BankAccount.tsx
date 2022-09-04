@@ -4,7 +4,7 @@ interface BankAccountProps {
     type?: "select-new-bank" | "selected-bank"
     click?: () => void
     bank: string
-    balance?: number
+    balance?: string
 }
 
 export function BankAccount({ click, type, bank, balance }: BankAccountProps) {
@@ -15,8 +15,8 @@ export function BankAccount({ click, type, bank, balance }: BankAccountProps) {
             onClick={click}
         >
             <div className="flex items-center justify-center gap-4">
-                <div className="flex items-center justify-center rounded-full bg-zinc-700 p-4">
-                    <Bank />
+                <div className="flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 p-4">
+                    <Bank size={20} />
                 </div>
                 <div className="flex flex-col gap-1 w-full">
                     <header className="flex flex-row items-center justify-between">
