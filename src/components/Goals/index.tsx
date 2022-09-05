@@ -17,7 +17,7 @@ export function Goals() {
     } = useGoals()
 
     useEffect(() => {
-        loadGoals2()
+        loadGoals()
     }, [])
     
     return (
@@ -57,11 +57,11 @@ export function Goals() {
                             })
                         ) : (
                             <>
-                                <GoalSkeleton />
-                                <GoalSkeleton />
-                                <GoalSkeleton />
-                                <GoalSkeleton />
-                                <GoalSkeleton />
+                            <GoalSkeleton />
+                            <GoalSkeleton />
+                            <GoalSkeleton />
+                            <GoalSkeleton />
+                            <GoalSkeleton />
                             </>
                         )
                     }

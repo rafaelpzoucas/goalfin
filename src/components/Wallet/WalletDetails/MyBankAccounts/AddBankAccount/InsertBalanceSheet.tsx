@@ -30,8 +30,6 @@ export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
         setIsChooseBankSheetOpen(false)
     }
 
-    console.log("renderizou");
-
     return (
         <Sheet 
             isOpen={isInsertBalanceSheetOpen} 

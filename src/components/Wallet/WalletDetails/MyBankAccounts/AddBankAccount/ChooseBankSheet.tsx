@@ -29,7 +29,6 @@ export function ChooseBankSheet() {
         const data = await response.json()
 
         setBanks(data)
-        console.log(banks);
     }
     async function loadBanks2() {
         const response = await fetch('http://192.168.6.119:3333/banks')
@@ -40,7 +39,7 @@ export function ChooseBankSheet() {
     }   
 
     useEffect(() => {
-        loadBanks2()   
+        loadBanks()   
     }, [])
 
     return (

@@ -31,7 +31,7 @@ export function SaveMoneySheet() {
     }
 
     useEffect(() => {
-        loadGoals2()
+        loadGoals()
     }, [])
 
     return (

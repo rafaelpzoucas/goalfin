@@ -23,7 +23,7 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
             `}
             onClick={click}
         >
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4 w-full">
                 <div className="flex flex-col gap-1 w-full">
                     <header 
                         className={`
@@ -35,7 +35,7 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
                     >
                         <div 
                             className={`
-                                flex gap-3
+                                flex gap-3 w-full
                                 ${type === 'detailed' || type === 'list' ? 'items-center flex-row' : 'flex-col'}
                             `}
                         >
@@ -50,7 +50,7 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
                             <strong 
                                 className={`
                                     text-sm
-                                    ${type === 'short' && 'max-w-[140px] truncate'}
+                                    ${type === 'short' && 'w-full truncate'}
                                 `}
                             >
                                 {description}

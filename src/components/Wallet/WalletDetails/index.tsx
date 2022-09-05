@@ -20,7 +20,7 @@ export function WalletDetails() {
     } = useSaveMoney()
 
     useEffect(() => {
-        loadUserBankAccounts2()
+        loadUserBankAccounts()
     }, [])
 
     return (
