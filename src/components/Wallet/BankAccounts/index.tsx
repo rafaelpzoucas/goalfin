@@ -6,8 +6,6 @@ import { BankAccount } from "./BankAccount";
 
 export function MyBankAccounts() {
     const {
-        loadUserBankAccounts,
-        loadUserBankAccounts2,
         userBankAccounts
     } = useBankAccounts()
 

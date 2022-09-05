@@ -40,7 +40,7 @@ export function ChooseBankSheet() {
     }   
 
     useEffect(() => {
-        loadBanks()   
+        loadBanks2()   
     }, [])
 
     return (

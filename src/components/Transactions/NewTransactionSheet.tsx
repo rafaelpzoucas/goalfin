@@ -1,6 +1,7 @@
 import { Dialog, Listbox, RadioGroup, Transition } from "@headlessui/react";
 import { ArrowDown, ArrowDownRight, ArrowUp, ArrowUpLeft, ArrowUpRight, Bank, CaretDown, Check, Target, X } from "phosphor-react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 import { DateInput } from "../Atoms/Form/DateInput";
 import { Input } from "../Atoms/Form/Input";
@@ -8,21 +9,26 @@ import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 
 export function NewTransactionSheet() {
-    let initialFocus = useRef(null)
-
     const {
         isNewTransactionSheetOpen,
         setIsNewTransactionSheetOpen
     } = useTransactions()
+    
+    const {
+        userBankAccounts,
+        loadUserBankAccounts,
+        loadUserBankAccounts2
+    } = useBankAccounts()
 
-    const people = [
-        { id: 1, name: 'Nubank', unavailable: false },
-        { id: 2, name: 'Inter', unavailable: false },
-        { id: 3, name: 'PicPay', unavailable: false },
-    ]
-
-    const [selected, setSelected] = useState(people[0])
+    let initialFocus = useRef(null)
     let [type, setType] = useState('income')
+    const [selected, setSelected] = useState(userBankAccounts[0].bank)
+
+    useEffect(() => {
+        loadUserBankAccounts2()
+    }, [])
+
+    console.log('selected', selected)
 
     return (
         <Sheet 
@@ -92,7 +98,7 @@ export function NewTransactionSheet() {
                                         <span>
                                             <Bank size={24} />
                                         </span>
-                                        <span className="block truncate">{selected.name}</span>
+                                        <span className="block truncate">{selected}</span>
                                     </div>
                                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
                                         <CaretDown
@@ -111,7 +117,7 @@ export function NewTransactionSheet() {
                                 >
                                     <Listbox.Options 
                                         className="absolute mt-1 max-h-80 w-full overflow-auto rounded-lg bg-zinc-800 p-2 shadow-lg focus:outline-none sm:text-sm">
-                                        {people.map((bank, bankIdx) => (
+                                        {/* {people.map((bank, bankIdx) => (
                                             <Listbox.Option
                                                 key={bankIdx}
                                                 className={({ active }) =>
@@ -134,7 +140,23 @@ export function NewTransactionSheet() {
                                                 </div>
                                             )}
                                             </Listbox.Option>
-                                        ))}
+                                        ))} */}
+                                        {
+                                            userBankAccounts.map(userBankAccount => {
+                                                return(
+                                                    <Listbox.Option 
+                                                        key={userBankAccount.id} 
+                                                        value={userBankAccount.bank}
+                                                        className={({ active }) =>
+                                                            `cursor-default select-none rounded-lg p-6 
+                                                            ${active ? 'bg-zinc-700' : 'text-zinc-100'}
+                                                        `}
+                                                    >
+                                                        {userBankAccount.bank}
+                                                    </Listbox.Option>
+                                                )
+                                            })
+                                        }
                                     </Listbox.Options>
                                 </Transition>
                             </div>
