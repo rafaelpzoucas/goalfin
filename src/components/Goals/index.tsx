@@ -6,6 +6,7 @@ import { currencyFormatter } from "../../utils/formatter";
 import { SaveMoneySheet } from "../SaveMoney/SaveMoneySheet";
 import { Goal } from "./Goal";
 import { GoalsDetailsSheet } from "./GoalsDetailsSheet";
+import { GoalSkeleton } from "./GoalSkeleton";
 
 export function Goals() {
     const {
@@ -39,21 +40,30 @@ export function Goals() {
                     <strong className="text-2xl">R$ 500,00</strong>
                 </div>
 
-                {/* <ProgressBar /> */}
 
                 <div className="grid grid-cols-2 gap-4">
                     {
-                        goals.map(goal => {
-                            return (
-                                <Goal 
-                                    type="short" 
-                                    key={goal.id}
-                                    description={goal.description}
-                                    saved={currencyFormatter.format(goal.saved)}
-                                    amount={currencyFormatter.format(goal.amount)}
-                                />
-                            )
-                        })
+                        goals.length !== 0 ? (
+                            goals.map(goal => {
+                                return (
+                                    <Goal 
+                                        type="short" 
+                                        key={goal.id}
+                                        description={goal.description}
+                                        saved={currencyFormatter.format(goal.saved)}
+                                        amount={currencyFormatter.format(goal.amount)}
+                                    />
+                                )
+                            })
+                        ) : (
+                            <>
+                                <GoalSkeleton />
+                                <GoalSkeleton />
+                                <GoalSkeleton />
+                                <GoalSkeleton />
+                                <GoalSkeleton />
+                            </>
+                        )
                     }
                 </div>
 
