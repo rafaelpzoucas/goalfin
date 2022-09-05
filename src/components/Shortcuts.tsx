@@ -1,4 +1,5 @@
 import { ArrowsDownUp, Bank, Coins, Target } from "phosphor-react";
+import { useEffect } from "react";
 import { useBankAccounts } from "../contexts/BankAccountsContext/useBankAccounts";
 import { useGoals } from "../contexts/GoalsContext/useGoals";
 import { useSaveMoney } from "../contexts/SaveMoneyContext/useBankAccount";
@@ -33,11 +34,11 @@ export function Shortcuts() {
                 <Shortcut label="Guardar" click={() => setIsSaveMoneySheetOpen(true)}>
                     <Coins />
                 </Shortcut>
-                <Shortcut label="Objetivo" click={() => setIsNewGoalSheetOpen(true)}>
-                    <Target />
-                </Shortcut>
                 <Shortcut label="Transação" click={() => setIsNewTransactionSheetOpen(true)}>
                     <ArrowsDownUp />
+                </Shortcut>
+                <Shortcut label="Objetivo" click={() => setIsNewGoalSheetOpen(true)}>
+                    <Target />
                 </Shortcut>
                 <Shortcut label="Nova conta" click={() => setIsChooseBankSheetOpen(true)}>
                     <Bank />

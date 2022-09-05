@@ -23,6 +23,8 @@ interface GoalsContextProps {
     setGoals: React.Dispatch<React.SetStateAction<GoalProps[]>>
     loadGoals: () => void
     loadGoals2: () => void
+    selectedGoal: number
+    setSelectedGoal: React.Dispatch<React.SetStateAction<number>>
 }
 
 export const GoalsContext = createContext({} as GoalsContextProps)
@@ -31,6 +33,7 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
     const [isGoalsDetailsSheetOpen, setIsGoalsDetailsSheetOpen] = useState(false)
     const [isNewGoalSheetOpen, setIsNewGoalSheetOpen] = useState(false)
     const [goals, setGoals] = useState<GoalProps[]>([])
+    const [selectedGoal, setSelectedGoal] = useState(0)
 
     async function loadGoals() {
         const response = await fetch('http://192.168.0.102:3333/goals')
@@ -55,7 +58,9 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
             goals,
             setGoals,
             loadGoals,
-            loadGoals2
+            loadGoals2,
+            selectedGoal,
+            setSelectedGoal
         }}>
             { children }
         </GoalsContext.Provider>

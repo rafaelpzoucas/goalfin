@@ -5,13 +5,16 @@ export interface TransactionsProviderProps {
 }
 
 export interface TransactionProps {
-    id: number
-    amount: number
-    type: "income" | "spending"
     date: string
-    category: string
-    description: string
-    createdAt: string
+    model: [{
+        id: number
+        amount: number
+        type: "income" | "spending"
+        date: string
+        category: string
+        description: string
+        createdAt: string
+    }]
 }
 
 export interface TransactionsContextProps {

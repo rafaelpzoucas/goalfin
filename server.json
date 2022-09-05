@@ -1,41 +1,82 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "amount": 900,
-      "type": "income",
-      "category": "Salário",
       "date": "2022-08-31T21:14:01.266Z",
-      "description": "WM10",
-      "createdAt": "2022-08-31T21:14:01.266Z"
+      "model": [
+        {
+          "id": 1,
+          "amount": 900,
+          "type": "income",
+          "category": "Salário",
+          "date": "2022-08-31T21:14:01.266Z",
+          "description": "WM10",
+          "createdAt": "2022-08-31T21:14:01.266Z"
+        },
+        {
+          "id": 2,
+          "amount": 50,
+          "type": "spending",
+          "category": "Alimentação",
+          "date": "2022-08-31T21:14:01.266Z",
+          "description": "Hot dog",
+          "createdAt": "2022-08-30T21:14:01.266Z"
+        },
+        {
+          "id": 3,
+          "amount": 50,
+          "type": "spending",
+          "category": "Lanche",
+          "date": "2022-08-31T21:14:01.266Z",
+          "description": "Hot dog",
+          "createdAt": "2022-08-30T21:14:01.266Z"
+        }
+      ] 
     },
     {
-      "id": 2,
-      "amount": 50,
-      "type": "spending",
-      "category": "Alimentação",
-      "date": "2022-08-31T21:14:01.266Z",
-      "description": "Hot dog",
-      "createdAt": "2022-08-30T21:14:01.266Z"
-    },
-    {
-    
-      "id": 3,
-      "amount": 1000,
-      "type": "income",
-      "category": "Salário",
       "date": "2022-08-30T21:14:01.266Z",
-      "description": "Helix",
-      "createdAt": "2022-08-31T21:14:01.266Z"
+      "model": [
+        {
+          "id": 4,
+          "amount": 1000,
+          "type": "income",
+          "category": "Salário",
+          "date": "2022-08-30T21:14:01.266Z",
+          "description": "Helix",
+          "createdAt": "2022-08-31T21:14:01.266Z"
+        },
+        {
+          "id": 5,
+          "amount": 50,
+          "type": "spending",
+          "category": "Alimentação",
+          "date": "2022-08-30T21:14:01.266Z",
+          "description": "Hot dog",
+          "createdAt": "2022-08-30T21:14:01.266Z"
+        }
+      ] 
     },
     {
-      "id": 4,
-      "amount": 50,
-      "type": "spending",
-      "category": "Alimentação",
-      "date": "2022-08-30T21:14:01.266Z",
-      "description": "Hot dog",
-      "createdAt": "2022-08-30T21:14:01.266Z"
+      "date": "2022-09-01T21:14:01.266Z",
+      "model": [
+        {
+          "id": 6,
+          "amount": 1000,
+          "type": "income",
+          "category": "Salário",
+          "date": "2022-08-30T21:14:01.266Z",
+          "description": "Helix",
+          "createdAt": "2022-08-31T21:14:01.266Z"
+        },
+        {
+          "id": 7,
+          "amount": 50,
+          "type": "spending",
+          "category": "Alimentação",
+          "date": "2022-08-30T21:14:01.266Z",
+          "description": "Hot dog",
+          "createdAt": "2022-08-30T21:14:01.266Z"
+        }
+      ] 
     }
   ],
 

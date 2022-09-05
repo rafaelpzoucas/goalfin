@@ -1,5 +1,6 @@
 import { Check, X } from "phosphor-react"
 import { useRef } from "react"
+import { useGoals } from "../../contexts/GoalsContext/useGoals"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { Goal } from "../Goals/Goal"
 import { Sheet } from "../Sheets/Sheet"
@@ -13,6 +14,11 @@ export function InsertAmountSheet() {
         setIsInsertAmountSheetOpen,
         setIsSaveMoneySheetOpen
     } = useSaveMoney()
+
+    const {
+        goals,
+        selectedGoal
+    } = useGoals()
 
     function handleFinishSaveMoney() {
         setIsInsertAmountSheetOpen(false)
@@ -37,10 +43,17 @@ export function InsertAmountSheet() {
             />
 
             <div className="flex flex-col gap-8 p-4">
-                <Goal 
-                    type="list"
-                    click={() => {setIsInsertAmountSheetOpen(false), setIsSaveMoneySheetOpen(true)}} 
-                />
+                {
+                    goals.filter(item => item.id === selectedGoal).map(goal => {
+                        return(
+                            <Goal 
+                                type="list"
+                                description={goal.description}
+                                click={() => {setIsInsertAmountSheetOpen(false), setIsSaveMoneySheetOpen(true)}} 
+                            />
+                        )
+                    })
+                }
 
                 <div>
                     <span className="text-xs text-zinc-400">Saldo atual da conta</span>

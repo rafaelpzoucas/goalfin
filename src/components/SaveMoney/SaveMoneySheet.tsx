@@ -21,11 +21,17 @@ export function SaveMoneySheet() {
     const {
         goals,
         loadGoals,
-        loadGoals2
+        loadGoals2,
+        setSelectedGoal
     } = useGoals()
     
+    function handleChooseGoal(data: number) {
+        setIsInsertAmountSheetOpen(true)
+        setSelectedGoal(data)
+    }
+
     useEffect(() => {
-        loadGoals()
+        loadGoals2()
     }, [])
 
     return (
@@ -53,7 +59,7 @@ export function SaveMoneySheet() {
                             <Goal 
                                 key={goal.id}
                                 type="list"
-                                click={() => setIsInsertAmountSheetOpen(true)}
+                                click={() => handleChooseGoal(goal.id)}
                                 description={goal.description}
                             />
                         )

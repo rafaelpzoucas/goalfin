@@ -9,6 +9,10 @@ import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 
 export function NewTransactionSheet() {
+    let initialFocus = useRef(null)
+    let [type, setType] = useState('income')
+    const [selected, setSelected] = useState("Selecione um banco...")
+    
     const {
         isNewTransactionSheetOpen,
         setIsNewTransactionSheetOpen
@@ -20,15 +24,9 @@ export function NewTransactionSheet() {
         loadUserBankAccounts2
     } = useBankAccounts()
 
-    let initialFocus = useRef(null)
-    let [type, setType] = useState('income')
-    const [selected, setSelected] = useState(userBankAccounts[0].bank)
-
     useEffect(() => {
         loadUserBankAccounts2()
     }, [])
-
-    console.log('selected', selected)
 
     return (
         <Sheet 
@@ -54,7 +52,7 @@ export function NewTransactionSheet() {
                                 type="text" 
                                 inputMode="numeric" 
                                 placeholder="R$ 0,00" 
-                                className="bg-transparent text-2xl py-8 shadow-none border-none outline-none" 
+                                className="bg-transparent text-2xl py-2 shadow-none border-none outline-none" 
                             />
                         </div>
 
@@ -70,7 +68,14 @@ export function NewTransactionSheet() {
                                         ${checked && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
                                     `}>
                                         <ArrowDownRight size={24} className="text-emerald-500" />
-                                        <span className="text-sm">Entrada</span>
+                                        <span 
+                                            className={`
+                                                text-sm
+                                                ${checked && 'text-emerald-700 dark:text-emerald-500'}
+                                            `}
+                                        >
+                                            Entrada
+                                        </span>
                                     </div>
                                 )}
                             </RadioGroup.Option>
@@ -82,7 +87,14 @@ export function NewTransactionSheet() {
                                         ${checked && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
                                     `}>     
                                         <ArrowUpRight size={24} className="text-red-500" />
-                                        <span className="text-sm">Saída</span>
+                                        <span 
+                                            className={`
+                                                text-sm
+                                                ${checked && 'text-red-700 dark:text-red-500'}
+                                            `}
+                                        >
+                                            Saída
+                                        </span>
                                     </div>
                                 )}
                             </RadioGroup.Option>
@@ -92,7 +104,7 @@ export function NewTransactionSheet() {
                             <div className="relative mt-1">
                                 <span className="text-sm text-zinc-600 dark:text-zinc-400">Conta bancária</span>
                                 <Listbox.Button 
-                                    className="relative w-full cursor-default rounded-lg border border-zinc-700 p-4 text-left mt-1"
+                                    className="relative w-full cursor-default rounded-lg border dark:border-zinc-700 p-4 text-left mt-1"
                                 >
                                     <div className="flex flex-row items-center gap-6">
                                         <span>
@@ -116,31 +128,7 @@ export function NewTransactionSheet() {
                                     as={Fragment}
                                 >
                                     <Listbox.Options 
-                                        className="absolute mt-1 max-h-80 w-full overflow-auto rounded-lg bg-zinc-800 p-2 shadow-lg focus:outline-none sm:text-sm">
-                                        {/* {people.map((bank, bankIdx) => (
-                                            <Listbox.Option
-                                                key={bankIdx}
-                                                className={({ active }) =>
-                                                    `cursor-default select-none p-6 ${
-                                                    active ? 'bg-zinc-700' : 'text-zinc-100'
-                                                    }`
-                                                }
-                                                value={bank}
-                                            >
-                                            {({ selected }) => (
-                                                <div className="flex gap-6 items-center">
-                                                <Bank size={24} />
-                                                <span
-                                                    className={`block truncate ${
-                                                    selected ? 'font-medium' : 'font-normal'
-                                                    }`}
-                                                >
-                                                    {bank.name}
-                                                </span>
-                                                </div>
-                                            )}
-                                            </Listbox.Option>
-                                        ))} */}
+                                        className="absolute z-20 mt-1 max-h-80 w-full overflow-auto rounded-lg bg-zinc-50  dark:bg-zinc-800 p-2 shadow-lg focus:outline-none sm:text-sm">
                                         {
                                             userBankAccounts.map(userBankAccount => {
                                                 return(
@@ -149,7 +137,7 @@ export function NewTransactionSheet() {
                                                         value={userBankAccount.bank}
                                                         className={({ active }) =>
                                                             `cursor-default select-none rounded-lg p-6 
-                                                            ${active ? 'bg-zinc-700' : 'text-zinc-100'}
+                                                            ${active ? 'bg-zinc-200 dark:bg-zinc-700' : 'text-zinc-600 dark:text-zinc-100'}
                                                         `}
                                                     >
                                                         {userBankAccount.bank}
@@ -170,6 +158,7 @@ export function NewTransactionSheet() {
                             type="text" 
                             inputMode="text" 
                             placeholder="Digite uma descrição"
+                            isBottomFixed
                         />
 
                         <button 

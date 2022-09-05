@@ -1,11 +1,11 @@
 import { Dialog, Listbox, RadioGroup, Transition } from "@headlessui/react";
 import { ArrowDownRight, ArrowUpRight, Bank, CaretDown, Check, X } from "phosphor-react";
 import { Fragment, useRef, useState } from "react";
-import { useGoals } from "../../../contexts/GoalsContext/useGoals";
-import { DateInput } from "../../Atoms/Form/DateInput";
-import { Input } from "../../Atoms/Form/Input";
-import { Sheet } from "../../Sheets/Sheet";
-import { SheetHeader } from "../../Sheets/SheetHeader";
+import { useGoals } from "../../contexts/GoalsContext/useGoals";
+import { DateInput } from "../Atoms/Form/DateInput";
+import { Input } from "../Atoms/Form/Input";
+import { Sheet } from "../Sheets/Sheet";
+import { SheetHeader } from "../Sheets/SheetHeader";
 
 export function NewGoalSheet() {
     const initialDate = new Date()
@@ -35,13 +35,13 @@ export function NewGoalSheet() {
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-4">
                         <div>
-                            <span className="text-xs text-zinc-400">Valor do objetivo</span>
+                            <span className="text-sm text-zinc-600 dark:text-zinc-400">Valor do objetivo</span>
                             <input 
                                 ref={initialFocus} 
                                 type="text" 
                                 inputMode="numeric" 
                                 placeholder="R$ 0,00" 
-                                className="bg-transparent text-2xl py-4 shadow-none border-none outline-none" 
+                                className="bg-transparent text-2xl py-2 shadow-none border-none outline-none" 
                             />
                         </div>
                         
@@ -63,19 +63,19 @@ export function NewGoalSheet() {
 
                         {/* <DateInput id="date" label="Data para alcançar" placeholder="test" /> */}
                         <div className="flex flex-col gap-1">
-                            <label htmlFor="date" className="text-sm text-zinc-400">Data para alcançar</label>
+                            <label htmlFor="date" className="text-sm text-zinc-600 dark:text-zinc-400">Data para alcançar</label>
                             <input 
                                 id="date"
                                 type="date"
                                 value={date}
                                 onChange={(event) => setDate(event.target.value)}
                                 className={`
-                                    w-full p-4 py-4 bg-transparent border border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-4 outline-emerald-700 transition-all duration-150 
+                                    w-full p-4 py-4 bg-transparent border dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-emerald-700 transition-all duration-150 
                                 `}
                             />
                         </div>
                         <button 
-                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 disabled:opacity-25 transition-all duration-150"
+                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 disabled:opacity-25 transition-all duration-150 text-zinc-100"
                             onClick={() => setIsNewGoalSheetOpen(false)}
                         >
                             <Check size={24} />

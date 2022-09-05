@@ -1,11 +1,14 @@
 import { ArrowsDownUp } from "phosphor-react";
 import { useEffect, useState } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
+import { dateFormatter } from "../../utils/formatter";
 import { Search } from "../Atoms/Form/Search";
 import { H2 } from "../Typography";
 import { Transaction } from "./Transaction";
 
 export function Transactions() {  
+    const [transactionsList, setTransactionsList] = useState()
+
     const {
         transactions,
         loadTransactions,
@@ -13,8 +16,10 @@ export function Transactions() {
     } = useTransactions()
 
     useEffect(() => {
-        loadTransactions()
+        loadTransactions2()
     }, [])
+
+    console.log(transactions)
 
     return (
         <div className="flex flex-col gap-8 border-t dark:border-none bg-zinc-100 dark:bg-zinc-800 p-4 py-8 pb-36 h-fit">
@@ -25,23 +30,32 @@ export function Transactions() {
             
             <Search />
 
-            <div className="flex flex-col gap-8">
-                <div className="sticky top-0 w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
-                    <span className="text-sm">12 ago</span>
-                </div>
-                {
-                    transactions.map(transaction => {
-                        return (
-                            <Transaction 
-                                key={transaction.id}
-                                type={transaction.type}
-                                description={transaction.description}
-                                amount={transaction.amount}
-                            />
-                        )
-                    })
-                }
-            </div>
+            {
+                transactions.map(transaction => {
+                    return(
+                        <div 
+                            key={transaction.date} 
+                            className="flex flex-col gap-8"
+                        >
+                            <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
+                                <span className="text-sm">{dateFormatter.format(Date.parse(transaction.date))}</span>
+                            </div>
+                            {
+                                transaction.model.map(item => {
+                                    return (
+                                        <Transaction 
+                                            key={item.id}
+                                            type={item.type}
+                                            description={item.description}
+                                            amount={item.amount}
+                                        />
+                                    )
+                                })
+                            }
+                        </div>
+                    )
+                })
+            }
 
             <Transaction type="welcome" />
         </div>

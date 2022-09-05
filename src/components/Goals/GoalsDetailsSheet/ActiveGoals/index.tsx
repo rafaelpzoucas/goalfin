@@ -13,7 +13,7 @@ export function ActiveGoals() {
     } = useGoals()
 
     useEffect(() => {
-        loadGoals()
+        loadGoals2()
     }, [])
     
     return (
