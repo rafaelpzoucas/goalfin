@@ -6,11 +6,13 @@ interface InputProps {
     placeholder?: string
     type?: "text" | "email" | "password" | "number" | "date" | undefined
     inputMode?: "text" | "email" | "search" | "tel" | "url" | "none" | "numeric" | "decimal" | undefined
+    inputName?: string
     label?: string
     isBottomFixed?: boolean
+    required?: boolean
 }
 
-export function Input({ id, placeholder, type, inputMode, label, isBottomFixed }: InputProps) {
+export function Input({ id, placeholder, type, inputMode, label, isBottomFixed, inputName, required }: InputProps) {
     const [fixedOnBottom, setFixedOnBottom] = useState(false)
 
     function handleFocus() {
@@ -45,6 +47,8 @@ export function Input({ id, placeholder, type, inputMode, label, isBottomFixed }
                     onFocus={handleFocus}
                     onBlur={() => setFixedOnBottom(false)}
                     autoComplete="off"
+                    name={inputName}
+                    required={required}
                 />
                 {
                     fixedOnBottom &&

@@ -35,7 +35,7 @@ export function DateInput({ id, placeholder, label }: DateInputProps) {
                     }
                 `}
             >
-                <RadioGroup.Option value="today" onClick={() => setDate(today)}>
+                <RadioGroup.Option value={today} onClick={() => setDate(today)}>
                     {({ checked }) => (
                         <div className={`
                             flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-600 rounded-lg transition-all duration-150
