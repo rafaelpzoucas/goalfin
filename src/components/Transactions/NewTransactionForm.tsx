@@ -4,20 +4,27 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowDownRight, ArrowUpRight, Bank, CaretDown, Check } from 'phosphor-react';
 import { Listbox, Transition } from '@headlessui/react';
 import { Input } from '../Atoms/Form/Input';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, MutableRefObject, useEffect, useState } from 'react';
 import { useBankAccounts } from '../../contexts/BankAccountsContext/useBankAccounts';
-import * as RadioGroup from '@radix-ui/react-radio-group';
+import * as RadioGroup from '@radix-ui/react-radio-group'
+import * as Select from '@radix-ui/react-select';
+import { api } from '../../lib/axios';
 
 const submitTransactionSchema = z.object({
     amount: z.string(),
     type: z.enum(['income', 'spending']),
+    bank: z.string(),
     date: z.string(),
     description: z.string()
 })
 
 type SubmitTransaction = z.infer<typeof submitTransactionSchema>
 
-export function NewTransactionForm() {
+interface NewTransactionFormProps {
+    initialFocus?: MutableRefObject<HTMLElement | null>
+}
+
+export function NewTransactionForm({ initialFocus }: NewTransactionFormProps) {
     const [type, setType] = useState('income')
     const [selected, setSelected] = useState("Selecione um banco...")
     const [fixedOnBottom, setFixedOnBottom] = useState(false)
@@ -31,11 +38,24 @@ export function NewTransactionForm() {
         register,
         handleSubmit
     } = useForm<SubmitTransaction>({
-        resolver: zodResolver(submitTransactionSchema)
+        resolver: zodResolver(submitTransactionSchema),
+        defaultValues: {
+            type: 'income'
+        }
     })
 
-    function handleSubmitTransaction(data: SubmitTransaction) {
-        console.log(data)
+    async function handleSubmitTransaction(data: SubmitTransaction) {
+        const { amount, type, bank, date, description } = data;
+        await api.post('transactions', {
+            date,
+            model: {
+                amount,
+                type, 
+                bank, 
+                description,
+                createdAt: new Date()
+            }  
+        })
     }
 
     const {
@@ -45,7 +65,7 @@ export function NewTransactionForm() {
     } = useBankAccounts()
 
     useEffect(() => {
-        loadUserBankAccounts2()
+        loadUserBankAccounts()
     }, [])
 
     return(
@@ -54,7 +74,7 @@ export function NewTransactionForm() {
             onSubmit={handleSubmit(handleSubmitTransaction)}
         >
             <div>
-                <span className="text-sm text-zinc-600 dark:text-zinc-400">Saldo atual da conta</span>
+                <span className="text-sm text-zinc-600 dark:text-zinc-400">Valor da transação</span>
                 <input 
                     {...register('amount')} 
                     // ref={initialFocus} 
@@ -69,76 +89,99 @@ export function NewTransactionForm() {
             <Controller 
                 control={control}
                 name="type"
-                render={({ field }) => {
-                    console.log(field)
-                    
+                render={({ field }) => { 
                     return (
                         <RadioGroup.Root 
-                            defaultValue="income" 
                             onValueChange={field.onChange}
                             className="grid grid-cols-2 gap-2"
+                            value={field.value}
                         >
                             <RadioGroup.Item 
                                 value="income"
                                 className={`
-                                    ${field.value === 'income' && 'bg-red-500'}
+                                    flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
+                                    ${field.value === 'income' && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
                                 `}
                             >
-                                income
+                                <ArrowDownRight size={24} className="text-emerald-500" />
+                                <span 
+                                    className={`
+                                        text-sm
+                                        ${field.value === 'income' && 'text-emerald-700 dark:text-emerald-500'}
+                                    `}
+                                >
+                                    Entrada
+                                </span>
                             </RadioGroup.Item>
-                            <RadioGroup.Item value="spending">
-                                spending
+
+                            <RadioGroup.Item 
+                                value="spending"
+                                className={`
+                                    flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
+                                    ${field.value === 'spending' && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
+                                `}
+                            >
+                                <ArrowUpRight size={24} className="text-red-500" />
+                                <span 
+                                    className={`
+                                        text-sm
+                                        ${field.value === 'spending' && 'text-red-700 dark:text-red-500'}
+                                    `}
+                                >
+                                    Saída
+                                </span>
                             </RadioGroup.Item>
                         </RadioGroup.Root>
                     )
                 }}
             />
-                        {/* <RadioGroup 
-                            // {...register('type')}
-                            value={type} 
-                            onChange={setType}
-                            className="grid grid-cols-2 gap-2"
-                        >
-                            <RadioGroup.Option value="income">
-                                {({ checked }) => (
-                                    <div className={`
-                                        flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
-                                        ${checked && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
-                                    `}>
-                                        <ArrowDownRight size={24} className="text-emerald-500" />
-                                        <span 
-                                            className={`
-                                                text-sm
-                                                ${checked && 'text-emerald-700 dark:text-emerald-500'}
-                                            `}
-                                        >
-                                            Entrada
-                                        </span>
-                                    </div>
-                                )}
-                            </RadioGroup.Option>
 
-                            <RadioGroup.Option value="spending">
-                                {({ checked }) => (
-                                    <div className={`
-                                        flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
-                                        ${checked && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
-                                    `}>     
-                                        <ArrowUpRight size={24} className="text-red-500" />
-                                        <span 
-                                            className={`
-                                                text-sm
-                                                ${checked && 'text-red-700 dark:text-red-500'}
-                                            `}
-                                        >
-                                            Saída
+            <Controller 
+                control={control}
+                name="bank"
+                render={({ field }) => {
+                    return (
+                        <div className="relative">
+                            <Select.Root onValueChange={field.onChange} value={field.value}>
+                                <Select.Trigger className="flex flex-row justify-between relative w-full cursor-default rounded-lg border dark:border-zinc-700 p-4 text-left mt-1">
+                                    <div className="flex flex-row items-center gap-6">
+                                        <span>
+                                            <Bank size={24} />
                                         </span>
+                                        <Select.Value placeholder="Selecione..." />
                                     </div>
-                                )}
-                            </RadioGroup.Option>
-                        </RadioGroup> */}
+                                    <CaretDown />
+                                </Select.Trigger>
 
-            <Listbox 
+                                <Select.Content className="absolute z-20 mt-1 w-full overflow-auto rounded-lg bg-zinc-50  dark:bg-zinc-800 p-2 shadow-lg focus:outline-none sm:text-sm">
+                                    <Select.Viewport>
+                                        {
+                                            userBankAccounts.map(userBankAccount => {
+                                                return(
+                                                    <Select.Item 
+                                                        key={userBankAccount.id} 
+                                                        value={userBankAccount.bank}
+                                                        className="flex flex-row justify-between select-none rounded-lg p-6 outline-none"
+                                                    >
+                                                        <Select.ItemText>
+                                                            <span>{userBankAccount.bank}</span>
+                                                        </Select.ItemText>
+                                                        <Select.ItemIndicator>
+                                                            <Check />
+                                                        </Select.ItemIndicator>
+                                                    </Select.Item>
+                                                )
+                                            })
+                                        }
+                                    </Select.Viewport>
+                                </Select.Content>
+                            </Select.Root>
+                        </div>
+                    )
+                }}
+            />
+
+            {/* <Listbox 
                 value={selected} 
                 onChange={setSelected}
             >
@@ -189,7 +232,7 @@ export function NewTransactionForm() {
                         </Listbox.Options>
                     </Transition>
                 </div>
-            </Listbox>
+            </Listbox> */}
 
             <input 
                 {...register('date')}

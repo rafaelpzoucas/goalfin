@@ -51,7 +51,9 @@ export function NewTransactionSheet() {
                 title="Nova transação" 
             />
             
-            <NewTransactionForm />
+            <NewTransactionForm 
+                initialFocus={initialFocus}
+            />
         </Sheet>
     )
 }
