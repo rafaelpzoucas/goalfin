@@ -65,8 +65,8 @@ export function SaveMoneySheet() {
                         )
                     })
                 }
-
             </div>
+            
             <InsertAmountSheet />
         </Sheet>
     )
