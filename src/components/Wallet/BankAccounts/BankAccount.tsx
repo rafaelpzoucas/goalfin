@@ -20,7 +20,7 @@ export function BankAccount({ click, type, bank, balance }: BankAccountProps) {
                 </div>
                 <div className="flex flex-col gap-1 w-full">
                     <header className="flex flex-row items-center justify-between">
-                        <strong>{bank}</strong>
+                        <strong className="w-full">{bank}</strong>
                         {
                             type !== "select-new-bank"
                             ? <DotsThreeVertical size={24} />

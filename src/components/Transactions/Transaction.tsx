@@ -1,5 +1,9 @@
 import { ArrowDown, ArrowUp, CaretRight, Sparkle, Target, TrendDown, TrendUp } from "phosphor-react";
-import { currencyFormatter } from "../../utils/formatter";
+import { useState } from "react";
+import { currencyFormatter, dateFormatter } from "../../utils/formatter";
+import { Sheet } from "../Sheets/Sheet";
+import { SheetHeader } from "../Sheets/SheetHeader";
+import { H2 } from "../Typography";
 
 interface TransactionProps {
     type: "welcome" | "income" | "spending" | "goal" 
@@ -8,8 +12,13 @@ interface TransactionProps {
 }
 
 export function Transaction({ type, description, amount }: TransactionProps) {
+    const [isTransactionDetailsSheetOpen, setIsTransactionDetailsSheetOpen] = useState(false)
+
     return (
-        <div className="flex items-center justify-center gap-4 ">
+        <div 
+            className="flex items-center justify-center gap-4"
+            onClick={() => setIsTransactionDetailsSheetOpen(true)}
+        >
             <div className="flex items-center justify-center rounded-full bg-zinc-900 bg-opacity-10 dark:bg-zinc-100 dark:bg-opacity-10 p-2">
                 {
                     type === "income"
@@ -40,7 +49,9 @@ export function Transaction({ type, description, amount }: TransactionProps) {
                     {
                         amount ? (
                             <>
-                            <span className="text-xs">Total</span>
+                            <span className="text-xs">
+                                Total
+                            </span>
                             <span className={`
                                 text-sm
                                 ${type === 'spending' && 'text-red-600 dark:text-red-500'}
@@ -56,6 +67,26 @@ export function Transaction({ type, description, amount }: TransactionProps) {
                     }
                 </div>
             </div>
+            <Sheet 
+                isOpen={isTransactionDetailsSheetOpen}
+                onClose={() => setIsTransactionDetailsSheetOpen(false)}
+                transition="rightToLeft"
+            >
+                <SheetHeader 
+                    action={() => setIsTransactionDetailsSheetOpen(false)} 
+                    type="close"
+                />
+
+                <div className="flex flex-col gap-8">
+                    <div className="flex flex-col gap-8 p-4">
+                        <H2>{description}</H2>
+
+                        <div className="flex flex-col">
+                            <strong className="text-2xl">{amount}</strong>
+                        </div>
+                    </div>
+                </div>
+            </Sheet>
         </div>
     )
 }
