@@ -9,9 +9,10 @@ interface ISheet {
     mobileOnly?: boolean
     transition?: "topToBottom" | "rightToLeft" | "bottomToTop" | "leftToRight"
     initialFocus?: MutableRefObject<HTMLElement | null>
+    isBottomSheet?: boolean
 }
 
-export function Sheet({ children, isOpen, onClose, mobileOnly, initialFocus, transition  }: ISheet) {
+export function Sheet({ children, isOpen, onClose, mobileOnly, isBottomSheet, initialFocus, transition  }: ISheet) {
     
     return (
         <Transition appear show={isOpen} as={Fragment}>
@@ -50,10 +51,16 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, initialFocus, tra
                     }
                 >
                     <div className={`
-                        flex min-h-screen fixed top-0 sm:right-0 sm:border-l border-zinc-700 shadow-xl z-50
+                        flex sm:border-l border-zinc-700 shadow-xl z-50
                         ${mobileOnly && 'sm:hidden'}
+                        ${isBottomSheet ? 'fixed bottom-0' : 'min-h-screen fixed top-0 sm:right-0'}
                     `}>
-                        <Dialog.Panel className="flex flex-col w-screen sm:max-w-xl h-screen bg-zinc-50 dark:bg-zinc-900 shadow-xl">
+                        <Dialog.Panel 
+                            className={`
+                                flex flex-col w-screen sm:max-w-xl bg-zinc-50 dark:bg-zinc-900 shadow-xl
+                                ${isBottomSheet ? 'h-fit' : 'h-screen'}
+                            `}
+                            >
                             {children}
                         </Dialog.Panel>
                     </div>

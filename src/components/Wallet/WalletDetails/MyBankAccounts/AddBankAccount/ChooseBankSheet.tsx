@@ -70,6 +70,7 @@ export function ChooseBankSheet() {
                                     click={() => {setIsInsertBalanceSheetOpen(true), setSelectedBank(bank.value)}}
                                     type="select-new-bank" 
                                     bank={bank.label}
+                                    hasOptions
                                 />
                             )
                         })

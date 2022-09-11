@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { currencyFormatter } from "../../utils/formatter";
+import { H2 } from "../Atoms/Typography";
 import { SaveMoneySheet } from "../SaveMoney/SaveMoneySheet";
 import { Goal } from "./Goal";
 import { GoalsDetailsSheet } from "./GoalsDetailsSheet";
@@ -28,7 +29,7 @@ export function Goals() {
                 className="flex flex-col items-start justify-between"
             >
                 <header className="flex flex-row justify-between w-full">
-                    <strong>Objetivos</strong>
+                    <H2>Objetivos</H2>
 
                     <CaretRight />
                 </header>

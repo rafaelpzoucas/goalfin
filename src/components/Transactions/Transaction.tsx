@@ -3,7 +3,7 @@ import { useState } from "react";
 import { currencyFormatter, dateFormatter } from "../../utils/formatter";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
-import { H2 } from "../Typography";
+import { H2 } from "../Atoms/Typography";
 
 interface TransactionProps {
     type: "welcome" | "income" | "spending" | "goal" 

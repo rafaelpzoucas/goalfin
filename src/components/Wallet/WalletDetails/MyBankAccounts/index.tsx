@@ -1,6 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { CaretLeft, Plus, X } from "phosphor-react";
-import { MyBankAccounts } from "../../BankAccounts";
+import { BankAccounts } from "../../BankAccounts";
 import { Sheet } from "../../../Sheets/Sheet";
 import { useBankAccounts } from "../../../../contexts/BankAccountsContext/useBankAccounts";
 import { SheetHeader } from "../../../Sheets/SheetHeader";
@@ -21,7 +21,7 @@ export function MyBankAccountsSheet() {
                 type="back"
             />
 
-            <div className="flex flex-col gap-4 h-full">
+            <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-12 p-4">
                     <div className="flex flex-col gap-1">
                         <span className="text-xs text-zinc-600 dark:text-zinc-400">Minhas contas</span>
@@ -37,7 +37,7 @@ export function MyBankAccountsSheet() {
                     </button>
                 </div>
 
-                <MyBankAccounts />
+                <BankAccounts />
             </div>
         </Sheet>
     )

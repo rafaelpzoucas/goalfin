@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 import { dateFormatter } from "../../utils/formatter";
 import { Search } from "../Atoms/Form/Search";
-import { H2 } from "../Typography";
+import { H2 } from "../Atoms/Typography";
 import { Transaction } from "./Transaction";
 import { TransactionSkeleton } from "./TransactionSkeleton";
 
@@ -22,10 +22,7 @@ export function Transactions() {
 
     return (
         <div className="flex flex-col gap-8 border-t dark:border-none bg-zinc-100 dark:bg-zinc-800 p-4 py-8 pb-36 h-fit">
-            <header className="flex flex-row gap-2 items-center">
-                <ArrowsDownUp size={24} />
-                <H2>Transações</H2>
-            </header>
+            <H2>Transações</H2>
             
             <Search />
 

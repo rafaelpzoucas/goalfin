@@ -5,7 +5,7 @@ import { ProgressBar } from "../ProgressBar"
 import { Sheet } from "../Sheets/Sheet"
 import { SheetHeader } from "../Sheets/SheetHeader"
 import { Transaction } from "../Transactions/Transaction"
-import { H1, H2 } from "../Typography"
+import { H1, H2 } from "../Atoms/Typography"
 
 interface GoalProps {
     type?: "list" | "detailed" | "short"

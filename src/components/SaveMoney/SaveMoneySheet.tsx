@@ -1,5 +1,5 @@
 import { Dialog } from "@headlessui/react";
-import { CaretLeft } from "phosphor-react";
+import { CaretLeft, Target } from "phosphor-react";
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { Goal } from "../Goals/Goal";
@@ -22,7 +22,8 @@ export function SaveMoneySheet() {
         goals,
         loadGoals,
         loadGoals2,
-        setSelectedGoal
+        setSelectedGoal,
+        setIsNewGoalSheetOpen,
     } = useGoals()
     
     function handleChooseGoal(data: number) {
@@ -50,7 +51,17 @@ export function SaveMoneySheet() {
                         Qual o seu objetivo guardando este dinheiro?
                     </span>
                 </div>
-                
+
+                <button 
+                    className="flex flex-row items-center justify-center gap-2 p-4 rounded-lg bg-emerald-500 dark:bg-zinc-700 text-zinc-100"
+                    onClick={() => setIsNewGoalSheetOpen(true)}
+                >
+                    <Target size={20} />
+                    <strong>
+                        Novo objetivo
+                    </strong>
+                </button>
+
                 <Search />
 
                 {

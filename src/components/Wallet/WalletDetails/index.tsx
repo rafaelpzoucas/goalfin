@@ -36,7 +36,7 @@ export function WalletDetails() {
                     onClick={() => setIsMyBankAccountsSheetOpen(true)} 
                 >
                     <div className="flex flex-col">
-                        <span className="text-xs text-zinc-600 dark:text-zinc-400">Minhas contas</span>
+                        <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo total</span>
                         <strong className="text-base">{currencyFormatter.format(balance.total)}</strong>
                     </div>
                     <CaretRight />

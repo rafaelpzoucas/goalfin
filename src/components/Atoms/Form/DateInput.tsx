@@ -3,11 +3,10 @@ import { useEffect, useState } from "react"
 
 interface DateInputProps {
     id?: string
-    placeholder?: string
     label?: string
 }
 
-export function DateInput({ id, placeholder, label }: DateInputProps) {
+export function DateInput({ id, label }: DateInputProps) {
     const currentDate = new Date()
     const today = currentDate.toLocaleDateString();
     const yesterday = new Date(currentDate.setDate(currentDate.getDate() - 1)).toLocaleDateString();
@@ -69,7 +68,6 @@ export function DateInput({ id, placeholder, label }: DateInputProps) {
             <input 
                 id={id}
                 type="date"
-                placeholder={placeholder} 
                 value={date}
                 onChange={(event) => setDate(event.target.value)}
                 className={`

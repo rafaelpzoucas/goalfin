@@ -48,6 +48,7 @@ export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
                     type="select-new-bank" 
                     click={() => {setIsInsertBalanceSheetOpen(false), setIsChooseBankSheetOpen(true)}} 
                     bank={name}
+                    hasOptions
                 />
 
                 <div>
@@ -58,7 +59,7 @@ export function InsertBalanceSheet({ id, name }: SelectedBankProps) {
                         type="text" 
                         inputMode="numeric" 
                         placeholder="R$ 0,00" 
-                        className="bg-transparent text-2xl py-2 shadow-none border-none outline-none" 
+                        className="bg-transparent text-3xl shadow-none border-none outline-none" 
                     />
                 </div>
 
