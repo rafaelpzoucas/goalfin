@@ -1,5 +1,5 @@
-import { Listbox, Transition } from "@headlessui/react";
-import { ArrowDownRight, ArrowUpRight, Bank, CaretDown, Check } from "phosphor-react";
+import { Listbox, RadioGroup, Transition } from "@headlessui/react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Bank, CaretDown, Check } from "phosphor-react";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
@@ -8,8 +8,6 @@ import { DateInput } from "../Atoms/Form/DateInput";
 import { Input } from "../Atoms/Form/Input";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-import * as Select from "@radix-ui/react-select";
 
 export function NewTransactionSheet() {    
     let initialFocus = useRef(null)
@@ -33,9 +31,11 @@ export function NewTransactionSheet() {
     }
 
     useEffect(() => {
-        loadUserBankAccounts()
+        loadUserBankAccounts2()
     }, [])
 
+    console.log(type);
+    
     return (
         <Sheet 
             isOpen={isNewTransactionSheetOpen} 
@@ -46,7 +46,6 @@ export function NewTransactionSheet() {
             <SheetHeader 
                 action={() => setIsNewTransactionSheetOpen(false)} 
                 type="close" 
-                title="Nova transação" 
             />
             
             <form 
@@ -59,51 +58,52 @@ export function NewTransactionSheet() {
                         type="number" 
                         inputMode="numeric" 
                         placeholder="R$ 0,00" 
-                        className="bg-transparent text-2xl py-2 shadow-none border-none outline-none"
+                        className="bg-transparent text-3xl py-2 shadow-none border-none outline-none"
                         required
                     />
                 </div>
 
-                <RadioGroup.Root 
+                <RadioGroup 
+                    value={type} 
+                    onChange={setType}
                     className="grid grid-cols-2 gap-2"
-                    value={selected}
                 >
-                    <RadioGroup.Item 
+                    <RadioGroup.Option 
                         value="income"
                         className={`
                             flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
-                            ${selected === 'income' && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
+                            ${type === 'income' && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
                         `}
                     >
                         <ArrowDownRight size={24} className="text-emerald-500" />
                         <span 
                             className={`
                                 text-sm
-                                ${selected === 'income' && 'text-emerald-700 dark:text-emerald-500'}
+                                ${type === 'income' && 'text-emerald-700 dark:text-emerald-500'}
                             `}
                         >
                             Entrada
                         </span>
-                    </RadioGroup.Item>
+                    </RadioGroup.Option>
 
-                    <RadioGroup.Item 
+                    <RadioGroup.Option 
                         value="spending"
                         className={`
                             flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
-                            ${selected === 'spending' && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
+                            ${type === 'spending' && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
                         `}
                     >
                         <ArrowUpRight size={24} className="text-red-500" />
                         <span 
                             className={`
                                 text-sm
-                                ${selected === 'spending' && 'text-red-700 dark:text-red-500'}
+                                ${type === 'spending' && 'text-red-700 dark:text-red-500'}
                             `}
                         >
                             Saída
                         </span>
-                    </RadioGroup.Item>
-                </RadioGroup.Root>
+                    </RadioGroup.Option>
+                </RadioGroup>
 
                 <Listbox 
                     value={selected} 
@@ -158,7 +158,7 @@ export function NewTransactionSheet() {
                     </div>
                 </Listbox>
                 
-                <DateInput />
+                <DateInput id="date" />
 
                 <div
                     className={`
@@ -166,18 +166,30 @@ export function NewTransactionSheet() {
                         ${fixedOnBottom && 'fixed bottom-14 left-0 z-10 w-full p-4 bg-zinc-100 dark:bg-zinc-800'}
                     `}
                 >
-                    <label htmlFor="description"></label>
-                    <input 
-                        type="text" 
-                        id="description"
-                        placeholder="Digite uma descrição"
-                        onFocus={handleFocus}
-                        onBlur={() => setFixedOnBottom(false)}
-                        autoComplete="off"
-                        className={`
-                            w-full p-4 py-4 bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-emerald-700 transition-all duration-150
-                        `}
-                    />
+                    <label htmlFor="description" className="text-sm text-zinc-400 dark:text-600">Descrição</label>
+                    <div className="relative">
+                        <input 
+                            type="text" 
+                            id="description"
+                            placeholder="Digite uma descrição"
+                            onFocus={handleFocus}
+                            onBlur={() => setFixedOnBottom(false)}
+                            autoComplete="off"
+                            className={`
+                                w-full p-4 py-4 bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-emerald-700 transition-all duration-150
+                            `}
+                        />
+                        {
+                            fixedOnBottom && (
+                                <button 
+                                    className="absolute right-4 top-4"
+                                    onClick={() => setFixedOnBottom(false)}
+                                >
+                                    <ArrowRight size={20} />
+                                </button>
+                            )
+                        }
+                    </div>
                 </div>
 
 

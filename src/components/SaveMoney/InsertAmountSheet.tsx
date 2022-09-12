@@ -25,6 +25,11 @@ export function InsertAmountSheet() {
         setIsInsertAmountSheetOpen(false)
         setIsSaveMoneySheetOpen(false)
     }
+    
+    function handleFinish() {
+        setIsInsertAmountSheetOpen(false)
+        setIsSaveMoneySheetOpen(false)
+    }
 
     return (
         <Sheet 
@@ -53,8 +58,8 @@ export function InsertAmountSheet() {
                     })
                 }
 
-                <div>
-                    <span className="text-xs text-zinc-400">Saldo atual da conta</span>
+                <div className="flex flex-col">
+                    <span className="text-xs text-zinc-400">Valor</span>
                     <input 
                         ref={initialFocus}
                         type="text" 
@@ -67,6 +72,7 @@ export function InsertAmountSheet() {
                 <button 
                     type="button"
                     className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 text-zinc-100"
+                    onClick={handleFinish}
                 >
                     <Check size={24} />
                 </button>
