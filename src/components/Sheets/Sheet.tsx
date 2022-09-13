@@ -57,7 +57,7 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, isBottomSheet, in
                     `}>
                         <Dialog.Panel 
                             className={`
-                                flex flex-col w-screen sm:max-w-xl bg-zinc-50 dark:bg-zinc-900 shadow-xl
+                                flex flex-col w-screen overflow-auto sm:max-w-xl bg-zinc-50 dark:bg-zinc-900 shadow-xl
                                 ${isBottomSheet ? 'h-fit' : 'h-screen'}
                             `}
                             >
