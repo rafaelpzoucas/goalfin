@@ -7,6 +7,7 @@ import { SheetHeader } from "../../../../Sheets/SheetHeader"
 import { useEffect, useState } from "react"
 import { InsertBalanceSheet } from "./InsertBalanceSheet"
 import { Search } from "../../../../Atoms/Form/Search"
+import { api } from "../../../../../lib/axios"
 
 interface BanksProps {
     value: string
@@ -25,17 +26,10 @@ export function ChooseBankSheet() {
     } = useBankAccounts()
 
     async function fetchBanks() {
-        const response = await fetch('http://192.168.0.102:3333/banks')
-        const data = await response.json()
+        const response = await api.get('/banks')
 
-        setBanks(data)
-    }
-    async function fetchBanks2() {
-        const response = await fetch('http://192.168.6.119:3333/banks')
-        const data = await response.json()
-        
-        setBanks(data)
-    }   
+        setBanks(response.data)
+    } 
 
     useEffect(() => {
         fetchBanks()   

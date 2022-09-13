@@ -1,5 +1,6 @@
 
 import React, { createContext, ReactNode, useState } from "react";
+import { api } from "../../lib/axios";
 
 interface GoalsProviderProps {
     children: ReactNode
@@ -22,7 +23,6 @@ interface GoalsContextProps {
     goals: GoalProps[]
     setGoals: React.Dispatch<React.SetStateAction<GoalProps[]>>
     fetchGoals: () => void
-    fetchGoals2: () => void
     selectedGoal: number
     setSelectedGoal: React.Dispatch<React.SetStateAction<number>>
 }
@@ -36,18 +36,10 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
     const [selectedGoal, setSelectedGoal] = useState(0)
 
     async function fetchGoals() {
-        const response = await fetch('http://192.168.0.102:3333/goals')
-        const data = await response.json()
+        const response = await api.get('/goals')
 
-        setGoals(data)
+        setGoals(response.data)
     }
-
-    async function fetchGoals2() {
-        const response = await fetch('http://192.168.6.119:3333/goals')
-        const data = await response.json()
-
-        setGoals(data)
-    }  
 
     return (
         <GoalsContext.Provider value={{ 
@@ -58,7 +50,6 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
             goals,
             setGoals,
             fetchGoals,
-            fetchGoals2,
             selectedGoal,
             setSelectedGoal
         }}>

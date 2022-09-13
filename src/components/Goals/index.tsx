@@ -13,7 +13,6 @@ export function Goals() {
     const {
         setIsGoalsDetailsSheetOpen,
         fetchGoals,
-        fetchGoals2,
         goals
     } = useGoals()
 

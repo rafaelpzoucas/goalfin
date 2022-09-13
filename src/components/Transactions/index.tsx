@@ -13,7 +13,6 @@ export function Transactions() {
     const {
         transactions,
         fetchTransactions,
-        fetchTransactions2
     } = useTransactions()
 
     useEffect(() => {

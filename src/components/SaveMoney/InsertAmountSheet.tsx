@@ -50,6 +50,7 @@ export function InsertAmountSheet() {
                     goals.filter(item => item.id === selectedGoal).map(goal => {
                         return(
                             <Goal 
+                                key={goal.id}
                                 type="list"
                                 description={goal.description}
                                 click={() => {setIsInsertAmountSheetOpen(false), setIsSaveMoneySheetOpen(true)}} 

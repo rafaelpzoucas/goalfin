@@ -11,7 +11,6 @@ export function WalletDetails() {
     const {
         setIsMyBankAccountsSheetOpen,
         fetchUserBankAccounts,
-        fetchUserBankAccounts2,
         balance
     } = useBankAccounts()
 

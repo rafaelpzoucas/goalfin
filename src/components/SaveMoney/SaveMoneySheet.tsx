@@ -21,7 +21,6 @@ export function SaveMoneySheet() {
     const {
         goals,
         fetchGoals,
-        fetchGoals2,
         setSelectedGoal,
         setIsNewGoalSheetOpen,
     } = useGoals()

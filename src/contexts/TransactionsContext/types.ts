@@ -23,5 +23,4 @@ export interface TransactionsContextProps {
     transactions: TransactionProps[]
     setTransactions: React.Dispatch<React.SetStateAction<TransactionProps[]>>
     fetchTransactions: () => void
-    fetchTransactions2: () => void
 }

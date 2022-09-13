@@ -1,5 +1,6 @@
 
 import React, { createContext, ReactNode, useState } from "react";
+import { api } from "../../lib/axios";
 
 interface BankAccountsProviderProps {
     children: ReactNode
@@ -23,7 +24,6 @@ interface BankAccountsContextProps {
     userBankAccounts: BankAccountProps[]
     setUserBankAccounts: React.Dispatch<React.SetStateAction<BankAccountProps[]>>
     fetchUserBankAccounts: () => void
-    fetchUserBankAccounts2: () => void
     balance: {total: number}
 }
 
@@ -38,18 +38,10 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
     const [isChooseBankSheetOpen, setIsChooseBankSheetOpen] = useState(false)
 
     async function fetchUserBankAccounts() {
-        const response = await fetch('http://192.168.0.102:3333/userBankAccounts')
-        const data = await response.json()
+        const response = await api.get('/userBankAccounts')
 
-        setUserBankAccounts(data)
-    }
-
-    async function fetchUserBankAccounts2() {
-        const response = await fetch('http://192.168.6.119:3333/userBankAccounts')
-        const data = await response.json()
-
-        setUserBankAccounts(data)
-    }   
+        setUserBankAccounts(response.data)
+    } 
 
     const balance = userBankAccounts.reduce(
         (acc, userBankAccount) => {
@@ -73,7 +65,6 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
            userBankAccounts,
            setUserBankAccounts,
            fetchUserBankAccounts,
-           fetchUserBankAccounts2,
            balance,
            selectedBank,
            setSelectedBank

@@ -1,4 +1,4 @@
-import { Coins } from "phosphor-react";
+import { Coins, Target } from "phosphor-react";
 import { useEffect } from "react";
 import { useGoals } from "../../../../contexts/GoalsContext/useGoals";
 import { currencyFormatter } from "../../../../utils/formatter";
@@ -6,9 +6,8 @@ import { Goal } from "../../Goal";
 
 export function ActiveGoals() {
     const {
-        setIsGoalsDetailsSheetOpen,
+        setIsNewGoalSheetOpen,
         fetchGoals,
-        fetchGoals2,
         goals
     } = useGoals()
 
@@ -35,11 +34,13 @@ export function ActiveGoals() {
             </div> */}
 
             <button 
-                className="flex items-center justify-center gap-2 p-4 rounded-lg text-zinc-100 bg-emerald-600 dark:bg-zinc-700"
-                onClick={() => {}}
+                className="flex flex-row items-center justify-center gap-2 p-4 rounded-lg bg-emerald-500 dark:bg-zinc-700 text-zinc-100"
+                onClick={() => setIsNewGoalSheetOpen(true)}
             >
-                <Coins size={20} />
-                <span>Novo objetivo</span>
+                <Target size={20} />
+                <strong>
+                    Novo objetivo
+                </strong>
             </button>
 
             <div className="grid grid-cols-2 gap-4">
