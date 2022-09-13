@@ -22,8 +22,8 @@ export function NewTransactionSheet() {
 
     const {
         userBankAccounts,
-        loadUserBankAccounts,
-        loadUserBankAccounts2
+        fetchUserBankAccounts,
+        fetchUserBankAccounts2
     } = useBankAccounts()
 
     function handleFocus() {
@@ -31,10 +31,8 @@ export function NewTransactionSheet() {
     }
 
     useEffect(() => {
-        loadUserBankAccounts2()
+        fetchUserBankAccounts2()
     }, [])
-
-    console.log(type);
     
     return (
         <Sheet 

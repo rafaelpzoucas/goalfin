@@ -22,6 +22,6 @@ export interface TransactionsContextProps {
     setIsNewTransactionSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     transactions: TransactionProps[]
     setTransactions: React.Dispatch<React.SetStateAction<TransactionProps[]>>
-    loadTransactions: () => void
-    loadTransactions2: () => void
+    fetchTransactions: () => void
+    fetchTransactions2: () => void
 }

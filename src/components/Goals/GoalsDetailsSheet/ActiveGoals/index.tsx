@@ -7,13 +7,13 @@ import { Goal } from "../../Goal";
 export function ActiveGoals() {
     const {
         setIsGoalsDetailsSheetOpen,
-        loadGoals,
-        loadGoals2,
+        fetchGoals,
+        fetchGoals2,
         goals
     } = useGoals()
 
     useEffect(() => {
-        loadGoals()
+        fetchGoals()
     }, [])
     
     return (

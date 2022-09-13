@@ -12,12 +12,12 @@ export function Transactions() {
 
     const {
         transactions,
-        loadTransactions,
-        loadTransactions2
+        fetchTransactions,
+        fetchTransactions2
     } = useTransactions()
 
     useEffect(() => {
-        loadTransactions()
+        fetchTransactions()
     }, [])
 
     return (

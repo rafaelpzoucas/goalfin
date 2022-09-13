@@ -22,8 +22,8 @@ interface BankAccountsContextProps {
     setIsChooseBankSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     userBankAccounts: BankAccountProps[]
     setUserBankAccounts: React.Dispatch<React.SetStateAction<BankAccountProps[]>>
-    loadUserBankAccounts: () => void
-    loadUserBankAccounts2: () => void
+    fetchUserBankAccounts: () => void
+    fetchUserBankAccounts2: () => void
     balance: {total: number}
 }
 
@@ -37,14 +37,14 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
     const [isMyBankAccountsSheetOpen, setIsMyBankAccountsSheetOpen] = useState(false)
     const [isChooseBankSheetOpen, setIsChooseBankSheetOpen] = useState(false)
 
-    async function loadUserBankAccounts() {
+    async function fetchUserBankAccounts() {
         const response = await fetch('http://192.168.0.102:3333/userBankAccounts')
         const data = await response.json()
 
         setUserBankAccounts(data)
     }
 
-    async function loadUserBankAccounts2() {
+    async function fetchUserBankAccounts2() {
         const response = await fetch('http://192.168.6.119:3333/userBankAccounts')
         const data = await response.json()
 
@@ -72,8 +72,8 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
            setIsChooseBankSheetOpen,
            userBankAccounts,
            setUserBankAccounts,
-           loadUserBankAccounts,
-           loadUserBankAccounts2,
+           fetchUserBankAccounts,
+           fetchUserBankAccounts2,
            balance,
            selectedBank,
            setSelectedBank

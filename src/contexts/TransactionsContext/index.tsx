@@ -9,13 +9,13 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
     const [transactions, setTransactions] = useState<TransactionProps[]>([])
     const [date, setDate] = useState()
 
-    async function loadTransactions() {
+    async function fetchTransactions() {
         const response = await fetch('http://192.168.0.102:3333/transactions')
         const data = await response.json()
 
         setTransactions(data)
     }
-    async function loadTransactions2() {
+    async function fetchTransactions2() {
         const response = await fetch('http://192.168.6.119:3333/transactions')
         const data = await response.json()
 
@@ -28,8 +28,8 @@ export function TransactionsProvider({ children }: TransactionsProviderProps) {
             setIsNewTransactionSheetOpen,
             transactions,
             setTransactions,
-            loadTransactions,
-            loadTransactions2
+            fetchTransactions,
+            fetchTransactions2
         }}>
             { children }
         </TransactionsContext.Provider>

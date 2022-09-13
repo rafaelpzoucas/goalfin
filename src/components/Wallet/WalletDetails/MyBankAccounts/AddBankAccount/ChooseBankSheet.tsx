@@ -24,22 +24,21 @@ export function ChooseBankSheet() {
         setSelectedBank
     } = useBankAccounts()
 
-    async function loadBanks() {
+    async function fetchBanks() {
         const response = await fetch('http://192.168.0.102:3333/banks')
         const data = await response.json()
 
         setBanks(data)
     }
-    async function loadBanks2() {
+    async function fetchBanks2() {
         const response = await fetch('http://192.168.6.119:3333/banks')
         const data = await response.json()
         
         setBanks(data)
-        console.log(banks);
     }   
 
     useEffect(() => {
-        loadBanks()   
+        fetchBanks()   
     }, [])
 
     return (

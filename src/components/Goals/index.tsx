@@ -12,13 +12,13 @@ import { GoalSkeleton } from "./GoalSkeleton";
 export function Goals() {
     const {
         setIsGoalsDetailsSheetOpen,
-        loadGoals,
-        loadGoals2,
+        fetchGoals,
+        fetchGoals2,
         goals
     } = useGoals()
 
     useEffect(() => {
-        loadGoals()
+        fetchGoals()
     }, [])
     
     return (

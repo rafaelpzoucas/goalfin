@@ -10,8 +10,8 @@ import { MyBankAccountsSheet } from "./MyBankAccounts";
 export function WalletDetails() { 
     const {
         setIsMyBankAccountsSheetOpen,
-        loadUserBankAccounts,
-        loadUserBankAccounts2,
+        fetchUserBankAccounts,
+        fetchUserBankAccounts2,
         balance
     } = useBankAccounts()
 
@@ -20,7 +20,7 @@ export function WalletDetails() {
     } = useSaveMoney()
 
     useEffect(() => {
-        loadUserBankAccounts()
+        fetchUserBankAccounts()
     }, [])
 
     return (

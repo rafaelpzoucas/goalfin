@@ -20,8 +20,8 @@ export function SaveMoneySheet() {
 
     const {
         goals,
-        loadGoals,
-        loadGoals2,
+        fetchGoals,
+        fetchGoals2,
         setSelectedGoal,
         setIsNewGoalSheetOpen,
     } = useGoals()
@@ -32,7 +32,7 @@ export function SaveMoneySheet() {
     }
 
     useEffect(() => {
-        loadGoals()
+        fetchGoals()
     }, [])
 
     return (
