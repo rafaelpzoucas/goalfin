@@ -14,7 +14,7 @@ export function SheetHeader({ action, type, title, hasOptions }: SheetHeaderProp
         <Dialog.Title className="flex flex-row items-center justify-between gap-4 px-4 pt-6 pb-8">
             {
                 type && (
-                    <div 
+                    <button 
                         onClick={action} 
                         className={`
                             shadow-none outline-none
@@ -24,7 +24,7 @@ export function SheetHeader({ action, type, title, hasOptions }: SheetHeaderProp
                             ? <ArrowLeft size={28} /> 
                             : <X size={28} />
                         }
-                    </div>
+                    </button>
                 )
             }
             

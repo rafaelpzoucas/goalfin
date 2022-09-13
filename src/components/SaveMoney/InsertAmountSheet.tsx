@@ -3,6 +3,7 @@ import { useRef } from "react"
 import { useGoals } from "../../contexts/GoalsContext/useGoals"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { api } from "../../lib/axios"
+import { H1 } from "../Atoms/Typography"
 import { Goal } from "../Goals/Goal"
 import { Sheet } from "../Sheets/Sheet"
 import { SheetHeader } from "../Sheets/SheetHeader"
@@ -43,9 +44,31 @@ export function InsertAmountSheet() {
                 type="close"
             />
 
+
             <form 
                 className="flex flex-col gap-8 p-4"
             >
+                <section className="flex flex-col">
+                    <H1>Quanto você quer guardar?</H1>
+                    <div 
+                        className="text-sm text-zinc-600 dark:text-zinc-400"
+                    >
+                        <span>Saldo disponível: </span>
+                        <strong className="text-zinc-100"> R$ 7,00</strong>
+                    </div>
+                </section>
+
+                <div className="flex flex-col">
+                    <span className="text-xs text-zinc-400">Valor</span>
+                    <input 
+                        ref={initialFocus}
+                        type="text" 
+                        inputMode="numeric" 
+                        placeholder="R$ 0,00" 
+                        className="bg-transparent text-2xl py-2 shadow-none border-none outline-none" 
+                        />
+                </div>
+
                 {
                     goals.filter(item => item.id === selectedGoal).map(goal => {
                         return(
@@ -58,17 +81,6 @@ export function InsertAmountSheet() {
                         )
                     })
                 }
-
-                <div className="flex flex-col">
-                    <span className="text-xs text-zinc-400">Valor</span>
-                    <input 
-                        ref={initialFocus}
-                        type="text" 
-                        inputMode="numeric" 
-                        placeholder="R$ 0,00" 
-                        className="bg-transparent text-2xl py-2 shadow-none border-none outline-none" 
-                    />
-                </div>
 
                 <button 
                     type="button"

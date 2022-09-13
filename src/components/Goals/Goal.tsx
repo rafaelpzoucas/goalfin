@@ -8,7 +8,7 @@ import { Transaction } from "../Transactions/Transaction"
 import { H1, H2 } from "../Atoms/Typography"
 
 interface GoalProps {
-    type?: "list" | "detailed" | "short"
+    type?: "list" | "short"
     click?: () => void
 
     id?: number
@@ -34,7 +34,10 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
 
     return (
         <div 
-            className="flex flex-col gap-4 rounded-lg p-4 bg-zinc-100 border dark:border-none dark:bg-zinc-800"
+            className={`
+                flex flex-col gap-4 rounded-lg border dark:border-none 
+                ${type !== "list" && 'p-4 bg-zinc-100 dark:bg-zinc-800'}
+            `}
             onClick={
                 type === 'list' 
                 ? click 
@@ -42,34 +45,63 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
             }
         >
             <div className="flex flex-col items-center justify-center gap-4 w-full">
-                <header className="flex flex-row justify-between w-full">
-                    <div className={`bg-zinc-300 dark:bg-zinc-700 w-fit rounded-full text-xl p-1`}>
-                        <Target />
+                <header 
+                    className={`
+                        flex flex-row justify-between w-full
+                        ${type === 'list' && 'items-center'}
+                    `}
+                >
+                    <div className="flex flex-row items-center gap-4">
+                        <div 
+                            className={`
+                                bg-zinc-300 dark:bg-zinc-700 w-fit rounded-full text-xl
+                                ${type === 'list' ? 'p-4' : 'p-1'}
+                            `}
+                        >
+                            <Target />
+                        </div>
+                        {
+                            type === 'list' && (
+                                <strong 
+                                    className="text-sm"
+                                >
+                                    {description}
+                                </strong>
+                            )
+                        }
                     </div>
 
                     <CaretRight  />
                 </header>
 
-                <strong 
-                    className={`
-                        text-sm
-                        ${type === 'short' && 'w-full truncate'}
-                    `}
-                >
-                    {description}
-                </strong>
+                {
+                    type !== "list" && (
+                        <strong 
+                            className={`
+                                text-sm
+                                ${type === 'short' && 'w-full truncate'}
+                            `}
+                        >
+                            {description}
+                        </strong>
+                    )
+                }
             </div>
 
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-col">
-                    <strong className="text-sm">R$ 50,00</strong>
-                    <span className="leading-[0.5rem] text-xs text-zinc-600 dark:text-zinc-400">para este mês</span>
-                </div>
-                <div className="flex flex-col text-xs">
-                    <strong className="text-lg">{saved}</strong> 
-                    <span className="leading-[0.5rem] text-zinc-600 dark:text-zinc-400">de {amount}</span>
-                </div>
-            </div>
+            {
+                type !== "list" && (
+                    <div className="flex flex-col gap-4">
+                        <div className="flex flex-col">
+                            <strong className="text-sm">R$ 50,00</strong>
+                            <span className="leading-[0.5rem] text-xs text-zinc-600 dark:text-zinc-400">para este mês</span>
+                        </div>
+                        <div className="flex flex-col text-xs">
+                            <strong className="text-lg">{saved}</strong> 
+                            <span className="leading-[0.5rem] text-zinc-600 dark:text-zinc-400">de {amount}</span>
+                        </div>
+                    </div>
+                )
+            }
 
             <Sheet 
                 isOpen={isGoalsDetailsSheetOpen}
