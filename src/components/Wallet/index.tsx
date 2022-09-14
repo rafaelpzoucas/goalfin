@@ -1,11 +1,8 @@
-import { Dialog } from "@headlessui/react";
 import { ArrowsDownUp, Bank, CaretLeft, CaretRight, Coins, Target, X } from "phosphor-react";
 import { useState } from "react";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
 import { Shortcuts } from "../Shortcuts";
-import { NewTransactionForm } from "../Transactions/NewTransactionForm";
-import { Transaction } from "../Transactions/Transaction";
 import { WalletDetails } from "./WalletDetails";
 
 export function Wallet() {
