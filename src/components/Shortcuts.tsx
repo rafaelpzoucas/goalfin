@@ -1,5 +1,4 @@
 import { ArrowsDownUp, Bank, Coins, Target } from "phosphor-react";
-import { useEffect } from "react";
 import { useBankAccounts } from "../contexts/BankAccountsContext/useBankAccounts";
 import { useGoals } from "../contexts/GoalsContext/useGoals";
 import { useSaveMoney } from "../contexts/SaveMoneyContext/useBankAccount";
@@ -8,22 +7,26 @@ import { Shortcut } from "./Atoms/Shortcut";
 import { NewGoalSheet } from "./Goals/NewGoalSheet";
 import { SaveMoneySheet } from "./SaveMoney/SaveMoneySheet";
 import { NewTransactionSheet } from "./Transactions/NewTransactionSheet";
-import { ChooseBankSheet } from "./Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";
+import { ChooseBankSheet } from "./Wallet/BankAccounts/MyBankAccounts/AddBankAccount/ChooseBankSheet";
 
 export function Shortcuts() {
     const {
+        isSaveMoneySheetOpen,
         setIsSaveMoneySheetOpen
     } = useSaveMoney()
 
     const {
+        isNewGoalSheetOpen,
         setIsNewGoalSheetOpen
     } = useGoals()
 
     const {
+        isNewTransactionSheetOpen,
         setIsNewTransactionSheetOpen
     } = useTransactions()
     
     const {
+        isChooseBankSheetOpen,
         setIsChooseBankSheetOpen
     } = useBankAccounts()
 
@@ -46,10 +49,10 @@ export function Shortcuts() {
             </div>
         </section>
 
-        <SaveMoneySheet />
-        <NewGoalSheet />
-        <NewTransactionSheet />
-        <ChooseBankSheet />
+        {isSaveMoneySheetOpen && <SaveMoneySheet />}
+        {isNewTransactionSheetOpen && <NewTransactionSheet />}      
+        {isNewGoalSheetOpen && <NewGoalSheet/>}
+        {isChooseBankSheetOpen && <ChooseBankSheet />}
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react"
 import { X } from "phosphor-react"
 import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts"
-import { BankAccount } from "../../../BankAccounts/BankAccount"
+import { BankAccount } from "../../BankAccount"
 import { Sheet } from "../../../../Sheets/Sheet"
 import { SheetHeader } from "../../../../Sheets/SheetHeader"
 import { useEffect, useState } from "react"
@@ -34,7 +34,7 @@ export function ChooseBankSheet() {
     useEffect(() => {
         fetchBanks()   
     }, [])
-
+    
     return (
         <Sheet 
             isOpen={isChooseBankSheetOpen} 

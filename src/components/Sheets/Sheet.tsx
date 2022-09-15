@@ -1,6 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { X } from "phosphor-react";
-import { Fragment, MutableRefObject, ReactNode, useEffect, useState } from "react";
+import { Fragment, MutableRefObject, ReactNode } from "react";
 
 interface ISheet {
     children: ReactNode

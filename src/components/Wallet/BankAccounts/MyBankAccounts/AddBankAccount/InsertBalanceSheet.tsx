@@ -1,7 +1,7 @@
 import { Dialog } from "@headlessui/react";
 import { Check, X } from "phosphor-react";
 import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts";
-import { BankAccount } from "../../../BankAccounts/BankAccount";
+import { BankAccount } from "../../BankAccount";
 import { Sheet } from "../../../../Sheets/Sheet";
 import { SheetHeader } from "../../../../Sheets/SheetHeader";
 import { useRef } from "react";

@@ -1,5 +1,5 @@
 import { RadioGroup } from "@headlessui/react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 interface DateInputProps {
     id?: string

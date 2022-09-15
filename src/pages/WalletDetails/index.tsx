@@ -1,8 +1,9 @@
 import { CaretRight, Coins } from "phosphor-react"
 import { useEffect } from "react"
+import { NavHeader } from "../../components/Molecules/NavHeader"
 import { SaveMoneySheet } from "../../components/SaveMoney/SaveMoneySheet"
 import { Transactions } from "../../components/Transactions"
-import { MyBankAccountsSheet } from "../../components/Wallet/WalletDetails/MyBankAccounts"
+import { MyBankAccountsSheet } from "../../components/Wallet/BankAccounts/MyBankAccounts"
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { currencyFormatter } from "../../utils/formatter"
@@ -24,6 +25,10 @@ export function WalletDetails() {
 
     return (
         <div className="flex flex-col gap-4 h-full overflow-auto">
+            <NavHeader 
+                navigate="/"
+            />
+            
             <div className="flex flex-col gap-12 p-4">
                 <div className="flex flex-col gap-1">
                     <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo disponível</span>
@@ -38,6 +43,7 @@ export function WalletDetails() {
                         <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo total</span>
                         <strong className="text-base">{currencyFormatter.format(balance.total)}</strong>
                     </div>
+
                     <CaretRight />
                 </div>
 

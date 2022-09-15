@@ -1,19 +1,16 @@
 import { CaretRight } from "phosphor-react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
-import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
 import { currencyFormatter } from "../../utils/formatter";
 import { H2 } from "../Atoms/Typography";
-import { SaveMoneySheet } from "../SaveMoney/SaveMoneySheet";
 import { Goal } from "./Goal";
-import { GoalsDetailsSheet } from "./GoalsDetailsSheet";
 import { GoalSkeleton } from "./GoalSkeleton";
 
 export function Goals() {
     const {
-        setIsGoalsDetailsSheetOpen,
-        fetchGoals,
-        goals
+        goals,
+        fetchGoals
     } = useGoals()
 
     useEffect(() => {
@@ -21,19 +18,19 @@ export function Goals() {
     }, [])
     
     return (
-        <>
         <div className="flex flex-col gap-8 px-4 py-8">
-            <section
-                onClick={() => setIsGoalsDetailsSheetOpen(true)} 
-                className="flex flex-col items-start justify-between"
-            >
-                <header className="flex flex-row justify-between w-full">
-                    <H2>Objetivos</H2>
+            <Link to="goals">
+                <section
+                    className="flex flex-col items-start justify-between"
+                >
+                    <header className="flex flex-row justify-between w-full">
+                        <H2>Objetivos</H2>
 
-                    <CaretRight />
-                </header>
+                        <CaretRight />
+                    </header>
 
-            </section>
+                </section>
+            </Link>
             <section className="flex flex-col gap-8">
                 <div className="flex flex-col gap-1">
                     <span className="text-xs text-zinc-600 dark:text-zinc-400">Guardar este mês</span>
@@ -60,18 +57,12 @@ export function Goals() {
                             <GoalSkeleton />
                             <GoalSkeleton />
                             <GoalSkeleton />
-                            <GoalSkeleton />
-                            <GoalSkeleton />
                             </>
                         )
                     }
                 </div>
 
             </section>
-            
-            <GoalsDetailsSheet />
         </div>
-        
-        </>
     )
 }

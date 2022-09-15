@@ -1,7 +1,9 @@
-import { App } from "../App";
+import { Dashboard } from "../pages/Dashboard";
 
 export default function Root() {
     return (
-      <App />
+      <>
+        <Dashboard />
+      </>
     );
   }

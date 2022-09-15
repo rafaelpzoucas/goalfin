@@ -6,10 +6,8 @@ import { Goal } from "../Goals/Goal";
 import { Search } from "../Atoms/Form/Search";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
-import { ChooseBankSheet } from "../Wallet/WalletDetails/MyBankAccounts/AddBankAccount/ChooseBankSheet";
 import { InsertAmountSheet } from "./InsertAmountSheet";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
-import { useEffect } from "react";
 import { H1 } from "../Atoms/Typography";
 
 export function SaveMoneySheet() {
@@ -21,7 +19,6 @@ export function SaveMoneySheet() {
 
     const {
         goals,
-        fetchGoals,
         setSelectedGoal,
         setIsNewGoalSheetOpen,
     } = useGoals()
@@ -30,10 +27,6 @@ export function SaveMoneySheet() {
         setIsInsertAmountSheetOpen(true)
         setSelectedGoal(data)
     }
-
-    useEffect(() => {
-        fetchGoals()
-    }, [])
 
     return (
         <Sheet isOpen={isSaveMoneySheetOpen} onClose={() => setIsSaveMoneySheetOpen(false)} transition="rightToLeft">
