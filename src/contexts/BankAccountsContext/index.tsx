@@ -15,8 +15,8 @@ interface BankAccountProps {
 interface BankAccountsContextProps {
     selectedBank: string
     setSelectedBank: React.Dispatch<React.SetStateAction<string>>
-    isMyBankAccountsSheetOpen: boolean
-    setIsMyBankAccountsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+    isUserBankAccountsSheetOpen: boolean
+    setIsUserBankAccountsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     isInsertBalanceSheetOpen: boolean
     setIsInsertBalanceSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
     isChooseBankSheetOpen: boolean
@@ -34,7 +34,7 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
     const [userBankAccounts, setUserBankAccounts] = useState<BankAccountProps[]>([])
 
     const [isInsertBalanceSheetOpen, setIsInsertBalanceSheetOpen] = useState(false)
-    const [isMyBankAccountsSheetOpen, setIsMyBankAccountsSheetOpen] = useState(false)
+    const [isUserBankAccountsSheetOpen, setIsUserBankAccountsSheetOpen] = useState(false)
     const [isChooseBankSheetOpen, setIsChooseBankSheetOpen] = useState(false)
 
     async function fetchUserBankAccounts() {
@@ -56,8 +56,8 @@ export function BankAccountsProvider({ children }: BankAccountsProviderProps) {
 
     return (
         <BankAccountsContext.Provider value={{ 
-           isMyBankAccountsSheetOpen,
-           setIsMyBankAccountsSheetOpen,
+           isUserBankAccountsSheetOpen,
+           setIsUserBankAccountsSheetOpen,
            isInsertBalanceSheetOpen,
            setIsInsertBalanceSheetOpen,
            isChooseBankSheetOpen,

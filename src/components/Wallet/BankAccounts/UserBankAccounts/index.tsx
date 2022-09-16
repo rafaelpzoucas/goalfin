@@ -8,16 +8,16 @@ import { currencyFormatter } from "../../../../utils/formatter";
 
 export function UserBankAccountsSheet() {
     const {
-        isMyBankAccountsSheetOpen,
-        setIsMyBankAccountsSheetOpen,
+        isUserBankAccountsSheetOpen,
+        setIsUserBankAccountsSheetOpen,
         setIsChooseBankSheetOpen,
         balance
     } = useBankAccounts()
 
     return (
-        <Sheet isOpen={isMyBankAccountsSheetOpen} onClose={() => setIsMyBankAccountsSheetOpen(false)} transition="rightToLeft">
+        <Sheet isOpen={isUserBankAccountsSheetOpen} onClose={() => setIsUserBankAccountsSheetOpen(false)} transition="rightToLeft">
             <SheetHeader
-                action={() => setIsMyBankAccountsSheetOpen(false)} 
+                action={() => setIsUserBankAccountsSheetOpen(false)} 
                 type="back"
             />
 

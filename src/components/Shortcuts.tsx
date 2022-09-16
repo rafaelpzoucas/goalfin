@@ -7,7 +7,7 @@ import { Shortcut } from "./Atoms/Shortcut";
 import { NewGoalSheet } from "./Goals/NewGoalSheet";
 import { SaveMoneySheet } from "./SaveMoney/SaveMoneySheet";
 import { NewTransactionSheet } from "./Transactions/NewTransactionSheet";
-import { ChooseBankSheet } from "./Wallet/BankAccounts/MyBankAccounts/AddBankAccount/ChooseBankSheet";
+import { ChooseBankSheet } from "./Wallet/BankAccounts/UserBankAccounts/AddBankAccount/ChooseBankSheet";
 
 export function Shortcuts() {
     const {

@@ -5,11 +5,11 @@
       "model": [
         {
           "id": 1,
-          "amount": 900,
-          "type": "income",
-          "category": "Salário",
+          "amount": "",
+          "type": "welcome",
+          "category": "",
           "date": "2022-08-31T21:14:01.266Z",
-          "description": "WM10",
+          "description": "",
           "createdAt": "2022-08-31T21:14:01.266Z"
         },
         {

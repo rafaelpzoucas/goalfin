@@ -30,7 +30,7 @@ export function Transactions() {
                             <div 
                                 key={transaction.date} 
                                 className="flex flex-col gap-8"
-                            >
+                                >
                                 <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
                                     <span className="text-sm">{dateFormatter.format(Date.parse(transaction.date))}</span>
                                 </div>
@@ -42,18 +42,17 @@ export function Transactions() {
                                                 type={item.type}
                                                 description={item.description}
                                                 amount={item.amount}
-                                            />
-                                        )
-                                    })
-                                }
-                                <Transaction type="welcome" />
+                                                />
+                                                )
+                                            })
+                                        }
                             </div>
                         )
                     })
                 ) : (
                     <div className="flex flex-col gap-8">
                         <div className="w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
-                            <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 animate-pulse"></div>
+                            <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 rounded-sm animate-pulse"></div>
                         </div>
 
                         <TransactionSkeleton />

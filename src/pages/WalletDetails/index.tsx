@@ -4,14 +4,14 @@ import { useEffect } from "react"
 import { NavHeader } from "../../components/Molecules/NavHeader"
 import { SaveMoneySheet } from "../../components/SaveMoney/SaveMoneySheet"
 import { Transactions } from "../../components/Transactions"
-import { UserBankAccountsSheet } from "../../components/Wallet/BankAccounts/MyBankAccounts"
+import { UserBankAccountsSheet } from "../../components/Wallet/BankAccounts/UserBankAccounts"
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { currencyFormatter } from "../../utils/formatter"
 
 export function WalletDetails() { 
     const {
-        setIsMyBankAccountsSheetOpen,
+        setIsUserBankAccountsSheetOpen,
         fetchUserBankAccounts,
         balance
     } = useBankAccounts()
@@ -43,11 +43,15 @@ export function WalletDetails() {
 
                 <div 
                     className="flex flex-row items-center justify-between"
-                    onClick={() => setIsMyBankAccountsSheetOpen(true)} 
+                    onClick={() => setIsUserBankAccountsSheetOpen(true)} 
                 >
                     <div className="flex flex-col">
                         <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo total</span>
-                        <strong className="text-base">{currencyFormatter.format(balance.total)}</strong>
+                        {balance.total ? (
+                            <strong className="text-base">{currencyFormatter.format(balance.total)}</strong>
+                        ) : (
+                            <span className="w-24 h-4 rounded-sm bg-zinc-300 dark:bg-zinc-700 animate-pulse"></span>
+                        )}
                     </div>
 
                     <CaretRight />
