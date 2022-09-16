@@ -21,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "wallet",
-    element: <WalletDetails />
+    element: <WalletDetails />,
   },
   {
     path: "goals",

@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import { NavHeader } from "../../components/Molecules/NavHeader"
 import { SaveMoneySheet } from "../../components/SaveMoney/SaveMoneySheet"
 import { Transactions } from "../../components/Transactions"
-import { MyBankAccountsSheet } from "../../components/Wallet/BankAccounts/MyBankAccounts"
+import { UserBankAccountsSheet } from "../../components/Wallet/BankAccounts/MyBankAccounts"
 import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { currencyFormatter } from "../../utils/formatter"
@@ -64,7 +64,7 @@ export function WalletDetails() {
 
             <Transactions />
 
-            <MyBankAccountsSheet />
+            <UserBankAccountsSheet />
             <SaveMoneySheet />
         </motion.div>
     )

@@ -1,5 +1,4 @@
-import { ArrowsDownUp } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 import { dateFormatter } from "../../utils/formatter";
 import { Search } from "../Atoms/Form/Search";
@@ -8,7 +7,6 @@ import { Transaction } from "./Transaction";
 import { TransactionSkeleton } from "./TransactionSkeleton";
 
 export function Transactions() {  
-    const [transactionsList, setTransactionsList] = useState()
 
     const {
         transactions,
@@ -57,9 +55,6 @@ export function Transactions() {
                             <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 animate-pulse"></div>
                         </div>
 
-                        <TransactionSkeleton />
-                        <TransactionSkeleton />
-                        <TransactionSkeleton />
                         <TransactionSkeleton />
                         <TransactionSkeleton />
                         <TransactionSkeleton />

@@ -33,7 +33,7 @@ export function GoalsDetails() {
             exit={{ x: (window.innerWidth) * -1 }}
         >
             <NavHeader 
-                navigate="/"
+                navigate=".."
             />
             
             <div className="flex flex-col px-4">

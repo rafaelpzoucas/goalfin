@@ -16,7 +16,7 @@ export function NavHeader({ title, navigate, hasOptions }: NavHeaderProps) {
     return (
         <div className="flex flex-row items-center gap-4 px-4 pt-6">
             <Link 
-                to="../"
+                to={navigate}
                 className={`
                     shadow-none outline-none
                 `}>

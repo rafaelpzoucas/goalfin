@@ -6,7 +6,7 @@ import { useBankAccounts } from "../../../../contexts/BankAccountsContext/useBan
 import { SheetHeader } from "../../../Sheets/SheetHeader";
 import { currencyFormatter } from "../../../../utils/formatter";
 
-export function MyBankAccountsSheet() {
+export function UserBankAccountsSheet() {
     const {
         isMyBankAccountsSheetOpen,
         setIsMyBankAccountsSheetOpen,
