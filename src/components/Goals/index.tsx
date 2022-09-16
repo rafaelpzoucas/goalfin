@@ -21,7 +21,7 @@ export function Goals() {
         <div className="flex flex-col gap-8 px-4 py-8">
             <Link to="goals">
                 <section
-                    className="flex flex-col items-start justify-between"
+                    className="flex flex-col items-start justify-between gap-8"
                 >
                     <header className="flex flex-row justify-between w-full">
                         <H2>Objetivos</H2>
@@ -29,13 +29,13 @@ export function Goals() {
                         <CaretRight />
                     </header>
 
+                    <div className="flex flex-col gap-1">
+                        <span className="text-xs text-zinc-600 dark:text-zinc-400">Guardar este mês</span>
+                        <strong className="text-2xl">R$ 500,00</strong>
+                    </div>
                 </section>
             </Link>
             <section className="flex flex-col gap-8">
-                <div className="flex flex-col gap-1">
-                    <span className="text-xs text-zinc-600 dark:text-zinc-400">Guardar este mês</span>
-                    <strong className="text-2xl">R$ 500,00</strong>
-                </div>
 
 
                 <div className="grid grid-cols-2 gap-4">

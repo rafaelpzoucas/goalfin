@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { CaretRight, Coins } from "phosphor-react"
 import { useEffect } from "react"
 import { NavHeader } from "../../components/Molecules/NavHeader"
@@ -24,7 +25,12 @@ export function WalletDetails() {
     }, [])
 
     return (
-        <div className="flex flex-col gap-4 h-full overflow-auto">
+        <motion.div 
+            className="flex flex-col gap-4 h-full overflow-auto shadow-xl"
+            initial={{ x: innerWidth }}
+            animate={{ x: 0 }}
+            exit={{ x: (window.innerWidth) * -1 }}
+        >
             <NavHeader 
                 navigate="/"
             />
@@ -60,6 +66,6 @@ export function WalletDetails() {
 
             <MyBankAccountsSheet />
             <SaveMoneySheet />
-        </div>
+        </motion.div>
     )
 }

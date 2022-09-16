@@ -1,3 +1,4 @@
+import { motion } from "framer-motion"
 import { Coins, Target } from "phosphor-react"
 import { useEffect } from "react"
 import { Divider } from "../../components/Atoms/Divider"
@@ -25,7 +26,12 @@ export function GoalsDetails() {
     }, [])
 
     return(
-        <div className="flex flex-col gap-8 dark:bg-zinc-900">
+        <motion.div 
+            className="flex flex-col gap-8 dark:bg-zinc-900"
+            initial={{ x: innerWidth }}
+            animate={{ x: 0 }}
+            exit={{ x: (window.innerWidth) * -1 }}
+        >
             <NavHeader 
                 navigate="/"
             />
@@ -65,6 +71,6 @@ export function GoalsDetails() {
                     }
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
