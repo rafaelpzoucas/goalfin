@@ -46,6 +46,7 @@ export function Transactions() {
                                         )
                                     })
                                 }
+                                <Transaction type="welcome" />
                             </div>
                         )
                     })
@@ -59,14 +60,10 @@ export function Transactions() {
                         <TransactionSkeleton />
                         <TransactionSkeleton />
                         <TransactionSkeleton />
-                        <TransactionSkeleton />
-                        <TransactionSkeleton />
-                        <TransactionSkeleton />
                     </div>
                 )
             }
 
-            <Transaction type="welcome" />
         </div>
     )
 }
