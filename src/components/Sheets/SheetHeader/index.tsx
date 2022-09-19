@@ -1,6 +1,5 @@
 import { Dialog } from "@headlessui/react";
 import { ArrowLeft, CaretLeft, DotsThreeVertical, X } from "phosphor-react";
-import { ReactNode } from "react";
 
 interface SheetHeaderProps {
     action: () => void

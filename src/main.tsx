@@ -35,7 +35,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <TransactionsProvider>
         <BankAccountsProvider>
           <SaveMoneyProvider>
-            
+            <RouterProvider router={router} />
           </SaveMoneyProvider>
         </BankAccountsProvider> 
       </TransactionsProvider>

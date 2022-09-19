@@ -6,6 +6,7 @@ import { Sheet } from "../Sheets/Sheet"
 import { SheetHeader } from "../Sheets/SheetHeader"
 import { Transaction } from "../Transactions/Transaction"
 import { H1, H2 } from "../Atoms/Typography"
+import { useGoals } from "../../contexts/GoalsContext/useGoals"
 
 interface GoalProps {
     type?: "list" | "short"
@@ -20,17 +21,19 @@ interface GoalProps {
 }
 
 export function Goal({ click, type, description, saved, amount, finalDate }: GoalProps) {
-    const [isGoalsDetailsSheetOpen, setIsGoalsDetailsSheetOpen] = useState(false)
-    const [isGoalOperationSheetOpen, setIsGoalOperationSheetOpen] = useState(false)
-
-    const [operationType, setOperationType] = useState("")
-
     let initialFocus = useRef(null)
 
-    function handleOpenGoalOperationsSheet() {
-        setIsGoalOperationSheetOpen(true)
-        setOperationType("redeem")
-    }
+    // const [isGoalsDetailsSheetOpen, setIsGoalsDetailsSheetOpen] = useState(false)
+    const [isGoalOperationSheetOpen, setIsGoalOperationSheetOpen] = useState(false)
+    const [operationType, setOperationType] = useState("")
+
+    
+    const {
+        isGoalsDetailsSheetOpen,
+        setIsGoalsDetailsSheetOpen
+    } = useGoals()
+    
+    
 
     return (
         <div 
@@ -109,7 +112,7 @@ export function Goal({ click, type, description, saved, amount, finalDate }: Goa
                 transition="rightToLeft"
             >
                 <SheetHeader 
-                    action={() => setIsGoalsDetailsSheetOpen(false)} 
+                    action={() => {setIsGoalsDetailsSheetOpen(false), console.log(isGoalsDetailsSheetOpen);}} 
                     type="back"
                     hasOptions
                 />
