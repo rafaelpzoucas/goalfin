@@ -2,15 +2,18 @@ import { motion } from "framer-motion"
 import { Coins, Target } from "phosphor-react"
 import { useEffect } from "react"
 import { Divider } from "../../components/Atoms/Divider"
+import { slidePageRightToLeft } from "../../components/Atoms/PageAnimations"
 import { Shortcut } from "../../components/Atoms/Shortcut"
 import { H2 } from "../../components/Atoms/Typography"
-import { Goal } from "../../components/Goals/Goal"
+import { GoalCard } from "../../components/Goals/GoalCard"
+import { NewGoalSheet } from "../../components/Goals/NewGoalSheet"
 import { NavHeader } from "../../components/Molecules/NavHeader"
+import { SaveMoneySheet } from "../../components/SaveMoney/SaveMoneySheet"
 import { useGoals } from "../../contexts/GoalsContext/useGoals"
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { currencyFormatter } from "../../utils/formatter"
 
-export function GoalsDetails() {
+export function GoalsSummary() {
     const {
         setIsNewGoalSheetOpen,
         fetchGoals,
@@ -26,15 +29,15 @@ export function GoalsDetails() {
     }, [])
 
     return(
-        <motion.div 
+        <>
+        <motion.div
+            variants={slidePageRightToLeft}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="flex flex-col gap-8 dark:bg-zinc-900"
-            initial={{ x: innerWidth }}
-            animate={{ x: 0 }}
-            exit={{ x: (window.innerWidth) * -1 }}
-        >
-            <NavHeader 
-                navigate=".."
-            />
+            >
+            <NavHeader />
             
             <div className="flex flex-col px-4">
                 <span className="text-xs text-zinc-600 dark:text-zinc-400">Falta economizar este mês</span>
@@ -59,18 +62,23 @@ export function GoalsDetails() {
                     {
                         goals.map(goal => {
                             return (
-                                <Goal 
+                                <GoalCard 
                                     type="short" 
                                     key={goal.id}
+                                    id={goal.id}
                                     description={goal.description}
                                     saved={currencyFormatter.format(goal.saved)}
                                     amount={currencyFormatter.format(goal.amount)}
                                 />
-                            )
-                        })
-                    }
+                                )
+                            })
+                        }
                 </div>
             </div>
         </motion.div>
+
+        <SaveMoneySheet />
+        <NewGoalSheet/>
+        </>
     )
 }

@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Fragment, MutableRefObject, ReactNode } from "react";
+import { slideSheetBottomToTop, slideSheetLeftToRight, slideSheetRightToLeft, slideSheetTopToBottom } from "../Atoms/SheetAnimations";
 
 interface ISheet {
     children: ReactNode
@@ -23,14 +24,23 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, isBottomSheet, in
                         ${mobileOnly && 'sm:hidden'}
                         ${isBottomSheet ? 'fixed bottom-0' : 'min-h-screen fixed top-0 sm:right-0'}
                     `}>
-                        <motion.div 
-                            initial={{ x: innerWidth }}
-                            animate={{ x: 0 }}
-                            exit={{ x: window.innerWidth }}
+                        <motion.div
+                            variants={
+                                transition === "rightToLeft"
+                                ? slideSheetRightToLeft
+                                : transition === "leftToRight"
+                                ? slideSheetLeftToRight
+                                : transition === "bottomToTop"
+                                ? slideSheetBottomToTop
+                                : slideSheetTopToBottom
+                            }
+                            initial="hidden"
+                            animate="visible"
+                            exit="exit"
 
                             className={`
-                                flex flex-col w-screen overflow-auto sm:max-w-xl bg-zinc-50 dark:bg-zinc-900 shadow-xl
-                                ${isBottomSheet ? 'h-fit' : 'h-screen'}
+                                flex flex-col w-screen overflow-auto sm:max-w-xl bg-zinc-50 shadow-xl
+                                ${isBottomSheet ? 'h-fit dark:bg-zinc-800' : 'h-screen dark:bg-zinc-900'}
                             `}
                             >
                             {children}

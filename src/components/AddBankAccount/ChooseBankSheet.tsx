@@ -1,13 +1,13 @@
 import { Dialog } from "@headlessui/react"
 import { X } from "phosphor-react"
-import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts"
-import { BankAccount } from "../../BankAccount"
-import { Sheet } from "../../../../Sheets/Sheet"
-import { SheetHeader } from "../../../../Sheets/SheetHeader"
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts"
+import { BankAccount } from "../Wallet/BankAccounts/BankAccount"
+import { Sheet } from "../Sheets/Sheet"
+import { SheetHeader } from "../Sheets/SheetHeader"
 import { useEffect, useState } from "react"
 import { InsertBalanceSheet } from "./InsertBalanceSheet"
-import { Search } from "../../../../Atoms/Form/Search"
-import { api } from "../../../../../lib/axios"
+import { Search } from "../Atoms/Form/Search"
+import { api } from "../../lib/axios"
 
 interface BanksProps {
     value: string

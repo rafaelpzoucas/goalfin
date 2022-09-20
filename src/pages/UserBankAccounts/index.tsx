@@ -1,25 +1,27 @@
-import { Dialog } from "@headlessui/react";
-import { CaretLeft, Plus, X } from "phosphor-react";
-import { BankAccounts } from "..";
-import { Sheet } from "../../../Sheets/Sheet";
-import { useBankAccounts } from "../../../../contexts/BankAccountsContext/useBankAccounts";
-import { SheetHeader } from "../../../Sheets/SheetHeader";
-import { currencyFormatter } from "../../../../utils/formatter";
+import { motion, MotionConfig } from "framer-motion";
+import { Plus } from "phosphor-react";
+import { ChooseBankSheet } from "../../components/AddBankAccount/ChooseBankSheet";
+import { slidePageRightToLeft } from "../../components/Atoms/PageAnimations";
+import { NavHeader } from "../../components/Molecules/NavHeader";
+import { BankAccounts } from "../../components/Wallet/BankAccounts";
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
+import { currencyFormatter } from "../../utils/formatter";
 
-export function UserBankAccountsSheet() {
+export function UserBankAccounts() {
     const {
-        isUserBankAccountsSheetOpen,
-        setIsUserBankAccountsSheetOpen,
         setIsChooseBankSheetOpen,
         balance
     } = useBankAccounts()
-
-    return (
-        <Sheet isOpen={isUserBankAccountsSheetOpen} onClose={() => setIsUserBankAccountsSheetOpen(false)} transition="rightToLeft">
-            <SheetHeader
-                action={() => setIsUserBankAccountsSheetOpen(false)} 
-                type="back"
-            />
+    
+    return(
+        <>
+        <motion.div
+            variants={slidePageRightToLeft}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+        >
+            <NavHeader />
 
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-12 p-4">
@@ -31,7 +33,7 @@ export function UserBankAccountsSheet() {
                     <button 
                         className="flex items-center justify-center gap-2 p-4 rounded-lg  text-zinc-100 bg-emerald-600 dark:bg-zinc-700"
                         onClick={() => setIsChooseBankSheetOpen(true)}
-                    >
+                        >
                         <Plus size={20} />
                         <span>Adicionar conta</span>
                     </button>
@@ -39,6 +41,9 @@ export function UserBankAccountsSheet() {
 
                 <BankAccounts />
             </div>
-        </Sheet>
+        </motion.div>
+
+        <ChooseBankSheet />
+        </>
     )
 }

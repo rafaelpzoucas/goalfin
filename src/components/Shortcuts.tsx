@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import { ArrowsDownUp, Bank, Coins, Target } from "phosphor-react";
 import { useBankAccounts } from "../contexts/BankAccountsContext/useBankAccounts";
 import { useGoals } from "../contexts/GoalsContext/useGoals";
@@ -7,7 +8,7 @@ import { Shortcut } from "./Atoms/Shortcut";
 import { NewGoalSheet } from "./Goals/NewGoalSheet";
 import { SaveMoneySheet } from "./SaveMoney/SaveMoneySheet";
 import { NewTransactionSheet } from "./Transactions/NewTransactionSheet";
-import { ChooseBankSheet } from "./Wallet/BankAccounts/UserBankAccounts/AddBankAccount/ChooseBankSheet";
+import { ChooseBankSheet } from "./AddBankAccount/ChooseBankSheet";
 
 export function Shortcuts() {
     const {
@@ -49,10 +50,10 @@ export function Shortcuts() {
             </div>
         </section>
 
-        {isSaveMoneySheetOpen && <SaveMoneySheet />}
-        {isNewTransactionSheetOpen && <NewTransactionSheet />}      
-        {isNewGoalSheetOpen && <NewGoalSheet/>}
-        {isChooseBankSheetOpen && <ChooseBankSheet />}
+        <SaveMoneySheet />
+        <NewTransactionSheet />   
+        <NewGoalSheet/>
+        <ChooseBankSheet />
         </>
     )
 }

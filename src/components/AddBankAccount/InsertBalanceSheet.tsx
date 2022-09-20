@@ -1,9 +1,9 @@
 import { Dialog } from "@headlessui/react";
 import { Check, X } from "phosphor-react";
-import { useBankAccounts } from "../../../../../contexts/BankAccountsContext/useBankAccounts";
-import { BankAccount } from "../../BankAccount";
-import { Sheet } from "../../../../Sheets/Sheet";
-import { SheetHeader } from "../../../../Sheets/SheetHeader";
+import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
+import { BankAccount } from "../Wallet/BankAccounts/BankAccount";
+import { Sheet } from "../Sheets/Sheet";
+import { SheetHeader } from "../Sheets/SheetHeader";
 import { useRef } from "react";
 import { numericFormatter } from 'react-number-format'
 

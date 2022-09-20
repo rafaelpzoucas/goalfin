@@ -4,7 +4,6 @@ import { useState } from "react";
 import { H2 } from "../../Atoms/Typography";
 import { Sheet } from "../../Sheets/Sheet";
 import { SheetHeader } from "../../Sheets/SheetHeader";
-import { UpdateBankAccount } from "./UpdateBankAccount";
 
 interface BankAccountProps {
     type?: "select-new-bank" | "selected-bank"
@@ -19,7 +18,6 @@ function handleDeleteBankAccount() {
 }
 
 export function BankAccount({ click, type, bank, balance, hasOptions }: BankAccountProps) {
-    const [isEditBankAccountSheetOpen, setIsEditBankAccountSheetOpen] = useState(false)
     const [isConfirmDeleteSheetOpen, setIsConfirmDeleteSheetOpen] = useState(false)
 
     return (
@@ -82,41 +80,16 @@ export function BankAccount({ click, type, bank, balance, hasOptions }: BankAcco
             </div>
 
             <Sheet 
-                isOpen={isEditBankAccountSheetOpen} 
-                onClose={() => setIsEditBankAccountSheetOpen(false)} 
-                transition="rightToLeft"
-            >
-                <SheetHeader 
-                    action={() => setIsEditBankAccountSheetOpen(false)} 
-                    type="back" 
-                />
-                
-                <UpdateBankAccount 
-
-                />
-            </Sheet>
-
-            <Sheet 
                 isOpen={isConfirmDeleteSheetOpen} 
                 onClose={() => setIsConfirmDeleteSheetOpen(false)} 
                 transition="bottomToTop"
                 isBottomSheet
             >
-                <SheetHeader 
-                    action={() => setIsConfirmDeleteSheetOpen(false)} 
-                    // type="close" 
-                />
-
-                <div className="flex flex-col gap-8 p-4">
+                <div className="flex flex-col gap-8 p-4 pt-6">
                     <header className="flex flex-row gap-4 items-center">
-                        <Trash size={48} className="text-red-00" />
+                        <Trash size={48} className="text-red-500" />
                         <H2>Tem certeza que deseja excluir a conta {bank}?</H2>
                     </header>
-
-                    {/* <BankAccount 
-                        bank={bank}
-                        balance={balance}
-                    /> */}
 
                     <div className="grid grid-cols-2 gap-2">
                         <button 

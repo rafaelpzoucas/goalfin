@@ -5,6 +5,7 @@ import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount"
 import { api } from "../../lib/axios"
 import { H1 } from "../Atoms/Typography"
 import { Goal } from "../Goals/Goal"
+import { GoalList } from "../Goals/GoalList"
 import { Sheet } from "../Sheets/Sheet"
 import { SheetHeader } from "../Sheets/SheetHeader"
 
@@ -72,7 +73,7 @@ export function InsertAmountSheet() {
                 {
                     goals.filter(item => item.id === selectedGoal).map(goal => {
                         return(
-                            <Goal 
+                            <GoalList 
                                 key={goal.id}
                                 type="list"
                                 description={goal.description}

@@ -1,31 +1,7 @@
 
 import React, { createContext, ReactNode, useState } from "react";
 import { api } from "../../lib/axios";
-
-interface GoalsProviderProps {
-    children: ReactNode
-}
-
-interface GoalProps {
-    id: number
-    description: string
-    amount: number
-    saved: number
-    finalDate: string
-    createdAt: string
-}
-
-interface GoalsContextProps {
-    isGoalsDetailsSheetOpen: boolean
-    setIsGoalsDetailsSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    isNewGoalSheetOpen: boolean
-    setIsNewGoalSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
-    goals: GoalProps[]
-    setGoals: React.Dispatch<React.SetStateAction<GoalProps[]>>
-    fetchGoals: () => void
-    selectedGoal: number
-    setSelectedGoal: React.Dispatch<React.SetStateAction<number>>
-}
+import { GoalProps, GoalsContextProps, GoalsProviderProps } from "./types";
 
 export const GoalsContext = createContext({} as GoalsContextProps)
 

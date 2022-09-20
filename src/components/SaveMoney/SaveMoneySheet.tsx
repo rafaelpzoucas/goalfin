@@ -9,6 +9,7 @@ import { SheetHeader } from "../Sheets/SheetHeader";
 import { InsertAmountSheet } from "./InsertAmountSheet";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { H1 } from "../Atoms/Typography";
+import { GoalList } from "../Goals/GoalList";
 
 export function SaveMoneySheet() {
     const {
@@ -60,7 +61,7 @@ export function SaveMoneySheet() {
                 {
                     goals.map(goal => {
                         return (
-                            <Goal 
+                            <GoalList 
                                 key={goal.id}
                                 type="list"
                                 click={() => handleChooseGoal(goal.id)}

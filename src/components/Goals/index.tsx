@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
 import { currencyFormatter } from "../../utils/formatter";
 import { H2 } from "../Atoms/Typography";
-import { Goal } from "./Goal";
+import { GoalCard } from "./GoalCard";
 import { GoalSkeleton } from "./GoalSkeleton";
 
 export function Goals() {
@@ -43,9 +43,10 @@ export function Goals() {
                         goals.length !== 0 ? (
                             goals.map(goal => {
                                 return (
-                                    <Goal 
+                                    <GoalCard 
                                         type="short" 
                                         key={goal.id}
+                                        id={goal.id}
                                         description={goal.description}
                                         saved={currencyFormatter.format(goal.saved)}
                                         amount={currencyFormatter.format(goal.amount)}
