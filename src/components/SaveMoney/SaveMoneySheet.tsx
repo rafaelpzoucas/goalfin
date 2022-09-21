@@ -1,8 +1,5 @@
-import { Dialog } from "@headlessui/react";
-import { CaretLeft, Target } from "phosphor-react";
-import { useBankAccounts } from "../../contexts/BankAccountsContext/useBankAccounts";
+import { Target } from "phosphor-react";
 import { useSaveMoney } from "../../contexts/SaveMoneyContext/useBankAccount";
-import { Goal } from "../Goals/Goal";
 import { Search } from "../Atoms/Form/Search";
 import { Sheet } from "../Sheets/Sheet";
 import { SheetHeader } from "../Sheets/SheetHeader";
