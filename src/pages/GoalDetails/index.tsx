@@ -12,6 +12,8 @@ import { Sheet } from "../../components/Sheets/Sheet";
 import { SheetHeader } from "../../components/Sheets/SheetHeader";
 import { api } from "../../lib/axios";
 import { GoalProps } from "../../contexts/GoalsContext/types";
+import { TransactionSkeleton } from "../../components/Transactions/TransactionSkeleton";
+import { useTransactions } from "../../contexts/TransactionsContext/useTransactions";
 
 interface GoalDetailProps {
     description: string
@@ -24,12 +26,17 @@ export function GoalDetails() {
 
     const [goalDetails, setGoalDetails] = useState<GoalDetailProps>()
 
-    const [currentPercent, setCurrentPercent] = useState(0)
-
     const [isGoalOperationSheetOpen, setIsGoalOperationSheetOpen] = useState(false)
     const [operationType, setOperationType] = useState("") 
     
     const { id } = useParams()
+
+    const percentToAchive = goalDetails && ((100 * goalDetails.saved) / goalDetails.amount)
+
+    const {
+        fetchTransactions,
+        transactions
+    } = useTransactions()
 
     async function fetchGoalDetails() {
         const response = await api.get(`/goals/${id}`)
@@ -39,15 +46,10 @@ export function GoalDetails() {
     
     useEffect(() => {
         fetchGoalDetails()
+        fetchTransactions()
+    }, []) 
 
-        goalDetails && (
-            setCurrentPercent(() => ((100 * goalDetails.saved) / goalDetails.amount))
-        )
-    }, [])
-    
-
-    console.log(currentPercent);
-    
+    console.log(percentToAchive); 
     
     return(
         <>
@@ -86,7 +88,7 @@ export function GoalDetails() {
                         </span>
                         <div className="mt-4">
                             <div className="relative w-full h-1 bg-zinc-200 dark:bg-zinc-600">
-                                <div className={`absolute w-[${currentPercent}%] h-1 bg-emerald-500 transition-all duration-200`}></div>
+                                <div style={{ width: `${percentToAchive}%` }} className={`absolute h-1 bg-emerald-500 transition-all duration-200`}></div>
                             </div>
                         </div>
                     </div>
@@ -124,20 +126,44 @@ export function GoalDetails() {
                         <H2>Histórico</H2>
                     </header>
                     
-                    <div 
-                        // key={transaction.date} 
-                        className="flex flex-col gap-8"
-                        >
-                        <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-900">
-                            <span className="text-sm">{dateFormatter.format(Date.parse("10/09/2022"))}</span>
-                        </div>
+                    <div className="flex flex-col gap-8">
+                        {transactions.length !== 0 ? (
+                            transactions.filter(item => item.model).map(transaction => {
+                                return(
+                                    <div 
+                                        key={transaction.date} 
+                                        className="flex flex-col gap-8"
+                                    >
+                                        <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-900">
+                                            <span className="text-sm">{dateFormatter.format(Date.parse(transaction.date))}</span>
+                                        </div>
+                                        {
+                                            transaction.model.filter(item => item.type === "goal" && item.description === goalDetails?.description ).map(item => {
+                                                return (
+                                                    <Transaction 
+                                                        key={item.id}
+                                                        type={item.type}
+                                                        description={item.description}
+                                                        amount={item.amount}
+                                                    />
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })
+                        ) : (
+                            <div className="flex flex-col gap-8">
+                                <div className="w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
+                                    <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 rounded-sm animate-pulse"></div>
+                                </div>
 
-                        <Transaction 
-                            // key={item.id}
-                            type={"goal"}
-                            description={'item.description'}
-                            amount={500}
-                            />
+                                <TransactionSkeleton />
+                                <TransactionSkeleton />
+                                <TransactionSkeleton />
+                                <TransactionSkeleton />
+                            </div>
+                        )}
                     </div>
                 </div> 
             </div>

@@ -27,6 +27,7 @@ export function GoalsSummary() {
     useEffect(() => {
         fetchGoals()
     }, [])
+    
 
     return(
         <>
@@ -35,7 +36,7 @@ export function GoalsSummary() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="flex flex-col gap-8 dark:bg-zinc-900"
+            className="flex flex-col gap-8 overflow-x-hidden dark:bg-zinc-900"
             >
             <NavHeader />
             

@@ -9,6 +9,7 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
     const [isGoalsDetailsSheetOpen, setIsGoalsDetailsSheetOpen] = useState(false)
     const [isNewGoalSheetOpen, setIsNewGoalSheetOpen] = useState(false)
     const [goals, setGoals] = useState<GoalProps[]>([])
+    const [currentPercentage, setCurrentPercentage] = useState()
     const [selectedGoal, setSelectedGoal] = useState(0)
 
     async function fetchGoals() {

@@ -9,7 +9,7 @@ export interface TransactionProps {
     model: [{
         id: number
         amount: number
-        type: "income" | "spending"
+        type: "income" | "spending" | "goal"
         date: string
         category: string
         description: string
