@@ -50,7 +50,7 @@ export function NewTransactionSheet() {
                 className="flex flex-col gap-4 p-4" 
             >
                 <div>
-                    <span className="text-sm text-zinc-600 dark:text-zinc-400">Valor da transação</span>
+                    <span className="text-sm text-slate-600 dark:text-slate-400">Valor da transação</span>
                     <input 
                         ref={initialFocus} 
                         type="number" 
@@ -69,15 +69,15 @@ export function NewTransactionSheet() {
                     <RadioGroup.Option 
                         value="income"
                         className={`
-                            flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
-                            ${type === 'income' && 'border-emerald-600 dark:border-emerald-500 bg-emerald-100 dark:bg-transparent font-bold'}
+                            flex flex-col w-full items-center gap-4 p-4 border dark:border-slate-700 rounded-lg transition-all duration-150
+                            ${type === 'income' && 'border-brand-600 dark:border-brand-500 bg-brand-100 dark:bg-transparent font-bold'}
                         `}
                     >
-                        <ArrowDownRight size={24} className="text-emerald-500" />
+                        <ArrowDownRight size={24} className="text-brand-500" />
                         <span 
                             className={`
                                 text-sm
-                                ${type === 'income' && 'text-emerald-700 dark:text-emerald-500'}
+                                ${type === 'income' && 'text-brand-700 dark:text-brand-500'}
                             `}
                         >
                             Entrada
@@ -87,7 +87,7 @@ export function NewTransactionSheet() {
                     <RadioGroup.Option 
                         value="spending"
                         className={`
-                            flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-700 rounded-lg transition-all duration-150
+                            flex flex-col w-full items-center gap-4 p-4 border dark:border-slate-700 rounded-lg transition-all duration-150
                             ${type === 'spending' && 'border-red-600 dark:border-red-500 bg-red-100 dark:bg-transparent font-bold'}
                         `}
                     >
@@ -108,9 +108,9 @@ export function NewTransactionSheet() {
                     onChange={setSelected}
                 >
                     <div className="relative mt-1">
-                        <span className="text-sm text-zinc-600 dark:text-zinc-400">Conta bancária</span>
+                        <span className="text-sm text-slate-600 dark:text-slate-400">Conta bancária</span>
                         <Listbox.Button 
-                            className="relative w-full cursor-default rounded-lg border dark:border-zinc-700 p-4 text-left mt-1"
+                            className="relative w-full cursor-default rounded-lg border dark:border-slate-700 p-4 text-left mt-1"
                         >
                             <div className="flex flex-row items-center gap-6">
                                 <span>
@@ -134,7 +134,7 @@ export function NewTransactionSheet() {
                             as={Fragment}
                         >
                             <Listbox.Options 
-                                className="absolute z-20 mt-1 max-h-80 w-full overflow-auto rounded-lg bg-zinc-50  dark:bg-zinc-800 p-2 shadow-lg focus:outline-none sm:text-sm">
+                                className="absolute z-20 mt-1 max-h-80 w-full overflow-auto rounded-lg bg-slate-50  dark:bg-slate-800 p-2 shadow-lg focus:outline-none sm:text-sm">
                                 {
                                     userBankAccounts.map(userBankAccount => {
                                         return(
@@ -143,7 +143,7 @@ export function NewTransactionSheet() {
                                                 value={userBankAccount.bank}
                                                 className={({ active }) =>
                                                     `cursor-default select-none rounded-lg p-6 
-                                                    ${active ? 'bg-zinc-200 dark:bg-zinc-700' : 'text-zinc-600 dark:text-zinc-100'}
+                                                    ${active ? 'bg-slate-200 dark:bg-slate-700' : 'text-slate-600 dark:text-slate-100'}
                                                 `}
                                             >
                                                 {userBankAccount.bank}
@@ -161,10 +161,10 @@ export function NewTransactionSheet() {
                 <div
                     className={`
                         flex flex-col gap-1
-                        ${fixedOnBottom && 'fixed bottom-14 left-0 z-10 w-full p-4 bg-zinc-100 dark:bg-zinc-800'}
+                        ${fixedOnBottom && 'fixed bottom-14 left-0 z-10 w-full p-4 bg-slate-100 dark:bg-slate-800'}
                     `}
                 >
-                    <label htmlFor="description" className="text-sm text-zinc-400 dark:text-600">Descrição</label>
+                    <label htmlFor="description" className="text-sm text-slate-400 dark:text-600">Descrição</label>
                     <div className="relative">
                         <input 
                             type="text" 
@@ -174,7 +174,7 @@ export function NewTransactionSheet() {
                             onBlur={() => setFixedOnBottom(false)}
                             autoComplete="off"
                             className={`
-                                w-full p-4 py-4 bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-emerald-700 transition-all duration-150
+                                w-full p-4 py-4 bg-transparent border border-slate-300 dark:border-slate-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-brand-700 transition-all duration-150
                             `}
                         />
                         {
@@ -193,7 +193,7 @@ export function NewTransactionSheet() {
 
                 <button 
                     type="submit"
-                    className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 text-zinc-100"
+                    className="fixed bottom-20 right-4 p-4 rounded-full bg-brand-700 text-slate-100"
                 >
                     <Check size={24} />
                 </button>

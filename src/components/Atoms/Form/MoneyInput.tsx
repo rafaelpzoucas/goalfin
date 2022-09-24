@@ -9,7 +9,7 @@ export function MoneyInput({ focus }: MoneyInputProps) {
 
     return (
         <div>
-            <span className="text-xs text-zinc-400">Saldo atual da conta</span>
+            <span className="text-xs text-slate-400">Saldo atual da conta</span>
             <input 
                 ref={initialFocus} 
                 type="text" 

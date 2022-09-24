@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply bg-zinc-50 text-zinc-900 dark:bg-zinc-900 dark:text-zinc-100;
+    @apply bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100;
     
     -webkit-font-smoothing: antialiased;
     
@@ -12,9 +12,4 @@ body {
 
 body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
-}
-
-.test {
-    background-color: white;
-    opacity: 0.1;
 }

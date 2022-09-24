@@ -19,7 +19,7 @@ export function DateInput({ id, label }: DateInputProps) {
             {
                 label !== "" && 
                 <label 
-                    className="text-sm text-zinc-600 dark:text-zinc-400"
+                    className="text-sm text-slate-600 dark:text-slate-400"
                 >
                     {label}
                 </label>
@@ -37,8 +37,8 @@ export function DateInput({ id, label }: DateInputProps) {
                 <RadioGroup.Option value={today} onClick={() => setDate(today)}>
                     {({ checked }) => (
                         <div className={`
-                            flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-600 rounded-lg transition-all duration-150
-                            ${checked && 'font-bold border-zinc-700 dark:border-zinc-100'}
+                            flex flex-col w-full items-center gap-4 p-4 border dark:border-slate-600 rounded-lg transition-all duration-150
+                            ${checked && 'font-bold border-slate-700 dark:border-slate-100'}
                         `}>     
                             <span className="text-sm">Hoje</span>
                         </div>
@@ -47,8 +47,8 @@ export function DateInput({ id, label }: DateInputProps) {
                 <RadioGroup.Option value="yesterday" onClick={() => setDate(yesterday)}>
                     {({ checked }) => (
                         <div className={`
-                            flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-600 rounded-lg transition-all duration-150
-                            ${checked && 'font-bold border-zinc-700 dark:border-zinc-100'}
+                            flex flex-col w-full items-center gap-4 p-4 border dark:border-slate-600 rounded-lg transition-all duration-150
+                            ${checked && 'font-bold border-slate-700 dark:border-slate-100'}
                         `}>     
                             <span className="text-sm">Ontem</span>
                         </div>
@@ -57,8 +57,8 @@ export function DateInput({ id, label }: DateInputProps) {
                 <RadioGroup.Option value="other">
                     {({ checked }) => (
                         <div className={`
-                            flex flex-col w-full items-center gap-4 p-4 border dark:border-zinc-600 rounded-lg transition-all duration-150
-                            ${checked && 'font-bold border-zinc-700 dark:border-zinc-100'}
+                            flex flex-col w-full items-center gap-4 p-4 border dark:border-slate-600 rounded-lg transition-all duration-150
+                            ${checked && 'font-bold border-slate-700 dark:border-slate-100'}
                         `}>     
                             <label htmlFor={id} className="text-sm">Outro...</label>
                         </div>
@@ -71,7 +71,7 @@ export function DateInput({ id, label }: DateInputProps) {
                 value={date}
                 onChange={(event) => setDate(event.target.value)}
                 className={`
-                    w-full p-4 py-4 bg-transparent border border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-4 outline-emerald-700 transition-all duration-150 
+                    w-full p-4 py-4 bg-transparent border border-slate-700 rounded-lg focus:outline outline-offset-2 outline-4 outline-brand-700 transition-all duration-150 
                     ${
                         date !== today && date !== yesterday ? "visible static z-0" : "invisible absolute -z-50"
                     }

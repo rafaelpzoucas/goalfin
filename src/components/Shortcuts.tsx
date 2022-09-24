@@ -6,9 +6,9 @@ import { useSaveMoney } from "../contexts/SaveMoneyContext/useBankAccount";
 import { useTransactions } from "../contexts/TransactionsContext/useTransactions";
 import { Shortcut } from "./Atoms/Shortcut";
 import { NewGoalSheet } from "./Goals/NewGoalSheet";
-import { SaveMoneySheet } from "./SaveMoney/SaveMoneySheet";
 import { NewTransactionSheet } from "./Transactions/NewTransactionSheet";
 import { ChooseBankSheet } from "./AddBankAccount/ChooseBankSheet";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Shortcuts() {
     const {
@@ -31,11 +31,13 @@ export function Shortcuts() {
         setIsChooseBankSheetOpen
     } = useBankAccounts()
 
+    const navigate = useNavigate()
+
     return (
         <>
         <section className="flex flex-row">
             <div className="flex flex-start gap-4">
-                <Shortcut label="Guardar" click={() => setIsSaveMoneySheetOpen(true)}>
+                <Shortcut label="Guardar" click={() => navigate("/save-money")}>
                     <Coins />
                 </Shortcut>
                 <Shortcut label="Transação" click={() => setIsNewTransactionSheetOpen(true)}>
@@ -50,7 +52,7 @@ export function Shortcuts() {
             </div>
         </section>
 
-        <SaveMoneySheet />
+        {/* <SaveMoneySheet /> */}
         <NewTransactionSheet />   
         <NewGoalSheet/>
         <ChooseBankSheet />

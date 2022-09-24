@@ -11,6 +11,7 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
     const [goals, setGoals] = useState<GoalProps[]>([])
     const [currentPercentage, setCurrentPercentage] = useState()
     const [selectedGoal, setSelectedGoal] = useState(0)
+    const [currentStep, setCurrentStep] = useState("chooseGoal")
 
     async function fetchGoals() {
         const response = await api.get('/goals')
@@ -28,7 +29,9 @@ export function GoalsProvider({ children }: GoalsProviderProps) {
             setGoals,
             fetchGoals,
             selectedGoal,
-            setSelectedGoal
+            setSelectedGoal,
+            currentStep,
+            setCurrentStep
         }}>
             { children }
         </GoalsContext.Provider>

@@ -17,7 +17,7 @@ export function Planning() {
                     <ClipboardText size={24}/>
                     <div className="flex flex-col">
                         <strong>Planejamento</strong>
-                        <span className="text-xs text-zinc-400">agosto</span>
+                        <span className="text-xs text-slate-400">agosto</span>
                     </div>
                 </div>
                 <CaretRight />

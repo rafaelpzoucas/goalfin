@@ -26,7 +26,7 @@ export function BankAccount({ click, type, bank, balance, hasOptions }: BankAcco
             onClick={click}
         >
             <div className="flex items-center justify-center gap-4">
-                <div className="flex items-center justify-center rounded-full bg-zinc-200 dark:bg-zinc-700 p-4">
+                <div className="flex items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700 p-4">
                     <Bank size={20} />
                 </div>
                 <div className="flex flex-col gap-1 w-full">
@@ -40,7 +40,7 @@ export function BankAccount({ click, type, bank, balance, hasOptions }: BankAcco
                                             <DotsThreeVertical size={24} />
                                         </Popover.Button>
                                 
-                                        <Popover.Panel className="absolute top-0 right-8 z-10 w-40 p-4 rounded-lg shadow-lg bg-white dark:bg-zinc-700">
+                                        <Popover.Panel className="absolute top-0 right-8 z-10 w-40 p-4 rounded-lg shadow-lg bg-white dark:bg-slate-700">
                                             <div className="flex">
                                                 <ul>
                                                     {/* <li>
@@ -93,7 +93,7 @@ export function BankAccount({ click, type, bank, balance, hasOptions }: BankAcco
 
                     <div className="grid grid-cols-2 gap-2">
                         <button 
-                            className="p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 border dark:border-zinc-700"
+                            className="p-4 rounded-lg bg-slate-100 dark:bg-slate-800 border dark:border-slate-700"
                             onClick={() => setIsConfirmDeleteSheetOpen(false)}
                         >
                             Não, manter conta

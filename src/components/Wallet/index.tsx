@@ -12,7 +12,7 @@ export function Wallet() {
                 <section className="flex flex-row items-start justify-between">
                     <div className="flex flex-col gap-12">
                         <div className="flex flex-col gap-1">
-                            <span className="text-xs text-zinc-600 dark:text-zinc-400">Saldo disponível</span>
+                            <span className="text-xs text-slate-600 dark:text-slate-400">Saldo disponível</span>
                             <strong className="text-2xl">R$ 50,00</strong>
                         </div>
                     </div>

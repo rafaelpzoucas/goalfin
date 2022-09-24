@@ -47,9 +47,7 @@ export function GoalDetails() {
     useEffect(() => {
         fetchGoalDetails()
         fetchTransactions()
-    }, []) 
-
-    console.log(percentToAchive); 
+    }, [])
     
     return(
         <>
@@ -67,7 +65,7 @@ export function GoalDetails() {
                         {
                             goalDetails 
                             ? goalDetails.description 
-                            : <div className="w-40 h-4 rounded-sm bg-zinc-300 dark:bg-zinc-700 animate-pulse"></div>
+                            : <div className="w-40 h-4 rounded-sm bg-slate-300 dark:bg-slate-700 animate-pulse"></div>
                         }
                     </H2>
 
@@ -76,26 +74,26 @@ export function GoalDetails() {
                             {
                                 goalDetails 
                                 ? currencyFormatter.format(goalDetails.saved)
-                                : <div className="w-32 h-6 rounded-sm bg-zinc-300 dark:bg-zinc-700 animate-pulse"></div>
+                                : <div className="w-32 h-6 rounded-sm bg-slate-300 dark:bg-slate-700 animate-pulse"></div>
                             }
                         </strong>
-                        <span className="text-zinc-600 dark:text-zinc-400">
+                        <span className="text-slate-600 dark:text-slate-400">
                             {
                                 goalDetails 
                                 ? `de  ${currencyFormatter.format(goalDetails.amount)}` 
-                                : <div className="w-36 h-4 mt-2 rounded-sm bg-zinc-300 dark:bg-zinc-700 animate-pulse"></div>
+                                : <div className="w-36 h-4 mt-2 rounded-sm bg-slate-300 dark:bg-slate-700 animate-pulse"></div>
                             }
                         </span>
                         <div className="mt-4">
-                            <div className="relative w-full h-1 bg-zinc-200 dark:bg-zinc-600">
-                                <div style={{ width: `${percentToAchive}%` }} className={`absolute h-1 bg-emerald-500 transition-all duration-200`}></div>
+                            <div className="relative w-full h-1 bg-slate-200 dark:bg-slate-600">
+                                <div style={{ width: `${percentToAchive}%` }} className={`absolute h-1 bg-brand-500 transition-all duration-200`}></div>
                             </div>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
                         <button 
-                            className="flex items-center justify-center gap-2 p-4 bg-zinc-100 dark:bg-zinc-800 border dark:border-zinc-700 rounded-lg"
+                            className="flex items-center justify-center gap-2 p-4 bg-slate-100 dark:bg-slate-800 border dark:border-slate-700 rounded-lg"
                             onClick={() => {
                                 setIsGoalOperationSheetOpen(true)
                                 setOperationType("redeem")
@@ -107,7 +105,7 @@ export function GoalDetails() {
                             </strong>
                         </button>
                         <button 
-                            className="flex items-center justify-center gap-2 p-4 bg-emerald-600 text-zinc-100 border dark:border-none rounded-lg"
+                            className="flex items-center justify-center gap-2 p-4 bg-brand-600 text-slate-100 border dark:border-none rounded-lg"
                             onClick={() => {
                                 setIsGoalOperationSheetOpen(true)
                                 setOperationType("save")
@@ -121,7 +119,7 @@ export function GoalDetails() {
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-8 border-t dark:border-none bg-zinc-100 dark:bg-zinc-900 p-4 py-8 pb-36 h-fit">
+                <div className="flex flex-col gap-8 border-t dark:border-none bg-slate-100 dark:bg-slate-900 p-4 py-8 pb-36 h-fit">
                     <header className="flex flex-row gap-2 items-center">
                         <H2>Histórico</H2>
                     </header>
@@ -134,7 +132,7 @@ export function GoalDetails() {
                                         key={transaction.date} 
                                         className="flex flex-col gap-8"
                                     >
-                                        <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-900">
+                                        <div className="sticky -top-[1px] w-full h-full py-4 bg-slate-100 dark:bg-slate-900">
                                             <span className="text-sm">{dateFormatter.format(Date.parse(transaction.date))}</span>
                                         </div>
                                         {
@@ -154,8 +152,8 @@ export function GoalDetails() {
                             })
                         ) : (
                             <div className="flex flex-col gap-8">
-                                <div className="w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
-                                    <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 rounded-sm animate-pulse"></div>
+                                <div className="w-full h-full py-4 bg-slate-100 dark:bg-slate-800">
+                                    <div className="w-40 h-4 bg-slate-200 dark:bg-slate-700 rounded-sm animate-pulse"></div>
                                 </div>
 
                                 <TransactionSkeleton />
@@ -186,15 +184,15 @@ export function GoalDetails() {
                         <section className="flex flex-col px-4">
                             <H1>Quanto você quer resgatar?</H1>
                             <div 
-                                className="text-sm text-zinc-600 dark:text-zinc-400"
+                                className="text-sm text-slate-600 dark:text-slate-400"
                             >
                                 <span>Você pode resgatar até </span>
-                                <strong className="text-zinc-100"> R$ 7,00</strong>
+                                <strong className="text-slate-100"> R$ 7,00</strong>
                             </div>
                         </section>
 
                         <section className="px-4">
-                            <span className="text-sm text-zinc-600 dark:text-zinc-400">{'description'}</span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">{'description'}</span>
                             <input 
                                 ref={initialFocus} 
                                 type="text" 
@@ -211,7 +209,7 @@ export function GoalDetails() {
                         </section>
 
                         <button 
-                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 disabled:opacity-25 transition-all duration-150 text-zinc-100"
+                            className="fixed bottom-20 right-4 p-4 rounded-full bg-brand-700 disabled:opacity-25 transition-all duration-150 text-slate-100"
                             onClick={() => setIsGoalOperationSheetOpen(false)}
                         >
                             <Check size={24} />
@@ -222,15 +220,15 @@ export function GoalDetails() {
                         <section className="flex flex-col px-4">
                             <H1>Quanto você quer guardar?</H1>
                             <div 
-                                className="text-sm text-zinc-600 dark:text-zinc-400"
+                                className="text-sm text-slate-600 dark:text-slate-400"
                             >
                                 <span>Seu saldo disponível é </span>
-                                <strong className="text-zinc-100"> R$ 7,00</strong>
+                                <strong className="text-slate-100"> R$ 7,00</strong>
                             </div>
                         </section>
 
                         <section className="px-4">
-                            <span className="text-sm text-zinc-600 dark:text-zinc-400">{'description'}</span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">{'description'}</span>
                             <input 
                                 ref={initialFocus} 
                                 type="text" 
@@ -241,7 +239,7 @@ export function GoalDetails() {
                         </section>
 
                         <button 
-                            className="fixed bottom-20 right-4 p-4 rounded-full bg-emerald-700 disabled:opacity-25 transition-all duration-150 text-zinc-100"
+                            className="fixed bottom-20 right-4 p-4 rounded-full bg-brand-700 disabled:opacity-25 transition-all duration-150 text-slate-100"
                             onClick={() => setIsGoalOperationSheetOpen(false)}
                         >
                             <Check size={24} />

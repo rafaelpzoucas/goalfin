@@ -1,35 +1,34 @@
-import { Dialog, Listbox, RadioGroup, Transition } from "@headlessui/react";
-import { ArrowDownRight, ArrowUpRight, Bank, CaretDown, Check, X } from "phosphor-react";
-import { Fragment, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { Check } from "phosphor-react";
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Input } from "../../components/Atoms/Form/Input";
+import { slidePageLeftToRight, slidePageRightToLeft } from "../../components/Atoms/PageAnimations";
+import { NavHeader } from "../../components/Molecules/NavHeader";
 import { useGoals } from "../../contexts/GoalsContext/useGoals";
-import { DateInput } from "../Atoms/Form/DateInput";
-import { Input } from "../Atoms/Form/Input";
-import { H2 } from "../Atoms/Typography";
-import { Sheet } from "../Sheets/Sheet";
-import { SheetHeader } from "../Sheets/SheetHeader";
 
-export function NewGoalSheet() {
+export function NewGoal() {
     const initialDate = new Date()
-    let initialFocus = useRef(null)
-
-    const {
-        isNewGoalSheetOpen,
-        setIsNewGoalSheetOpen
-    } = useGoals()
+    const [isLoaded, setIsLoaded] = useState(false)
 
     let [date, setDate] = useState(initialDate.toISOString())
-    
-    return (
-        <Sheet 
-            isOpen={isNewGoalSheetOpen} 
-            onClose={() => setIsNewGoalSheetOpen(false)} 
-            initialFocus={initialFocus}
-            transition="rightToLeft"
-        >
-            <SheetHeader 
-                action={() => setIsNewGoalSheetOpen(false)} 
-                type="back" 
-            />
+
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setIsLoaded(true)
+    }, [])
+
+    return(
+        <motion.div
+            variants={!isLoaded ? slidePageRightToLeft : slidePageLeftToRight}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+
+            className="h-full"
+        >  
+            <NavHeader />
 
             <div className="flex flex-col gap-8 p-4">
                 <div className="flex flex-col gap-8">
@@ -37,7 +36,6 @@ export function NewGoalSheet() {
                         <div>
                             <span className="text-sm text-slate-600 dark:text-slate-400">Valor do objetivo</span>
                             <input 
-                                ref={initialFocus} 
                                 type="text" 
                                 inputMode="numeric" 
                                 placeholder="R$ 0,00" 
@@ -79,13 +77,13 @@ export function NewGoalSheet() {
                         
                         <button 
                             className="fixed bottom-20 right-4 p-4 rounded-full bg-brand-700 disabled:opacity-25 transition-all duration-150 text-slate-100"
-                            onClick={() => setIsNewGoalSheetOpen(false)}
+                            onClick={() => navigate(-1)}
                         >
                             <Check size={24} />
                         </button>
                     </div>
                 </div>
             </div>
-        </Sheet>
+        </motion.div>
     )
 }

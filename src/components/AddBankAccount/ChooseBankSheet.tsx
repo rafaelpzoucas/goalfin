@@ -47,7 +47,7 @@ export function ChooseBankSheet() {
             />
 
             <div className="flex flex-col  overflow-auto">
-                <div className="flex flex-col gap-4 sticky top-0 p-4 bg-zinc-50 dark:bg-zinc-900">
+                <div className="flex flex-col gap-4 sticky top-0 p-4 bg-slate-50 dark:bg-slate-900">
                     <strong>
                         Selecione o seu banco
                     </strong>

@@ -23,4 +23,6 @@ export interface GoalsContextProps {
     fetchGoals: () => void
     selectedGoal: number
     setSelectedGoal: React.Dispatch<React.SetStateAction<number>>
+    currentStep: string
+    setCurrentStep: React.Dispatch<React.SetStateAction<string>>
 }

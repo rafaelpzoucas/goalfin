@@ -10,7 +10,7 @@ export function BankAccounts() {
     } = useBankAccounts()
 
     return (
-        <div className="flex flex-col gap-8 border-t dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 p-4 py-8 pb-36">
+        <div className="flex flex-col gap-8 border-t dark:border-slate-800 bg-slate-100 dark:bg-slate-900 p-4 py-8 pb-36">
             <H2>Minhas contas</H2>
 
             {

@@ -30,7 +30,7 @@ export function Goals() {
                     </header>
 
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs text-zinc-600 dark:text-zinc-400">Guardar este mês</span>
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Guardar este mês</span>
                         <strong className="text-2xl">R$ 500,00</strong>
                     </div>
                 </section>

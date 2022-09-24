@@ -26,12 +26,12 @@ export function UserBankAccounts() {
             <div className="flex flex-col gap-4">
                 <div className="flex flex-col gap-12 p-4">
                     <div className="flex flex-col gap-1">
-                        <span className="text-xs text-zinc-600 dark:text-zinc-400">Minhas contas</span>
+                        <span className="text-xs text-slate-600 dark:text-slate-400">Minhas contas</span>
                         <strong className="text-2xl">{currencyFormatter.format(balance.total)}</strong>
                     </div>
 
                     <button 
-                        className="flex items-center justify-center gap-2 p-4 rounded-lg  text-zinc-100 bg-emerald-600 dark:bg-zinc-700"
+                        className="flex items-center justify-center gap-2 p-4 rounded-lg  text-slate-100 bg-brand-600 dark:bg-slate-700"
                         onClick={() => setIsChooseBankSheetOpen(true)}
                         >
                         <Plus size={20} />

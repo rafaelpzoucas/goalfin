@@ -20,7 +20,7 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, isBottomSheet, in
             {isOpen && (
                 <Dialog as="div" open={isOpen} onClose={onClose} initialFocus={initialFocus}>
                     <div className={`
-                        flex sm:border-l border-zinc-700 shadow-xl z-50
+                        flex sm:border-l border-slate-700 shadow-xl z-50
                         ${mobileOnly && 'sm:hidden'}
                         ${isBottomSheet ? 'fixed bottom-0' : 'min-h-screen fixed top-0 sm:right-0'}
                     `}>
@@ -39,8 +39,8 @@ export function Sheet({ children, isOpen, onClose, mobileOnly, isBottomSheet, in
                             exit="exit"
 
                             className={`
-                                flex flex-col w-screen overflow-auto sm:max-w-xl bg-zinc-50 shadow-xl
-                                ${isBottomSheet ? 'h-fit dark:bg-zinc-800' : 'h-screen dark:bg-zinc-900'}
+                                flex flex-col w-screen overflow-auto sm:max-w-xl bg-slate-50 shadow-xl
+                                ${isBottomSheet ? 'h-fit dark:bg-slate-800' : 'h-screen dark:bg-slate-900'}
                             `}
                             >
                             {children}

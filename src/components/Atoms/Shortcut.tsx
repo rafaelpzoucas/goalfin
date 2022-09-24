@@ -9,7 +9,7 @@ interface ShortcutProps {
 export function Shortcut({ children, label, click }: ShortcutProps) {
     return (
         <div className="flex flex-col items-center gap-2" onClick={click}>
-            <div className="p-5 rounded-lg bg-zinc-100 border dark:border-none dark:bg-zinc-800 text-2xl">
+            <div className="p-5 rounded-lg bg-slate-100 border dark:border-none dark:bg-slate-800 text-2xl">
                 {children}
             </div>
             <span className="text-xs">{label}</span>

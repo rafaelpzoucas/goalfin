@@ -14,8 +14,8 @@ export function TabButton({ children }: TabButtonProps) {
                     w-full p-4 transition-all duration-150
                     ${
                         selected 
-                        ? 'font-bold outline-0 border-b-4 border-b-emerald-600 text-emerald-600'
-                        : 'text-zinc-400 outline-0 border-b-4 border-b-zinc-50 dark:border-b-zinc-900'}
+                        ? 'font-bold outline-0 border-b-4 border-b-brand-600 text-brand-600'
+                        : 'text-slate-400 outline-0 border-b-4 border-b-slate-50 dark:border-b-slate-900'}
                 `}
                 >
                     {children}

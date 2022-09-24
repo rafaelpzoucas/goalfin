@@ -18,7 +18,7 @@ export function Transactions() {
     }, [])
 
     return (
-        <div className="flex flex-col gap-8 border-t dark:border-none bg-zinc-100 dark:bg-zinc-800 p-4 py-8 pb-36 h-fit">
+        <div className="flex flex-col gap-8 border-t dark:border-none bg-slate-100 dark:bg-slate-800 p-4 py-8 pb-36 h-fit">
             <H2>Transações</H2>
             
             <Search />
@@ -31,7 +31,7 @@ export function Transactions() {
                                 key={transaction.date} 
                                 className="flex flex-col gap-8"
                                 >
-                                <div className="sticky -top-[1px] w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
+                                <div className="sticky -top-[1px] w-full h-full py-4 bg-slate-100 dark:bg-slate-800">
                                     <span className="text-sm">{dateFormatter.format(Date.parse(transaction.date))}</span>
                                 </div>
                                 {
@@ -51,8 +51,8 @@ export function Transactions() {
                     })
                 ) : (
                     <div className="flex flex-col gap-8">
-                        <div className="w-full h-full py-4 bg-zinc-100 dark:bg-zinc-800">
-                            <div className="w-40 h-4 bg-zinc-200 dark:bg-zinc-700 rounded-sm animate-pulse"></div>
+                        <div className="w-full h-full py-4 bg-slate-100 dark:bg-slate-800">
+                            <div className="w-40 h-4 bg-slate-200 dark:bg-slate-700 rounded-sm animate-pulse"></div>
                         </div>
 
                         <TransactionSkeleton />

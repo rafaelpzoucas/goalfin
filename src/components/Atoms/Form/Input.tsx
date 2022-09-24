@@ -23,14 +23,14 @@ export function Input({ id, placeholder, type, inputMode, label, isBottomFixed, 
         <div 
             className={`
                 flex flex-col gap-1
-                ${fixedOnBottom && 'fixed bottom-14 left-0 z-10 w-full p-4 bg-zinc-100 dark:bg-zinc-800'}
+                ${fixedOnBottom && 'fixed bottom-14 left-0 z-10 w-full p-4 bg-slate-100 dark:bg-slate-800'}
             `}
         >
             {
                 label !== "" && 
                 <label 
                     htmlFor={id}
-                    className="text-sm text-zinc-600 dark:text-zinc-400"
+                    className="text-sm text-slate-600 dark:text-slate-400"
                 >
                     {label}
                 </label>
@@ -42,7 +42,7 @@ export function Input({ id, placeholder, type, inputMode, label, isBottomFixed, 
                     placeholder={placeholder} 
                     inputMode={inputMode}
                     className={`
-                        w-full p-4 py-4 bg-transparent border dark:border-zinc-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-emerald-700 transition-all duration-150
+                        w-full p-4 py-4 bg-transparent border dark:border-slate-700 rounded-lg focus:outline outline-offset-2 outline-2 outline-brand-700 transition-all duration-150
                     `}
                     onFocus={handleFocus}
                     onBlur={() => setFixedOnBottom(false)}

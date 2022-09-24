@@ -19,7 +19,7 @@ export function Transaction({ type, description, amount }: TransactionProps) {
             className="flex items-center justify-center gap-4"
             onClick={() => setIsTransactionDetailsSheetOpen(true)}
         >
-            <div className="flex items-center justify-center rounded-full bg-zinc-900 bg-opacity-10 dark:bg-zinc-100 dark:bg-opacity-10 p-2">
+            <div className="flex items-center justify-center rounded-full bg-slate-900 bg-opacity-10 dark:bg-slate-100 dark:bg-opacity-10 p-2">
                 {
                     type === "income"
                     ? <ArrowDown size={24} className="text-emerald-500" />
