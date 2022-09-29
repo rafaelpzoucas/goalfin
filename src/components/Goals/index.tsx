@@ -24,7 +24,7 @@ export function Goals() {
                     className="flex flex-col items-start justify-between gap-8"
                 >
                     <header className="flex flex-row justify-between w-full">
-                        <H2>Objetivos</H2>
+                        <H2>Metas</H2>
 
                         <CaretRight />
                     </header>

@@ -57,7 +57,7 @@ export function PlusButton() {
                                 onClick={() => setIsNewGoalSheetOpen(true)}
                                 >
                                 <Target size={24} />
-                                <span>Novo objetivo</span>
+                                <span>Nova meta</span>
                             </button>
                         </li>
                         <li>

@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 import { UserBankAccounts } from "../pages/UserBankAccounts";
 import { SaveMoney } from "../pages/SaveMoney";
 import { NewGoal } from "../pages/NewGoal";
+import { NewTransaction } from "../pages/NewTransaction";
 
 export function MainRoutes() {
     const location = useLocation()
@@ -24,6 +25,7 @@ export function MainRoutes() {
                 <Route path="/goals/:id" element={<GoalDetails />} />
                 <Route path="/save-money" element={<SaveMoney />} />
                 <Route path="/new-goal" element={<NewGoal />} />
+                <Route path="/new-transaction" element={<NewTransaction />} />
             </Routes>
         </AnimatePresence>
             

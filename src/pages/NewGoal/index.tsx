@@ -34,7 +34,7 @@ export function NewGoal() {
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col gap-4">
                         <div>
-                            <span className="text-sm text-slate-600 dark:text-slate-400">Valor do objetivo</span>
+                            <span className="text-sm text-slate-600 dark:text-slate-400">Valor da meta</span>
                             <input 
                                 type="text" 
                                 inputMode="numeric" 
@@ -53,15 +53,15 @@ export function NewGoal() {
                         
                         <Input 
                             id="description"
-                            label="Nome do objetivo" 
+                            label="Nome da meta" 
                             type="text" 
                             inputMode="text" 
-                            placeholder="Digite um nome para este objetivo"
+                            placeholder="Digite um nome para esta meta"
                         />
 
                         <div className="flex flex-col gap-1">
                             <label htmlFor="date" className="text-sm text-slate-600 dark:text-slate-400">
-                                Data para alcançar objetivo
+                                Data para alcançar a meta
                             </label>
                             <input 
                                 id="date"

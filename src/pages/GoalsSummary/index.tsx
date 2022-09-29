@@ -48,7 +48,7 @@ export function GoalsSummary() {
                 <Shortcut label="Guardar" click={() => setIsSaveMoneySheetOpen(true)}>
                     <Coins />
                 </Shortcut>
-                <Shortcut label="Objetivo" click={() => setIsNewGoalSheetOpen(true)}>
+                <Shortcut label="Meta" click={() => setIsNewGoalSheetOpen(true)}>
                     <Target />
                 </Shortcut>
             </section>
@@ -56,7 +56,7 @@ export function GoalsSummary() {
             <Divider />
 
             <div className="flex flex-col gap-8 p-4 pb-8">
-                <H2>Objetivos ativos</H2>
+                <H2>Metas ativas</H2>
                 
                 <div className="grid grid-cols-2 gap-4">
                     {

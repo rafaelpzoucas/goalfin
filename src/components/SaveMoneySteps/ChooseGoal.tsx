@@ -9,9 +9,7 @@ import { H1 } from "../Atoms/Typography";
 import { GoalList } from "../Goals/GoalList";
 import { NavHeader } from "../Molecules/NavHeader";
 
-export function ChooseGoal() {
-    const [isLoaded, setIsLoaded] = useState(false)
-    
+export function ChooseGoal() {    
     const navigate = useNavigate()
 
     const{
@@ -27,13 +25,12 @@ export function ChooseGoal() {
     }
 
     useEffect(() => {
-        setIsLoaded(true)
         goals.length === 0 && fetchGoals()
     }, [])
 
     return(
         <motion.div
-            variants={!isLoaded ? slidePageRightToLeft : slidePageLeftToRight}
+            variants={slidePageRightToLeft}
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -42,7 +39,7 @@ export function ChooseGoal() {
 
             <div className="flex flex-col gap-8 p-4">
                 <section className="flex flex-col">
-                    <H1>Selecione o seu objetivo</H1>
+                    <H1>Selecione a sua meta</H1>
                     <div 
                         className="text-sm text-slate-600 dark:text-slate-400"
                     >
@@ -56,7 +53,7 @@ export function ChooseGoal() {
                 >
                     <Target size={20} />
                     <strong>
-                        Novo objetivo
+                        Nova meta
                     </strong>
                 </button>
 

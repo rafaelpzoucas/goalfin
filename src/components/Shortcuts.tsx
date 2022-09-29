@@ -43,7 +43,7 @@ export function Shortcuts() {
                 <Shortcut label="Transação" click={() => setIsNewTransactionSheetOpen(true)}>
                     <ArrowsDownUp />
                 </Shortcut>
-                <Shortcut label="Objetivo" click={() => setIsNewGoalSheetOpen(true)}>
+                <Shortcut label="Meta" click={() => setIsNewGoalSheetOpen(true)}>
                     <Target />
                 </Shortcut>
                 <Shortcut label="Nova conta" click={() => setIsChooseBankSheetOpen(true)}>
